@@ -933,23 +933,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
           </ul>-->
           <ul>
-          <li><a href="#introducción-al-entorno-de-desarrollo"><span class="toc-section-number">1</span> Introducción al entorno de desarrollo</a>
+          <li><a href="#introducción"><span class="toc-section-number">1</span> Introducción</a>
           <ul>
           <li><a href="#objetivos"><span class="toc-section-number">1.1</span> Objetivos</a></li>
           <li><a href="#requisitos"><span class="toc-section-number">1.2</span> Requisitos</a></li>
-          <li><a href="#ejercicios"><span class="toc-section-number">1.3</span> Ejercicios</a>
+          </ul></li>
+          <li><a href="#ejercicios"><span class="toc-section-number">2</span> Ejercicios</a>
           <ul>
           <li><a href="#ejercicio-1">Ejercicio 1</a></li>
           <li><a href="#ejercicio-2">Ejercicio 2</a></li>
+          <li><a href="#ejercicio-3">Ejercicio 3</a></li>
+          <li><a href="#ejercicio-4">Ejercicio 4</a>
+          <ul>
+          <li><a href="#ejemplo-de-ejecución">Ejemplo de ejecución</a></li>
           </ul></li>
-          <li><a href="#desarrollo-de-la-práctica"><span class="toc-section-number">1.4</span> Desarrollo de la práctica</a></li>
-          <li><a href="#sec:script"><span class="toc-section-number">1.5</span> Script de comprobación</a></li>
+          <li><a href="#ejercicio-5">Ejercicio 5</a></li>
           </ul></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         
-<h1 data-number="1" id="introducción-al-entorno-de-desarrollo"><span class="header-section-number">1</span> Introducción al entorno de desarrollo</h1>
+<h1 data-number="1" id="introducción"><span class="header-section-number">1</span> Introducción</h1>
 <h2 data-number="1.1" id="objetivos"><span class="header-section-number">1.1</span> Objetivos</h2>
 <ul>
 <li><p>Familiarizarse con el entorno de desarrollo de aplicaciones C en LINUX, y comprender los conceptos de proyecto, ejecutable y biblioteca en este contexto.</p></li>
@@ -958,13 +962,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="1.2" id="requisitos"><span class="header-section-number">1.2</span> Requisitos</h2>
 <p>Para poder realizar con exito la práctica el alumno debe haber leído y comprendido los siguientes documentos facilitados por el profesor:</p>
 <ul>
-<li><p>Presentación “Introducción al entorno de desarrollo”, que nos introduce al entorno GNU/Linux que utilizaremos en el laboratorio, y describe cómo configurar Eclipse IDE para trabajar con proyectos C con Makefile.</p></li>
-<li><p>Presentación “Revisión: Programación en C”, que realiza un repaso de los conocimientos de C necesarios para realizar con éxito las prácticas, haciendo especial hincapié en los errores que cometen habitualmente los alumnos con poca experiencia con el lenguaje C.</p></li>
-<li><p>Manual “Entorno de desarrollo C para GNU/Linux”, que describe las herramientas que componen el entorno de desarrollo que vamos a utilizar, así como las funciones básicas de la biblioteca estándar de C que los alumnos deben conocer.</p></li>
+<li><p>Presentación “Introducción al entorno de desarrollo”, que nos introduce al entorno GNU/Linux que utilizaremos en el laboratorio, y describe cómo trabajar con proyectos C con Makefile.</p></li>
+<li><p>Presentación “Revisión: Programación en C”, que realiza un repaso de los conocimientos de C necesarios para realizar con éxito las prácticas, haciendo especial hincapié en los errores que cometen habitualmente los estudiantes menos experimentados en el lenguaje C.</p></li>
+<li><p>Manual del laboratorio titulado “Entorno de desarrollo C para GNU/Linux”, que describe las herramientas que componen el entorno de desarrollo que vamos a utilizar, así como las funciones básicas de la biblioteca estándar de C que los alumnos deben conocer.</p></li>
 <li><p>Presentación “Introducción a Bash”, que presenta una breve introducción al interprete de órdenes (shell) Bash.</p></li>
 </ul>
-<h2 data-number="1.3" id="ejercicios"><span class="header-section-number">1.3</span> Ejercicios</h2>
-<h3 class="unnumbered" data-number id="ejercicio-1">Ejercicio 1</h3>
+<h1 data-number="2" id="ejercicios"><span class="header-section-number">2</span> Ejercicios</h1>
+<h2 class="unnumbered" data-number id="ejercicio-1">Ejercicio 1</h2>
 <p>Analizar el código del programa <code>show_file.c</code>, que lee byte a byte el contenido de un fichero, cuyo nombre se pasa como parámetro, y lo muestra por pantalla usando funciones de la biblioteca estandar de “C”. Responda a las siguientes preguntas:</p>
 <ul>
 <li><p>Qué comando se debe emplear para generar el ejecutable del programa (<code>show_file</code>) invocando directamente al compilador <code>gcc</code> (sin usar <code>make</code>)?</p></li>
@@ -1005,8 +1009,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a>    fclose(file);</span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a>}</span></code></pre></div>
-<h3 class="unnumbered" data-number id="ejercicio-2">Ejercicio 2</h3>
-<p>El programa <em>badsort-ptr.c</em>, cuyo código fuente se muestra a continuación, ha sido desarrollado para realizar una ordenación por el método de la burbuja aplicada a un <em>array</em> de pares (cadena de caracteres, entero) inicializado dentro del programa. El programa emplea aritmética de punteros para acceder a los distintos elementos del array durante el recorrido. Lamentablemente, el programador ha cometido algun/os error/es. Utilizando un depurador de C (p.ej.,<code>gdb</code> o <code>ddd</code>) el alumno debe encontrar y corregir el/los error/es.</p>
+<h2 class="unnumbered" data-number id="ejercicio-2">Ejercicio 2</h2>
+<p>El programa <em>badsort-ptr.c</em>, cuyo código fuente se muestra a continuación, ha sido desarrollado para realizar una ordenación por el método de la burbuja aplicada a un <em>array</em> de pares (cadena de caracteres, entero) inicializado dentro del programa. El programa emplea aritmética de punteros para acceder a los distintos elementos del array durante el recorrido. Lamentablemente, el programador ha cometido algun/os error/es. Utilizando un depurador de C (p.ej.,<code>gdb</code>) el alumno debe encontrar y corregir el/los error/es.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="kw">typedef</span> <span class="kw">struct</span> {</span>
@@ -1050,28 +1054,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true"></a>                i, array[i].data, array[i].key);</span>
 <span id="cb2-42"><a href="#cb2-42" aria-hidden="true"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
 <span id="cb2-43"><a href="#cb2-43" aria-hidden="true"></a>}</span></code></pre></div>
-<h2 data-number="1.4" id="desarrollo-de-la-práctica"><span class="header-section-number">1.4</span> Desarrollo de la práctica</h2>
-<p>En esta práctica el alumno debe crear una herramienta de linea de órdenes llamada <em>mytar</em>, capaz de crear un archivo <em>tarball</em> que contenga varios ficheros, o de extraer los ficheros de un <em>tarball</em> previamente creado. Por ejemplo, la orden:</p>
-<pre><code>  ./mytar -cf project1.mtar mytar.c mytar.h mytar_routines.c</code></pre>
-<p>deberá crear un archivo <code>project1.mtar</code> que recopile el contenido de los ficheros <code>mytar.c</code>, <code>mytar.h</code> y <code>mytar_routines.c</code>. Así mismo, la orden:</p>
-<pre><code>  ./mytar -xf project1.mtar </code></pre>
-<p>extraerá el contenido del <em>tarball</em> <code>project1.mtar</code>, es decir, los ficheros <code>mytar.c</code>, <code>mytar.h</code> y <code>mytar_routines.c</code>.</p>
-<p>Nuestra versión del <em>tarball</em> consistirá en una cabecera que describirá el contenido del archivo, seguida del contenido binario de cada uno de los ficheros incluidos en él. La cabecera estará formada por un entero de 4 bytes que indicará el número de ficheros almacenados (N), seguido de N descriptores de fichero. Cada uno de estos descriptores se compondrá de una cadena de caracteres (terminada en un byte 0) con el nombre del fichero (su ruta), y un un entero sin signo de cuatro bytes con el tamaño en bytes del fichero. Es decir, la estructura descriptor en memoria sería:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">typedef</span> <span class="kw">struct</span> {</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>  <span class="dt">char</span>* name;</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>  <span class="dt">unsigned</span> <span class="dt">int</span> size;</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>} stHeaderEntry;</span></code></pre></div>
-<p>Para almacenar el nombre del fichero habrá que reservar memoria del heap almacenando en el campo name la dirección de comienzo devuelta por <em>malloc</em>.</p>
-<p>Volviendo sobre nuestro ejemplo, el fichero <code>project1.mtar</code> comenzará con cuatro bytes que representan un entero con valor 3 (el número de ficheros almacenados), seguido de 3 descriptores de fichero, cada uno con el nombre de uno de los ficheros y su tamaño en bytes.</p>
-<p>El proyecto <em>mytar</em> estará constituido por los siguientes ficheros que proporcionará el profesor:</p>
+<h2 class="unnumbered" data-number id="ejercicio-3">Ejercicio 3</h2>
+<p>Estudiar el código y el funcionamiento del programa <code>show-passwd.c</code>, que lee el contenido del fichero del sistema <code>/etc/passwd</code> e imprime por pantalla (o en otro fichero dado) las distintas entradas de<code>/etc/passwd</code> –una por línea–, así como los distintos campos de cada entrada. El fichero <code>/etc/passwd</code> almacena en formato de texto plano información esencial de los usuarios del sistema, como su identificador numérico de usuario o grupo así cómo el programa configurado como intérprete de órdenes (<em>shell</em>) predeterminado para cada usuario. Para obtener más información sobre este fichero se ha de consultar su página de manual: <code>man 5 passwd</code></p>
+<p>El modo de uso del programa puede consultarse invocándolo con la opción -h:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="ex">./show-passwd</span> -h</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">Usage</span>: ./show-passwd [ -h <span class="kw">|</span> <span class="ex">-v</span> <span class="kw">|</span> <span class="ex">-p</span> <span class="kw">|</span> <span class="ex">-o</span> <span class="op">&lt;</span>output_file<span class="op">&gt;</span> ]</span></code></pre></div>
 <ul>
-<li><p><em>Makefile</em>: fichero de entrada a la herramienta make para la compilación del proyecto.</p></li>
-<li><p><em>mytar.h</em>: contiene las declaraciones de tipos de datos que se usarán en el resto del código.</p></li>
-<li><p><em>mytar.c</em>: es el fichero principal, que contiene la función <strong>main</strong>.</p></li>
-<li><p><em>mytar_routines.c</em>: fichero en el que se implementan las funciones de tratamiento del <em>tarball</em>. Este fichero se da incompleto, y los alumnos deben completarlo siguiendo las indicaciones de los comentarios.</p></li>
+<li>Las opciones <code>-v</code> y <code>-p</code>, permiten configurar el formato en el que el programa imprime la información de <code>/etc/passwd</code>. Las citadas opciones activan respectivamente el modo <code>verbose</code>(por defecto) o <code>pipe</code> .</li>
+<li>La opción <code>-o</code>, que acepta un argumento obligatorio, permite selecionar un fichero para la salida del programa alternativo a la salida estándar.</li>
 </ul>
-<h2 data-number="1.5" id="sec:script"><span class="header-section-number">1.5</span> Script de comprobación</h2>
-<p>Con el fin de practicar el uso del shell, se pide al alumno que desarrolle su propio script bash para la comprobación de la práctica. El script creará un tarball con el contenido de unos ficheros utilizando nuestro programa mytar, y luego extraerá el contenido y comprobará que los ficheros extraídos son idénticos a los originales. Si todo es correcto terminará devolviendo 0. Si hay errores terminará devolviendo 1. El script deberá seguir el siguiente esquema:</p>
+<p>Uno de los principales objetivos de este ejercicio es que el estudiante se familiarize con tres funciones muy útiles empleadas por el programa <code>show-passwd.c</code> , y cuya página de manual debe consultarse:</p>
+<ul>
+<li><pre data-basicstyle="\ttfamily\small"><code>  int sscanf(const char *s, const char *format, ...);</code></pre>
+<p>Variante de <code>scanf()</code> que permite leer con formato a partir de un buffer de caracteres pasado como primer parámetro (<code>s</code>) , y almacenar en variables del programa el resultado de convertir los distintos “tokens” de <code>s</code> de ASCII a binario.</p></li>
+<li><pre data-basicstyle="\ttfamily\small"><code>  char *strsep(char **stringp, const char *delim);</code></pre>
+<p>Permite dividir una cadena de caracteres en <em>tokens</em>, proporcionando como segundo parámetro la cadena delimitadora de esos tokens. Como se puede observar en el programa <code>show-passwd.c</code>, esta función se utiliza para extraer los distintos campos almacenados en cada línea del fichero <code>/etc/passwd</code>, que están separados por <code>&quot;:&quot;</code>. La función <code>strsep()</code> se usa típicamente en un bucle, que para tan pronto como el token devuelto es NULL. El primer argumento de la función es un puntero por referencia. Antes de comenzar el bucle, <code>*stringp</code> debe apuntar al comienzo de la cadena que deseamos procesar. Cuando <code>strsep()</code> retorna, <code>*stringp</code> apunta al resto de la cadena que queda por procesar.</p></li>
+<li><pre data-basicstyle="\ttfamily\small"><code>  int getopt(int argc, char *const argv[], const char *optstring);</code></pre>
+<p>Esta función es la más sofisticada de las tres, y permite procesar cómodamente las distintas opciones de la línea de comando que acepta un programa C. La función suele invocarse desde <code>main()</code>, y sus dos primeros parámetros coinciden con los argumentos <code>argc</code> y <code>argv</code> pasados a <code>main()</code>. El parámetro <code>optstring</code> sirve para indicar de forma compacta a <code>getopt()</code> cuáles son las opciones que el programa acepta –cada una identificada por una letra–, y si estas a su vez aceptan parámetros obligatorios u opcionales.</p>
+<p>El estudiante deberá familiarizarse con esta función mediante el estudio del código fuente del programa, y la consulta de la página de manual de <code>getopt()</code>: <code>man 3 getopt</code></p>
+<p>Deben tenerse en cuenta las siguientes consideraciones:</p>
+<ol type="1">
+<li>La función <code>getopt()</code> se usa en combinación con un bucle, que invoca tantas veces la función como opciones el usuario ha pasado en la línea de comandos. Cada vez que la función se invoca y encuentra una opción retorna el caracter correspondiente a dicha opción. Por lo tanto, dentro del bucle suele emplearse la construcción <em>switch-case</em> de C para el procesamiento de las distintas opciones.</li>
+<li>Un aspecto particular de la función <code>getopt()</code> es que establece el valor de distintas variables globales tras invocarse, siendo las más relevantes las siguientes:
+<ul>
+<li><code>char* optarg</code>: almacena el argumento pasado a la opción actual reconocida, si está acepta argumentos. Si la opción no incluye un argumento, entonces <code>optarg</code> se establece a <code>NULL</code></li>
+<li><code>int optind</code>: representa el índice del siguiente elemento en el <code>argv</code> (elementos que quedan sin procesar). Se usa frecuentemente para procesar argumentos adicionales del programa que no están asociados a ninguna opción. Un ejemplo de ello es la lista de registros de estudiantes que ha de procesarse en el programa a desarrollar en el siguiente ejercicio.</li>
+</ul></li>
+</ol></li>
+</ul>
+<p>Responda a las siguientes preguntas:</p>
+<ul>
+<li>Para representar cada una de las entradas del fichero <code>/etc/passwd</code> se emplea el tipo de datos <code>passwd_entry_t</code> (estructura definida en <code>defs.h</code>). Nótese que muchos de los campos almacenan cadenas de caracteres definidas como arrays de caracteres de longitud máxima prefijada, o mediante el tipo de datos <code>char*</code>. La función <code>parse_passwd()</code>, definida en <code>show-passwd.c</code>es la encargada de inicializar los distintos campos de la estructura. ¿Cuál es el propósito de la función <code>clone_string()</code> que se usa para inicializar algunos de los citados campos tipo cadena? ¿Por qué no es posible en algunos casos simplemente copiar la cadena vía <code>strcpy()</code> o realizando una asignación <code>campo=cadena_existente</code>? Justifica la respuesta.</li>
+<li>La función <code>strsep()</code>, utilizada en <code>parse_passwd()</code>, modifica la cadena que se desea dividir en tokens. ¿Qué tipo de modificaciones sufre la cadena (variable line) tras invocaciones sucesivas de <code>strsep()</code>? <strong>Pista</strong>: Consultar el valor y las direcciones de las variables del programa usando un depurador de C como <code>gdb</code>.</li>
+</ul>
+<p>Realice las siguientes modificaciones en el programa <code>show-passwd.c</code>:</p>
+<ul>
+<li><p>Añada la opción <code>-i &lt;inputfile&gt;</code> para especificar una ruta alternativa para el fichero <code>passwd</code>. Hacer una copia de <code>/etc/passwd</code> en otra ubicación para verificar el correcto funcionamiento de esta nueva opción.</p></li>
+<li><p>Implemente una nueva opción <code>-c</code> en el programa, que permita mostrar las entradas de <code>passwd</code> como valores separados por comas (CSV).</p></li>
+</ul>
+<h2 class="unnumbered" data-number id="ejercicio-4">Ejercicio 4</h2>
+<p>Desarrollar un programa <code>student-record</code> que permita crear ficheros binarios que almacenen un conjunto de registros con información de distintos estudiantes, y también permita consultar/imprimir información almacenada en estos ficheros. Cada estudiante estará representado mediante 4 campos: identificador numérico único, NIF, nombre, y apellidos. El fichero binario ha de contener una cabecera (entero de 32 bits) que indique cuál es el número de registros almacenados, y a continuación incluir los registros de estudiantes en formato binario, uno detrás del otro.</p>
+<p>Cada registro de estudiantes estará representado en memoria mediante la siguiente estructura:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="pp">#define MAX_CHARS_NIF  9</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="kw">typedef</span> <span class="kw">struct</span> {</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>    <span class="dt">int</span> student_id; </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a>    <span class="dt">char</span> NIF[MAX_CHARS_NIF+<span class="dv">1</span>];  </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>    <span class="dt">char</span>* first_name;</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a>    <span class="dt">char</span>* last_name;</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a>} student_t;</span></code></pre></div>
+<p>Por cada registro debe escribirse en el fichero (representación en disco) el identificador numérico único (4 bytes), seguido de las 3 cadenas de caracteres asociadas a los 3 campos restantes. Almacenar cada cadena en el fichero conlleva escribir todos sus caracteres, incluyendo el caracter terminador (<code>\0</code>).</p>
+<p>El modo de uso del programa debe poder consultarse con la opción -h, del siguiente modo:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>$ <span class="ex">./student-records</span> -h</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="ex">Usage</span>: ./student-records -f record_file [ -h <span class="kw">|</span> <span class="ex">-l</span> <span class="kw">|</span> <span class="ex">-c</span> <span class="kw">|</span> <span class="ex">-a</span> <span class="kw">|</span> <span class="ex">-q</span> [ -i<span class="kw">|</span><span class="ex">-n</span> ID] ] ] [ list of records ]</span></code></pre></div>
+<p>Además de <code>-h</code>, el programa implementará opciones para crear (<code>-c</code>) y listar (<code>-l</code>) ficheros de registros de estudiantes, así como para poder añadir nuevos registros al final de un fichero existente <code>-a</code>, o realizar búsquedas (<em>queries</em>) de registros específicos (<code>-q</code>) por identificador de estudiante (<code>-i</code>) o NIF <code>-n</code>. En el caso de las opciones <code>-c</code> y <code>-a</code>, será preciso indicar en la línea de comando una lista de registros de estudiantes a almacenar en el fichero. Cada registro de la lista especificará los campos de cada estudiante mediante una cadena de caracteres separada por <code>&quot;:&quot;</code>. Por ejemplo, consideremos el siguiente comando para crear un nuevo fichero de estudiantes llamado <code>database</code> que almacenará 2 registros:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>$ <span class="ex">./student-records</span> -f database -c 27:67659034X:Chris:Rock 34:78675903J:Antonio:Banderas</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="ex">2</span> records written succesfully</span></code></pre></div>
+<p>El programa deberá constuirse de cero, pero se recomienda reutilizar código del proyecto del ejercicio anterior. Aunque el diseño del programa es libre, se aconseja implementar las siguientes funciones auxiliares para simplificar la implementación:</p>
+<ul>
+<li><pre data-basicstyle="\ttfamily\small"><code>  student_t* parse_records(char* records[], int nr_records);</code></pre>
+<p>Esta función acepta como parámetro el listado de registros en formato ASCII pasados como argumentro al programa en la línea de comando (<code>records</code>), así como el número de registros (<code>nr_records</code>), y devuelve la representación binaria en memoria de los mismos. Esta representación será un array de estructuras cuya memoria ha de reservarse con <code>malloc()</code> dentro de la propia función.</p></li>
+<li><pre data-basicstyle="\ttfamily\small"><code>  int dump_entries(student_t* entries, int nr_entries, FILE* students)</code></pre>
+<p>La función vuelca al fichero binario ya abierto (<code>students</code>) los registros de estudiantes pasados como parámetro (<code>entries</code>). Para maximizar la reutilización de código, esta función NO escribirá en el fichero la cabecera numérica que indica el número el número de registros.</p></li>
+<li><pre data-basicstyle="\ttfamily\small"><code>  student_t* read_student_file(FILE* students, int* nr_entries)</code></pre>
+<p>Esta función lee toda la información de un fichero binario de registros de estudiantes ya abierto, y devuelve tanto la información de la cabecera (parámetro de retorno <code>nr_entries</code>), como el array de registros de estudiantes (valor de retorno de la función). La memoria del array que se retorna debe reservarse con <code>malloc()</code> dentro de la propia función.</p></li>
+</ul>
+<h3 class="unnumbered" data-number id="ejemplo-de-ejecución">Ejemplo de ejecución</h3>
+<p>TODO</p>
+<h2 class="unnumbered" data-number id="ejercicio-5">Ejercicio 5</h2>
+<p>Con el fin de practicar el uso del shell, se pide al alumno que desarrolle su propio script bash para la comprobación de la funcionalidad del programa desarrollado en el ejercicio anterior. El script creará un tarball con el contenido de unos ficheros utilizando nuestro programa mytar, y luego extraerá el contenido y comprobará que los ficheros extraídos son idénticos a los originales. Si todo es correcto terminará devolviendo 0. Si hay errores terminará devolviendo 1. El script deberá seguir el siguiente esquema:</p>
 <ol type="1">
 <li><p>Comprobará que el programa <code>mytar</code> está en el directorio actual y que es ejecutable. En caso contrario mostrará un mensaje informativo por pantalla y terminará.</p></li>
 <li><p>Comprobará si existe un directorio <code>tmp</code> dentro del directorio actual. Si existe lo borrará, incluyendo todo lo que haya dentro de él (mirar la opción <code>-r</code> del comando <code>rm</code>).</p></li>
