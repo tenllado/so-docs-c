@@ -832,27 +832,26 @@ font-size: 12px
     <style type="text/css">code{white-space: pre;}</style>
     <style type="text/css">.sidebar ul{padding-left: 10px;}</style>
     <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -861,9 +860,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -933,18 +932,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
           </ul>-->
           <ul>
-          <li><a href="#introducción"><span class="toc-section-number">1</span> Introducción</a>
-          <ul>
+          <li><a href="#introducción"><span class="toc-section-number">1</span> Introducción</a><ul>
           <li><a href="#objetivos"><span class="toc-section-number">1.1</span> Objetivos</a></li>
           <li><a href="#requisitos"><span class="toc-section-number">1.2</span> Requisitos</a></li>
           </ul></li>
-          <li><a href="#ejercicios"><span class="toc-section-number">2</span> Ejercicios</a>
-          <ul>
+          <li><a href="#ejercicios"><span class="toc-section-number">2</span> Ejercicios</a><ul>
           <li><a href="#ejercicio-1">Ejercicio 1</a></li>
           <li><a href="#ejercicio-2">Ejercicio 2</a></li>
           <li><a href="#ejercicio-3">Ejercicio 3</a></li>
-          <li><a href="#ejercicio-4">Ejercicio 4</a>
-          <ul>
+          <li><a href="#ejercicio-4">Ejercicio 4</a><ul>
           <li><a href="#ejemplo-de-ejecución">Ejemplo de ejecución</a></li>
           </ul></li>
           <li><a href="#ejercicio-5">Ejercicio 5</a></li>
@@ -953,25 +949,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         
-<h1 data-number="1" id="introducción"><span class="header-section-number">1</span> Introducción</h1>
-<h2 data-number="1.1" id="objetivos"><span class="header-section-number">1.1</span> Objetivos</h2>
+<h1 id="introducción"><span class="header-section-number">1</span> Introducción</h1>
+<h2 id="objetivos"><span class="header-section-number">1.1</span> Objetivos</h2>
 <ul>
-<li><p>Familiarizarse con el entorno de desarrollo de aplicaciones C en LINUX, y comprender los conceptos de proyecto, ejecutable y biblioteca en este contexto.</p></li>
+<li><p>Familiarizarse con el entorno de desarrollo de aplicaciones C en GNU/Linux, y comprender los conceptos de proyecto y ejecutable en este contexto.</p></li>
 <li><p>Familiarizarse con el manejo básico del shell y aprender a desarrollar <em>shell scripts</em> sencillos</p></li>
 </ul>
-<h2 data-number="1.2" id="requisitos"><span class="header-section-number">1.2</span> Requisitos</h2>
-<p>Para poder realizar con exito la práctica el alumno debe haber leído y comprendido los siguientes documentos facilitados por el profesor:</p>
+<h2 id="requisitos"><span class="header-section-number">1.2</span> Requisitos</h2>
+<p>Para poder realizar con éxito la práctica el alumno debe haber leído y comprendido los siguientes documentos facilitados por el profesor:</p>
 <ul>
 <li><p>Presentación “Introducción al entorno de desarrollo”, que nos introduce al entorno GNU/Linux que utilizaremos en el laboratorio, y describe cómo trabajar con proyectos C con Makefile.</p></li>
 <li><p>Presentación “Revisión: Programación en C”, que realiza un repaso de los conocimientos de C necesarios para realizar con éxito las prácticas, haciendo especial hincapié en los errores que cometen habitualmente los estudiantes menos experimentados en el lenguaje C.</p></li>
 <li><p>Manual del laboratorio titulado “Entorno de desarrollo C para GNU/Linux”, que describe las herramientas que componen el entorno de desarrollo que vamos a utilizar, así como las funciones básicas de la biblioteca estándar de C que los alumnos deben conocer.</p></li>
 <li><p>Presentación “Introducción a Bash”, que presenta una breve introducción al interprete de órdenes (shell) Bash.</p></li>
 </ul>
-<h1 data-number="2" id="ejercicios"><span class="header-section-number">2</span> Ejercicios</h1>
-<h2 class="unnumbered" data-number id="ejercicio-1">Ejercicio 1</h2>
+<h1 id="ejercicios"><span class="header-section-number">2</span> Ejercicios</h1>
+<h2 id="ejercicio-1" class="unnumbered">Ejercicio 1</h2>
 <p>Analizar el código del programa <code>show_file.c</code>, que lee byte a byte el contenido de un fichero, cuyo nombre se pasa como parámetro, y lo muestra por pantalla usando funciones de la biblioteca estandar de “C”. Responda a las siguientes preguntas:</p>
 <ul>
-<li><p>Qué comando se debe emplear para generar el ejecutable del programa (<code>show_file</code>) invocando directamente al compilador <code>gcc</code> (sin usar <code>make</code>)?</p></li>
+<li><p>¿Qué comando se debe emplear para generar el ejecutable del programa (<code>show_file</code>) invocando directamente al compilador <code>gcc</code> (sin usar <code>make</code>)?</p></li>
 <li><p>Indique dos comandos para llevar a cabo respectivamente la compilación del programa (generación de fichero objeto) y el enlazado del mismo de forma independiente.</p></li>
 </ul>
 <p>Realice las siguientes modificaciones en el programa <code>show_file.c</code>:</p>
@@ -979,102 +975,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Realizar la lectura byte a byte del fichero de entrada empleando la función <code>fread()</code> en lugar de <code>getc()</code>. Modificar también la invocación a la función <code>putc()</code> por una llamada a <code>fwrite()</code></p></li>
 <li><p>Añadir un parámetro al programa modificado para permitir al usuario especificar el tamaño de bloque en bytes a usar en cada lectura realizada por <code>fread()</code>.</p></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span>* argv[]) {</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    <span class="dt">FILE</span>* file=NULL;</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>    <span class="dt">int</span> c,ret;</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>    <span class="cf">if</span> (argc!=<span class="dv">2</span>) {</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>        fprintf(stderr,<span class="st">&quot;Usage: %s &lt;file_name&gt;</span><span class="sc">\n</span><span class="st">&quot;</span>,argv[<span class="dv">0</span>]);</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>        exit(<span class="dv">1</span>);</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>    }</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>    <span class="co">/* Open file */</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a>    <span class="cf">if</span> ((file = fopen(argv[<span class="dv">1</span>], <span class="st">&quot;r&quot;</span>)) == NULL)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a>        err(<span class="dv">2</span>,<span class="st">&quot;The input file %s could not be opened&quot;</span>,argv[<span class="dv">1</span>]);</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a>    <span class="co">/* Read file byte by byte */</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a>    <span class="cf">while</span> ((c = getc(file)) != EOF) {</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a>        <span class="co">/* Print byte to stdout */</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a>        ret=putc((<span class="dt">unsigned</span> <span class="dt">char</span>) c, stdout);</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true"></a>        <span class="cf">if</span> (ret==EOF){</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true"></a>            fclose(file);</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true"></a>            err(<span class="dv">3</span>,<span class="st">&quot;putc() failed!!&quot;</span>);</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true"></a>        }</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true"></a>    }</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a>    fclose(file);</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a>}</span></code></pre></div>
-<h2 class="unnumbered" data-number id="ejercicio-2">Ejercicio 2</h2>
-<p>El programa <em>badsort-ptr.c</em>, cuyo código fuente se muestra a continuación, ha sido desarrollado para realizar una ordenación por el método de la burbuja aplicada a un <em>array</em> de pares (cadena de caracteres, entero) inicializado dentro del programa. El programa emplea aritmética de punteros para acceder a los distintos elementos del array durante el recorrido. Lamentablemente, el programador ha cometido algun/os error/es. Utilizando un depurador de C (p.ej.,<code>gdb</code>) el alumno debe encontrar y corregir el/los error/es.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="kw">typedef</span> <span class="kw">struct</span> {</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    <span class="dt">char</span> data[<span class="dv">4096</span>];</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>    <span class="dt">int</span> key;</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>} item;</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>item array[] = {</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>    {<span class="st">&quot;bill&quot;</span>, <span class="dv">3</span>},</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>    {<span class="st">&quot;neil&quot;</span>, <span class="dv">4</span>},</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a>    {<span class="st">&quot;john&quot;</span>, <span class="dv">2</span>},</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a>    {<span class="st">&quot;rick&quot;</span>, <span class="dv">5</span>},</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a>    {<span class="st">&quot;alex&quot;</span>, <span class="dv">1</span>},</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a>};</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true"></a><span class="dt">void</span> sort(item *a, <span class="dt">int</span> n) {</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true"></a>    <span class="dt">int</span> i = <span class="dv">0</span>, j = <span class="dv">0</span>;</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true"></a>    <span class="dt">int</span> s = <span class="dv">1</span>;</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true"></a>    item* p;</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true"></a>    <span class="cf">for</span>(; i &lt; n &amp; s != <span class="dv">0</span>; i++) {</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true"></a>        s = <span class="dv">0</span>;</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true"></a>        p = a;</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true"></a>        j = n-<span class="dv">1</span>;</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true"></a>        <span class="cf">do</span> {</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true"></a>            <span class="cf">if</span>( p-&gt;key &gt; (p+<span class="dv">1</span>)-&gt;key) {</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true"></a>                item t = *p;</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true"></a>                *p  = *(p+<span class="dv">1</span>);</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true"></a>                *(p+<span class="dv">1</span>) = t;</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true"></a>                s++;</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true"></a>            }</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true"></a>        } <span class="cf">while</span> ( --j &gt;= <span class="dv">0</span> );</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true"></a>    }</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true"></a>}</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true"></a></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true"></a><span class="dt">int</span> main() {</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true"></a>    <span class="dt">int</span> i;</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true"></a>    sort(array,<span class="dv">5</span>);</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true"></a>    <span class="cf">for</span>(i = <span class="dv">0</span>; i &lt; <span class="dv">5</span>; i++)</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true"></a>        printf(<span class="st">&quot;array[%d] = {%s, %d}</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true"></a>                i, array[i].data, array[i].key);</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true"></a>}</span></code></pre></div>
-<h2 class="unnumbered" data-number id="ejercicio-3">Ejercicio 3</h2>
-<p>Estudiar el código y el funcionamiento del programa <code>show-passwd.c</code>, que lee el contenido del fichero del sistema <code>/etc/passwd</code> e imprime por pantalla (o en otro fichero dado) las distintas entradas de<code>/etc/passwd</code> –una por línea–, así como los distintos campos de cada entrada. El fichero <code>/etc/passwd</code> almacena en formato de texto plano información esencial de los usuarios del sistema, como su identificador numérico de usuario o grupo así cómo el programa configurado como intérprete de órdenes (<em>shell</em>) predeterminado para cada usuario. Para obtener más información sobre este fichero se ha de consultar su página de manual: <code>man 5 passwd</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" title="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span>* argv[]) {</a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="dt">FILE</span>* file=NULL;</a>
+<a class="sourceLine" id="cb1-6" title="6">    <span class="dt">int</span> c,ret;</a>
+<a class="sourceLine" id="cb1-7" title="7"></a>
+<a class="sourceLine" id="cb1-8" title="8">    <span class="cf">if</span> (argc!=<span class="dv">2</span>) {</a>
+<a class="sourceLine" id="cb1-9" title="9">        fprintf(stderr,<span class="st">&quot;Usage: %s &lt;file_name&gt;</span><span class="sc">\n</span><span class="st">&quot;</span>,argv[<span class="dv">0</span>]);</a>
+<a class="sourceLine" id="cb1-10" title="10">        exit(<span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb1-11" title="11">    }</a>
+<a class="sourceLine" id="cb1-12" title="12"></a>
+<a class="sourceLine" id="cb1-13" title="13">    <span class="co">/* Open file */</span></a>
+<a class="sourceLine" id="cb1-14" title="14">    <span class="cf">if</span> ((file = fopen(argv[<span class="dv">1</span>], <span class="st">&quot;r&quot;</span>)) == NULL)</a>
+<a class="sourceLine" id="cb1-15" title="15">        err(<span class="dv">2</span>,<span class="st">&quot;The input file %s could not be opened&quot;</span>,argv[<span class="dv">1</span>]);</a>
+<a class="sourceLine" id="cb1-16" title="16"></a>
+<a class="sourceLine" id="cb1-17" title="17">    <span class="co">/* Read file byte by byte */</span></a>
+<a class="sourceLine" id="cb1-18" title="18">    <span class="cf">while</span> ((c = getc(file)) != EOF) {</a>
+<a class="sourceLine" id="cb1-19" title="19">        <span class="co">/* Print byte to stdout */</span></a>
+<a class="sourceLine" id="cb1-20" title="20">        ret=putc((<span class="dt">unsigned</span> <span class="dt">char</span>) c, stdout);</a>
+<a class="sourceLine" id="cb1-21" title="21"></a>
+<a class="sourceLine" id="cb1-22" title="22">        <span class="cf">if</span> (ret==EOF){</a>
+<a class="sourceLine" id="cb1-23" title="23">            fclose(file);</a>
+<a class="sourceLine" id="cb1-24" title="24">            err(<span class="dv">3</span>,<span class="st">&quot;putc() failed!!&quot;</span>);</a>
+<a class="sourceLine" id="cb1-25" title="25">        }</a>
+<a class="sourceLine" id="cb1-26" title="26">    }</a>
+<a class="sourceLine" id="cb1-27" title="27"></a>
+<a class="sourceLine" id="cb1-28" title="28">    fclose(file);</a>
+<a class="sourceLine" id="cb1-29" title="29">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb1-30" title="30">}</a></code></pre></div>
+<h2 id="ejercicio-2" class="unnumbered">Ejercicio 2</h2>
+<p>El programa <em>badsort-ptr.c</em>, cuyo código fuente se muestra a continuación, ha sido desarrollado para realizar una ordenación por el método de la burbuja aplicada a un <em>array</em> de pares (cadena de caracteres, entero) inicializado dentro del programa. El programa emplea aritmética de punteros para acceder a los distintos elementos del array durante el recorrido. Lamentablemente, el programador ha cometido algunos errores. Utilizando un depurador de C (p.ej.,<code>gdb</code>) el alumno debe encontrar y corregir los errores.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb2-1" title="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="kw">typedef</span> <span class="kw">struct</span> {</a>
+<a class="sourceLine" id="cb2-4" title="4">    <span class="dt">char</span> data[<span class="dv">4096</span>];</a>
+<a class="sourceLine" id="cb2-5" title="5">    <span class="dt">int</span> key;</a>
+<a class="sourceLine" id="cb2-6" title="6">} item;</a>
+<a class="sourceLine" id="cb2-7" title="7"></a>
+<a class="sourceLine" id="cb2-8" title="8">item array[] = {</a>
+<a class="sourceLine" id="cb2-9" title="9">    {<span class="st">&quot;bill&quot;</span>, <span class="dv">3</span>},</a>
+<a class="sourceLine" id="cb2-10" title="10">    {<span class="st">&quot;neil&quot;</span>, <span class="dv">4</span>},</a>
+<a class="sourceLine" id="cb2-11" title="11">    {<span class="st">&quot;john&quot;</span>, <span class="dv">2</span>},</a>
+<a class="sourceLine" id="cb2-12" title="12">    {<span class="st">&quot;rick&quot;</span>, <span class="dv">5</span>},</a>
+<a class="sourceLine" id="cb2-13" title="13">    {<span class="st">&quot;alex&quot;</span>, <span class="dv">1</span>},</a>
+<a class="sourceLine" id="cb2-14" title="14">};</a>
+<a class="sourceLine" id="cb2-15" title="15"></a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="dt">void</span> sort(item *a, <span class="dt">int</span> n) {</a>
+<a class="sourceLine" id="cb2-17" title="17">    <span class="dt">int</span> i = <span class="dv">0</span>, j = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-18" title="18">    <span class="dt">int</span> s = <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-19" title="19">    item* p;</a>
+<a class="sourceLine" id="cb2-20" title="20"></a>
+<a class="sourceLine" id="cb2-21" title="21">    <span class="cf">for</span>(; i &lt; n &amp; s != <span class="dv">0</span>; i++) {</a>
+<a class="sourceLine" id="cb2-22" title="22">        s = <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-23" title="23">        p = a;</a>
+<a class="sourceLine" id="cb2-24" title="24">        j = n<span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb2-25" title="25">        <span class="cf">do</span> {</a>
+<a class="sourceLine" id="cb2-26" title="26">            <span class="cf">if</span>( p-&gt;key &gt; (p+<span class="dv">1</span>)-&gt;key) {</a>
+<a class="sourceLine" id="cb2-27" title="27">                item t = *p;</a>
+<a class="sourceLine" id="cb2-28" title="28">                *p  = *(p+<span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb2-29" title="29">                *(p+<span class="dv">1</span>) = t;</a>
+<a class="sourceLine" id="cb2-30" title="30">                s++;</a>
+<a class="sourceLine" id="cb2-31" title="31">            }</a>
+<a class="sourceLine" id="cb2-32" title="32">        } <span class="cf">while</span> ( --j &gt;= <span class="dv">0</span> );</a>
+<a class="sourceLine" id="cb2-33" title="33">    }</a>
+<a class="sourceLine" id="cb2-34" title="34">}</a>
+<a class="sourceLine" id="cb2-35" title="35"></a>
+<a class="sourceLine" id="cb2-36" title="36"><span class="dt">int</span> main() {</a>
+<a class="sourceLine" id="cb2-37" title="37">    <span class="dt">int</span> i;</a>
+<a class="sourceLine" id="cb2-38" title="38">    sort(array,<span class="dv">5</span>);</a>
+<a class="sourceLine" id="cb2-39" title="39">    <span class="cf">for</span>(i = <span class="dv">0</span>; i &lt; <span class="dv">5</span>; i++)</a>
+<a class="sourceLine" id="cb2-40" title="40">        printf(<span class="st">&quot;array[%d] = {%s, %d}</span><span class="sc">\n</span><span class="st">&quot;</span>,</a>
+<a class="sourceLine" id="cb2-41" title="41">                i, array[i].data, array[i].key);</a>
+<a class="sourceLine" id="cb2-42" title="42">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-43" title="43">}</a></code></pre></div>
+<h2 id="ejercicio-3" class="unnumbered">Ejercicio 3</h2>
+<p>Estudiar el código y el funcionamiento del programa <code>show-passwd.c</code>, que lee el contenido del fichero del sistema <code>/etc/passwd</code> e imprime por pantalla (o en otro fichero dado) las distintas entradas de<code>/etc/passwd</code> –una por línea–, así como los distintos campos de cada entrada. El fichero <code>/etc/passwd</code> almacena en formato de texto plano información esencial de los usuarios del sistema, como su identificador numérico de usuario o grupo así como el programa configurado como intérprete de órdenes (<em>shell</em>) predeterminado para cada usuario. Para obtener más información sobre este fichero se ha de consultar su página de manual: <code>man 5 passwd</code></p>
 <p>El modo de uso del programa puede consultarse invocándolo con la opción -h:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="ex">./show-passwd</span> -h</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">Usage</span>: ./show-passwd [ -h <span class="kw">|</span> <span class="ex">-v</span> <span class="kw">|</span> <span class="ex">-p</span> <span class="kw">|</span> <span class="ex">-o</span> <span class="op">&lt;</span>output_file<span class="op">&gt;</span> ]</span></code></pre></div>
-<ul>
-<li>Las opciones <code>-v</code> y <code>-p</code>, permiten configurar el formato en el que el programa imprime la información de <code>/etc/passwd</code>. Las citadas opciones activan respectivamente el modo <code>verbose</code>(por defecto) o <code>pipe</code> .</li>
-<li>La opción <code>-o</code>, que acepta un argumento obligatorio, permite selecionar un fichero para la salida del programa alternativo a la salida estándar.</li>
-</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="ex">./show-passwd</span> -h</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="ex">Usage</span>: ./show-passwd [ -h <span class="kw">|</span> <span class="ex">-v</span> <span class="kw">|</span> <span class="ex">-p</span> <span class="kw">|</span> <span class="ex">-o</span> <span class="op">&lt;</span>output_file<span class="op">&gt;</span> ]</a></code></pre></div>
+<p>Las opciones <code>-v</code> y <code>-p</code>, permiten configurar el formato en el que el programa imprime la información de <code>/etc/passwd</code>. Las citadas opciones activan respectivamente el modo <code>verbose</code>(por defecto) o <code>pipe</code>. La opción <code>-o</code>, que acepta un argumento obligatorio, permite selecionar un fichero para la salida del programa alternativo a la salida estándar.</p>
 <p>Uno de los principales objetivos de este ejercicio es que el estudiante se familiarize con tres funciones muy útiles empleadas por el programa <code>show-passwd.c</code> , y cuya página de manual debe consultarse:</p>
 <ul>
-<li><pre data-basicstyle="\ttfamily\small"><code>  int sscanf(const char *s, const char *format, ...);</code></pre>
-<p>Variante de <code>scanf()</code> que permite leer con formato a partir de un buffer de caracteres pasado como primer parámetro (<code>s</code>) , y almacenar en variables del programa el resultado de convertir los distintos “tokens” de <code>s</code> de ASCII a binario.</p></li>
-<li><pre data-basicstyle="\ttfamily\small"><code>  char *strsep(char **stringp, const char *delim);</code></pre>
+<li><pre data-basicstyle="\ttfamily\small"><code>int sscanf(const char *s, const char *format, ...);</code></pre>
+<p>Variante de <code>scanf()</code> que permite leer con formato a partir de un buffer de caracteres pasado como primer parámetro (<code>s</code>) . La función almacena en variables del programa, pasadas como argumento tras la cadena de formato, el resultado de convertir los distintos “tokens” de <code>s</code> de ASCII a binario.</p></li>
+<li><pre data-basicstyle="\ttfamily\small"><code>char *strsep(char **stringp, const char *delim);</code></pre>
 <p>Permite dividir una cadena de caracteres en <em>tokens</em>, proporcionando como segundo parámetro la cadena delimitadora de esos tokens. Como se puede observar en el programa <code>show-passwd.c</code>, esta función se utiliza para extraer los distintos campos almacenados en cada línea del fichero <code>/etc/passwd</code>, que están separados por <code>&quot;:&quot;</code>. La función <code>strsep()</code> se usa típicamente en un bucle, que para tan pronto como el token devuelto es NULL. El primer argumento de la función es un puntero por referencia. Antes de comenzar el bucle, <code>*stringp</code> debe apuntar al comienzo de la cadena que deseamos procesar. Cuando <code>strsep()</code> retorna, <code>*stringp</code> apunta al resto de la cadena que queda por procesar.</p></li>
-<li><pre data-basicstyle="\ttfamily\small"><code>  int getopt(int argc, char *const argv[], const char *optstring);</code></pre>
-<p>Esta función es la más sofisticada de las tres, y permite procesar cómodamente las distintas opciones de la línea de comando que acepta un programa C. La función suele invocarse desde <code>main()</code>, y sus dos primeros parámetros coinciden con los argumentos <code>argc</code> y <code>argv</code> pasados a <code>main()</code>. El parámetro <code>optstring</code> sirve para indicar de forma compacta a <code>getopt()</code> cuáles son las opciones que el programa acepta –cada una identificada por una letra–, y si estas a su vez aceptan parámetros obligatorios u opcionales.</p>
+<li><pre data-basicstyle="\ttfamily\small"><code>int getopt(int argc, char *const argv[], const char *optstring);</code></pre>
+<p>Esta función es la más sofisticada de las tres, y permite procesar cómodamente las distintas opciones de la línea de comando que acepta un programa C. La función suele invocarse desde <code>main()</code>, y sus dos primeros parámetros coinciden con los argumentos <code>argc</code> y <code>argv</code> pasados a <code>main()</code>. El parámetro <code>optstring</code> sirve para indicar de forma compacta a <code>getopt()</code> cuáles son las opciones que el programa acepta –cada una identificada por una letra–, y si éstas a su vez aceptan parámetros obligatorios u opcionales.</p>
 <p>El estudiante deberá familiarizarse con esta función mediante el estudio del código fuente del programa, y la consulta de la página de manual de <code>getopt()</code>: <code>man 3 getopt</code></p>
 <p>Deben tenerse en cuenta las siguientes consideraciones:</p>
 <ol type="1">
-<li>La función <code>getopt()</code> se usa en combinación con un bucle, que invoca tantas veces la función como opciones el usuario ha pasado en la línea de comandos. Cada vez que la función se invoca y encuentra una opción retorna el caracter correspondiente a dicha opción. Por lo tanto, dentro del bucle suele emplearse la construcción <em>switch-case</em> de C para el procesamiento de las distintas opciones.</li>
+<li>La función <code>getopt()</code> se usa en combinación con un bucle, que invoca tantas veces la función como opciones ha pasado el usuario en la línea de comandos. Cada vez que la función se invoca y encuentra una opción, <code>getopt()</code> retorna el caracter correspondiente a dicha opción. Por lo tanto, dentro del bucle suele emplearse la construcción <em>switch-case</em> de C para llevar a cabo el procesamiento de las distintas opciones.</li>
 <li>Un aspecto particular de la función <code>getopt()</code> es que establece el valor de distintas variables globales tras invocarse, siendo las más relevantes las siguientes:
 <ul>
 <li><code>char* optarg</code>: almacena el argumento pasado a la opción actual reconocida, si está acepta argumentos. Si la opción no incluye un argumento, entonces <code>optarg</code> se establece a <code>NULL</code></li>
@@ -1084,61 +1077,135 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Responda a las siguientes preguntas:</p>
 <ul>
-<li>Para representar cada una de las entradas del fichero <code>/etc/passwd</code> se emplea el tipo de datos <code>passwd_entry_t</code> (estructura definida en <code>defs.h</code>). Nótese que muchos de los campos almacenan cadenas de caracteres definidas como arrays de caracteres de longitud máxima prefijada, o mediante el tipo de datos <code>char*</code>. La función <code>parse_passwd()</code>, definida en <code>show-passwd.c</code>es la encargada de inicializar los distintos campos de la estructura. ¿Cuál es el propósito de la función <code>clone_string()</code> que se usa para inicializar algunos de los citados campos tipo cadena? ¿Por qué no es posible en algunos casos simplemente copiar la cadena vía <code>strcpy()</code> o realizando una asignación <code>campo=cadena_existente</code>? Justifica la respuesta.</li>
-<li>La función <code>strsep()</code>, utilizada en <code>parse_passwd()</code>, modifica la cadena que se desea dividir en tokens. ¿Qué tipo de modificaciones sufre la cadena (variable line) tras invocaciones sucesivas de <code>strsep()</code>? <strong>Pista</strong>: Consultar el valor y las direcciones de las variables del programa usando un depurador de C como <code>gdb</code>.</li>
+<li>Para representar cada una de las entradas del fichero <code>/etc/passwd</code> se emplea el tipo de datos <code>passwd_entry_t</code> (estructura definida en <code>defs.h</code>). Nótese que muchos de los campos almacenan cadenas de caracteres definidas como arrays de caracteres de longitud máxima prefijada, o mediante el tipo de datos <code>char*</code>. La función <code>parse_passwd()</code>, definida en <code>show-passwd.c</code> es la encargada de inicializar los distintos campos de la estructura. ¿Cuál es el propósito de la función <code>clone_string()</code> que se usa para inicializar algunos de los citados campos tipo cadena? ¿Por qué no es posible en algunos casos simplemente copiar la cadena vía <code>strcpy()</code> o realizando una asignación <code>campo=cadena_existente;</code>? Justifica la respuesta.</li>
+<li>La función <code>strsep()</code>, utilizada en <code>parse_passwd()</code>, modifica la cadena que se desea dividir en tokens. ¿Qué tipo de modificaciones sufre la cadena (variable <code>line</code>) tras invocaciones sucesivas de <code>strsep()</code>? <strong>Pista</strong>: Consúltese el valor y las direcciones de las variables del programa usando un depurador de C como <code>gdb</code>.</li>
 </ul>
 <p>Realice las siguientes modificaciones en el programa <code>show-passwd.c</code>:</p>
 <ul>
 <li><p>Añada la opción <code>-i &lt;inputfile&gt;</code> para especificar una ruta alternativa para el fichero <code>passwd</code>. Hacer una copia de <code>/etc/passwd</code> en otra ubicación para verificar el correcto funcionamiento de esta nueva opción.</p></li>
-<li><p>Implemente una nueva opción <code>-c</code> en el programa, que permita mostrar las entradas de <code>passwd</code> como valores separados por comas (CSV).</p></li>
+<li><p>Implemente una nueva opción <code>-c</code> en el programa, que permita mostrar los campos en cada entrada de <code>passwd</code> como valores separados por comas (CSV) en lugar de por <code>&quot;:&quot;</code>.</p></li>
 </ul>
-<h2 class="unnumbered" data-number id="ejercicio-4">Ejercicio 4</h2>
+<h2 id="ejercicio-4" class="unnumbered">Ejercicio 4</h2>
 <p>Desarrollar un programa <code>student-record</code> que permita crear ficheros binarios que almacenen un conjunto de registros con información de distintos estudiantes, y también permita consultar/imprimir información almacenada en estos ficheros. Cada estudiante estará representado mediante 4 campos: identificador numérico único, NIF, nombre, y apellidos. El fichero binario ha de contener una cabecera (entero de 32 bits) que indique cuál es el número de registros almacenados, y a continuación incluir los registros de estudiantes en formato binario, uno detrás del otro.</p>
 <p>Cada registro de estudiantes estará representado en memoria mediante la siguiente estructura:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="pp">#define MAX_CHARS_NIF  9</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="kw">typedef</span> <span class="kw">struct</span> {</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>    <span class="dt">int</span> student_id; </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a>    <span class="dt">char</span> NIF[MAX_CHARS_NIF+<span class="dv">1</span>];  </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>    <span class="dt">char</span>* first_name;</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a>    <span class="dt">char</span>* last_name;</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a>} student_t;</span></code></pre></div>
-<p>Por cada registro debe escribirse en el fichero (representación en disco) el identificador numérico único (4 bytes), seguido de las 3 cadenas de caracteres asociadas a los 3 campos restantes. Almacenar cada cadena en el fichero conlleva escribir todos sus caracteres, incluyendo el caracter terminador (<code>\0</code>).</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" title="1"><span class="pp">#define MAX_CHARS_NIF  9</span></a>
+<a class="sourceLine" id="cb7-2" title="2"></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="kw">typedef</span> <span class="kw">struct</span> {</a>
+<a class="sourceLine" id="cb7-4" title="4">    <span class="dt">int</span> student_id; </a>
+<a class="sourceLine" id="cb7-5" title="5">    <span class="dt">char</span> NIF[MAX_CHARS_NIF+<span class="dv">1</span>];  </a>
+<a class="sourceLine" id="cb7-6" title="6">    <span class="dt">char</span>* first_name;</a>
+<a class="sourceLine" id="cb7-7" title="7">    <span class="dt">char</span>* last_name;</a>
+<a class="sourceLine" id="cb7-8" title="8">} student_t;</a></code></pre></div>
+<p>Por cada registro debe escribirse en el fichero (representación en disco) el identificador numérico único (4 bytes), seguido de las cadenas de caracteres asociadas a los tres campos restantes. Almacenar cada una de las cadenas en el fichero conlleva escribir todos sus caracteres, incluyendo el terminador (<code>\0</code>). Esto es esencial para permitir posteriormente la lectura correcta de los campos del fichero.</p>
 <p>El modo de uso del programa debe poder consultarse con la opción -h, del siguiente modo:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>$ <span class="ex">./student-records</span> -h</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="ex">Usage</span>: ./student-records -f record_file [ -h <span class="kw">|</span> <span class="ex">-l</span> <span class="kw">|</span> <span class="ex">-c</span> <span class="kw">|</span> <span class="ex">-a</span> <span class="kw">|</span> <span class="ex">-q</span> [ -i<span class="kw">|</span><span class="ex">-n</span> ID] ] ] [ list of records ]</span></code></pre></div>
-<p>Además de <code>-h</code>, el programa implementará opciones para crear (<code>-c</code>) y listar (<code>-l</code>) ficheros de registros de estudiantes, así como para poder añadir nuevos registros al final de un fichero existente <code>-a</code>, o realizar búsquedas (<em>queries</em>) de registros específicos (<code>-q</code>) por identificador de estudiante (<code>-i</code>) o NIF <code>-n</code>. En el caso de las opciones <code>-c</code> y <code>-a</code>, será preciso indicar en la línea de comando una lista de registros de estudiantes a almacenar en el fichero. Cada registro de la lista especificará los campos de cada estudiante mediante una cadena de caracteres separada por <code>&quot;:&quot;</code>. Por ejemplo, consideremos el siguiente comando para crear un nuevo fichero de estudiantes llamado <code>database</code> que almacenará 2 registros:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>$ <span class="ex">./student-records</span> -f database -c 27:67659034X:Chris:Rock 34:78675903J:Antonio:Banderas</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="ex">2</span> records written succesfully</span></code></pre></div>
-<p>El programa deberá constuirse de cero, pero se recomienda reutilizar código del proyecto del ejercicio anterior. Aunque el diseño del programa es libre, se aconseja implementar las siguientes funciones auxiliares para simplificar la implementación:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1">$ <span class="ex">./student-records</span> -h</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="ex">Usage</span>: ./student-records -f file [ -h <span class="kw">|</span> <span class="ex">-l</span> <span class="kw">|</span> <span class="ex">-c</span> <span class="kw">|</span> <span class="ex">-a</span> <span class="kw">|</span> <span class="ex">-q</span> [ -i<span class="kw">|</span><span class="ex">-n</span> ID] ] ] [ list of records ]</a></code></pre></div>
+<p>Además de <code>-h</code>, el programa implementará opciones para crear (<code>-c</code>) y listar (<code>-l</code>) ficheros de registros de estudiantes, así como para poder añadir nuevos registros al final de un fichero existente <code>-a</code>, o realizar búsquedas (<em>queries</em>) de registros específicos (<code>-q</code>) por identificador de estudiante (<code>-i</code>) o NIF <code>-n</code>. En el caso de las opciones <code>-c</code> y <code>-a</code>, será preciso indicar en la línea de comando una lista de registros de estudiantes a almacenar en el fichero. Cada registro de la lista especificará los campos de cada estudiante mediante una cadena de caracteres con elementos separados por <code>&quot;:&quot;</code>. Por ejemplo, considérese el siguiente comando para crear un nuevo fichero de estudiantes llamado <code>database</code> que almacenará 2 registros:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1">$ <span class="ex">./student-records</span> -f database -c 27:67659034X:Chris:Rock \</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="op">&gt;</span> 34:78675903J:Antonio:Banderas</a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="ex">2</span> records written succesfully</a></code></pre></div>
+<p>El programa deberá constuirse de cero, pero se recomienda reutilizar código y algunas ideas de diseño del proyecto del ejercicio anterior. Se aconseja también implementar las siguientes funciones auxiliares para simplificar el desarrollo del programa:</p>
 <ul>
-<li><pre data-basicstyle="\ttfamily\small"><code>  student_t* parse_records(char* records[], int nr_records);</code></pre>
-<p>Esta función acepta como parámetro el listado de registros en formato ASCII pasados como argumentro al programa en la línea de comando (<code>records</code>), así como el número de registros (<code>nr_records</code>), y devuelve la representación binaria en memoria de los mismos. Esta representación será un array de estructuras cuya memoria ha de reservarse con <code>malloc()</code> dentro de la propia función.</p></li>
-<li><pre data-basicstyle="\ttfamily\small"><code>  int dump_entries(student_t* entries, int nr_entries, FILE* students)</code></pre>
+<li><pre data-basicstyle="\ttfamily\small"><code>student_t* parse_records(char* records[], int nr_records);</code></pre>
+<p>Esta función acepta como parámetro el listado de registros en formato ASCII pasados como argumentro al programa en la línea de comando (<code>records</code>), así como el número de registros (<code>nr_records</code>), y devuelve la representación binaria en memoria de los mismos. Esta representación será un array de estructuras cuya memoria ha de reservarse con <code>malloc()</code> dentro de la propia función.</p></li>
+<li><pre data-basicstyle="\ttfamily\small"><code>int dump_entries(student_t* entries, int nr_entries, FILE* students)</code></pre>
 <p>La función vuelca al fichero binario ya abierto (<code>students</code>) los registros de estudiantes pasados como parámetro (<code>entries</code>). Para maximizar la reutilización de código, esta función NO escribirá en el fichero la cabecera numérica que indica el número el número de registros.</p></li>
-<li><pre data-basicstyle="\ttfamily\small"><code>  student_t* read_student_file(FILE* students, int* nr_entries)</code></pre>
+<li><pre data-basicstyle="\ttfamily\small"><code>student_t* read_student_file(FILE* students, int* nr_entries)</code></pre>
 <p>Esta función lee toda la información de un fichero binario de registros de estudiantes ya abierto, y devuelve tanto la información de la cabecera (parámetro de retorno <code>nr_entries</code>), como el array de registros de estudiantes (valor de retorno de la función). La memoria del array que se retorna debe reservarse con <code>malloc()</code> dentro de la propia función.</p></li>
+<li><pre data-basicstyle="\ttfamily\small"><code>char* loadstr(FILE* students)</code></pre>
+<p>La función lee una cadena de caracteres terminada en <code>&#39;\0&#39;</code> del fichero cuyo descriptor se pasa como parámetro, reservando la cantidad de memoria adecuada para la cadena leída.</p></li>
 </ul>
-<h3 class="unnumbered" data-number id="ejemplo-de-ejecución">Ejemplo de ejecución</h3>
-<p>TODO</p>
-<h2 class="unnumbered" data-number id="ejercicio-5">Ejercicio 5</h2>
-<p>Con el fin de practicar el uso del shell, se pide al alumno que desarrolle su propio script bash para la comprobación de la funcionalidad del programa desarrollado en el ejercicio anterior. El script creará un tarball con el contenido de unos ficheros utilizando nuestro programa mytar, y luego extraerá el contenido y comprobará que los ficheros extraídos son idénticos a los originales. Si todo es correcto terminará devolviendo 0. Si hay errores terminará devolviendo 1. El script deberá seguir el siguiente esquema:</p>
+<h3 id="ejemplo-de-ejecución" class="unnumbered">Ejemplo de ejecución</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1"><span class="co">## List project&#39;s files and compile program</span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="ex">usuarioso@debian</span>:~/student-records$ ls</a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="ex">defs.h</span>  Makefile  student-records.c </a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="ex">usuarioso@debian</span>:~/student-records$ make</a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="fu">gcc</span> -c -Wall -g student-records.c -o student-records.o</a>
+<a class="sourceLine" id="cb14-6" title="6"><span class="fu">gcc</span> -g -o student-records student-records.o</a>
+<a class="sourceLine" id="cb14-7" title="7"></a>
+<a class="sourceLine" id="cb14-8" title="8"><span class="co">## Create a new 2-record file and dump contents of the associated binary file</span></a>
+<a class="sourceLine" id="cb14-9" title="9"><span class="ex">usuarioso@debian</span>:~/student-records$ ./student-records -f database -c \</a>
+<a class="sourceLine" id="cb14-10" title="10"><span class="op">&gt;</span> 27:67659034X:Chris:Rock 34:78675903J:Antonio:Banderas</a>
+<a class="sourceLine" id="cb14-11" title="11"><span class="ex">2</span> records written succesfully</a>
+<a class="sourceLine" id="cb14-12" title="12"><span class="ex">usuarioso@debian</span>:~/student-records$ xxd database </a>
+<a class="sourceLine" id="cb14-13" title="13"><span class="ex">00000000</span>: 0200 0000 1b00 0000 3637 3635 3930 3334  ........67659034</a>
+<a class="sourceLine" id="cb14-14" title="14"><span class="ex">00000010</span>: 5800 4368 7269 7300 526f 636b 0022 0000  X.Chris.Rock.<span class="st">&quot;..</span></a>
+<a class="sourceLine" id="cb14-15" title="15"><span class="st">00000020: 0037 3836 3735 3930 334a 0041 6e74 6f6e  .78675903J.Anton</span></a>
+<a class="sourceLine" id="cb14-16" title="16"><span class="st">00000030: 696f 0042 616e 6465 7261 7300            io.Banderas.</span></a>
+<a class="sourceLine" id="cb14-17" title="17"></a>
+<a class="sourceLine" id="cb14-18" title="18"><span class="st">## Add 2 new registers at the end</span></a>
+<a class="sourceLine" id="cb14-19" title="19"><span class="st">usuarioso@debian:~/student-records$ ./student-records -f database -a \</span></a>
+<a class="sourceLine" id="cb14-20" title="20"><span class="st">&gt; 3:58943056J:Santiago:Segura 4:6345239G:Penelope:Cruz</span></a>
+<a class="sourceLine" id="cb14-21" title="21"><span class="st">2 extra records written succesfully</span></a>
+<a class="sourceLine" id="cb14-22" title="22"><span class="st">usuarioso@debian:~/student-records$ xxd database </span></a>
+<a class="sourceLine" id="cb14-23" title="23"><span class="st">00000000: 0400 0000 1b00 0000 3637 3635 3930 3334  ........67659034</span></a>
+<a class="sourceLine" id="cb14-24" title="24"><span class="st">00000010: 5800 4368 7269 7300 526f 636b 0022 0000  X.Chris.Rock.&quot;</span>..</a>
+<a class="sourceLine" id="cb14-25" title="25"><span class="ex">00000020</span>: 0037 3836 3735 3930 334a 0041 6e74 6f6e  .78675903J.Anton</a>
+<a class="sourceLine" id="cb14-26" title="26"><span class="ex">00000030</span>: 696f 0042 616e 6465 7261 7300 0300 0000  io.Banderas.....</a>
+<a class="sourceLine" id="cb14-27" title="27"><span class="ex">00000040</span>: 3538 3934 3330 3536 4a00 5361 6e74 6961  58943056J.Santia</a>
+<a class="sourceLine" id="cb14-28" title="28"><span class="ex">00000050</span>: 676f 0053 6567 7572 6100 0400 0000 3633  go.Segura.....63</a>
+<a class="sourceLine" id="cb14-29" title="29"><span class="ex">00000060</span>: 3435 3233 3947 0050 656e 656c 6f70 6500  45239G.Penelope.</a>
+<a class="sourceLine" id="cb14-30" title="30"><span class="ex">00000070</span>: 4372 757a 00                             Cruz.</a>
+<a class="sourceLine" id="cb14-31" title="31"></a>
+<a class="sourceLine" id="cb14-32" title="32"><span class="co">## Try to add an entry that matches an existing student ID</span></a>
+<a class="sourceLine" id="cb14-33" title="33">$ <span class="ex">./student-records</span> -f database -a 3:58943056J:Antonio:Segura </a>
+<a class="sourceLine" id="cb14-34" title="34"><span class="ex">Found</span> duplicate student_id 3</a>
+<a class="sourceLine" id="cb14-35" title="35"></a>
+<a class="sourceLine" id="cb14-36" title="36"><span class="co">## List all the entries in the file</span></a>
+<a class="sourceLine" id="cb14-37" title="37"><span class="ex">usuarioso@debian</span>:~/student-records$ ./student-records -f database -l</a>
+<a class="sourceLine" id="cb14-38" title="38">[<span class="ex">Entry</span> <span class="co">#0]</span></a>
+<a class="sourceLine" id="cb14-39" title="39">        <span class="va">student_id=</span>27</a>
+<a class="sourceLine" id="cb14-40" title="40">        <span class="va">NIF=</span>67659034X</a>
+<a class="sourceLine" id="cb14-41" title="41">        <span class="va">first_name=</span>Chris</a>
+<a class="sourceLine" id="cb14-42" title="42">        <span class="va">last_name=</span>Rock</a>
+<a class="sourceLine" id="cb14-43" title="43">[<span class="ex">Entry</span> <span class="co">#1]</span></a>
+<a class="sourceLine" id="cb14-44" title="44">        <span class="va">student_id=</span>34</a>
+<a class="sourceLine" id="cb14-45" title="45">        <span class="va">NIF=</span>78675903J</a>
+<a class="sourceLine" id="cb14-46" title="46">        <span class="va">first_name=</span>Antonio</a>
+<a class="sourceLine" id="cb14-47" title="47">        <span class="va">last_name=</span>Banderas</a>
+<a class="sourceLine" id="cb14-48" title="48">[<span class="ex">Entry</span> <span class="co">#2]</span></a>
+<a class="sourceLine" id="cb14-49" title="49">        <span class="va">student_id=</span>3</a>
+<a class="sourceLine" id="cb14-50" title="50">        <span class="va">NIF=</span>58943056J</a>
+<a class="sourceLine" id="cb14-51" title="51">        <span class="va">first_name=</span>Santiago</a>
+<a class="sourceLine" id="cb14-52" title="52">        <span class="va">last_name=</span>Segura</a>
+<a class="sourceLine" id="cb14-53" title="53">[<span class="ex">Entry</span> <span class="co">#3]</span></a>
+<a class="sourceLine" id="cb14-54" title="54">        <span class="va">student_id=</span>4</a>
+<a class="sourceLine" id="cb14-55" title="55">        <span class="va">NIF=</span>6345239G</a>
+<a class="sourceLine" id="cb14-56" title="56">        <span class="va">first_name=</span>Penelope</a>
+<a class="sourceLine" id="cb14-57" title="57">        <span class="va">last_name=</span>Cruz</a>
+<a class="sourceLine" id="cb14-58" title="58">        </a>
+<a class="sourceLine" id="cb14-59" title="59"><span class="co">## Search for specific entries</span></a>
+<a class="sourceLine" id="cb14-60" title="60"><span class="ex">usuarioso@debian</span>:~/student-records$ ./student-records -f database -q -i 7</a>
+<a class="sourceLine" id="cb14-61" title="61"><span class="ex">No</span> entry was found</a>
+<a class="sourceLine" id="cb14-62" title="62"><span class="ex">usuarioso@debian</span>:~/student-records$ ./student-records -f database -q -i 34</a>
+<a class="sourceLine" id="cb14-63" title="63">[<span class="ex">Entry</span> <span class="co">#1]</span></a>
+<a class="sourceLine" id="cb14-64" title="64">        <span class="va">student_id=</span>34</a>
+<a class="sourceLine" id="cb14-65" title="65">        <span class="va">NIF=</span>78675903J</a>
+<a class="sourceLine" id="cb14-66" title="66">        <span class="va">first_name=</span>Antonio</a>
+<a class="sourceLine" id="cb14-67" title="67">        <span class="va">last_name=</span>Banderas</a>
+<a class="sourceLine" id="cb14-68" title="68"><span class="ex">usuarioso@debian</span>:~/student-records$ ./student-records -f database -q -n 6345239G</a>
+<a class="sourceLine" id="cb14-69" title="69">[<span class="ex">Entry</span> <span class="co">#3]</span></a>
+<a class="sourceLine" id="cb14-70" title="70">        <span class="va">student_id=</span>4</a>
+<a class="sourceLine" id="cb14-71" title="71">        <span class="va">NIF=</span>6345239G</a>
+<a class="sourceLine" id="cb14-72" title="72">        <span class="va">first_name=</span>Penelope</a>
+<a class="sourceLine" id="cb14-73" title="73">        <span class="va">last_name=</span>Cruz</a></code></pre></div>
+<h2 id="ejercicio-5" class="unnumbered">Ejercicio 5</h2>
+<p>Con el fin de practicar el uso del shell, se pide al alumno que desarrolle su propio script bash para la comprobación de la funcionalidad del programa desarrollado en el ejercicio anterior.</p>
+<p>Antes de elaborar y ejecutar el script se preparará un fichero de texto llamado <em>records.txt</em> en el mismo directorio que el programa, que debe incluir un conjunto de registros de estudiantes en texto plano y separados por un salto de línea, como el el siguiente ejemplo:</p>
+<pre class="plain"><code>27:67659034X:Chris:Rock
+34:78675903J:Antonio:Banderas
+3:58943056J:Santiago:Segura
+4:6345239G:Penelope:Cruz</code></pre>
+<p>El script deberá seguir el siguiente esquema:</p>
 <ol type="1">
-<li><p>Comprobará que el programa <code>mytar</code> está en el directorio actual y que es ejecutable. En caso contrario mostrará un mensaje informativo por pantalla y terminará.</p></li>
-<li><p>Comprobará si existe un directorio <code>tmp</code> dentro del directorio actual. Si existe lo borrará, incluyendo todo lo que haya dentro de él (mirar la opción <code>-r</code> del comando <code>rm</code>).</p></li>
-<li><p>Creará un nuevo directorio temporal <code>tmp</code> dentro del directorio actual y cambiará a este directorio.</p></li>
-<li><p>Creará tres ficheros (dentro del directorio):</p>
-<ul>
-<li><p><code>file1.txt</code>: con el contenido “Hello world!”, utilizando la orden <code>echo</code> y redirigiendo la salida al fichero.</p></li>
-<li><p><code>file2.txt</code>: con una copia de las 10 primeras líneas del fichero <code>/etc/passwd</code>. Se hace fácil utilizando el programa <code>head</code> y redirigiendo la salida al fichero.</p></li>
-<li><p><code>file3.dat</code>: con un contenido binario aleatorio de 1024 bytes, tomado del dispositivo <code>/dev/urandom</code>. De nuevo conviene utilizar <code>head</code> con la opción <code>-c</code>.</p></li>
-</ul></li>
-<li><p>Invocará el programa <code>mytar</code> que hemos desarrollado, para crear un fichero <code>filetar.mtar</code> con el contenido de los tres ficheros anteriores.</p></li>
-<li><p>Creará un directorio <code>out</code> (dentro del directorio actual, que debe ser <code>tmp</code>) y copiará el fichero <code>filetar.mtar</code> al nuevo directorio.</p></li>
-<li><p>Cambiará al directorio <code>out</code> y ejecutará el programa <code>mytar</code> para extraer el contenido del tarball.</p></li>
-<li><p>Usará el programa <code>diff</code> para comparar los fichero extraídos con los originales, que estarán en el directorio anterior (<code>..</code>).</p></li>
-<li><p>Si los tres ficheros extraídos son iguales que los originales, volverá al directorio original (<code>../..</code>), mostrará el mensaje “Correct” por pantalla y devolverá 0. Si hay algún error, volverá al directorio original, mostrará un mensaje descriptivo por pantalla y devolverá 1.</p></li>
+<li>En primer lugar comprobará que el programa <code>student-records</code> está en el directorio actual y que es ejecutable. En caso contrario mostrará un mensaje informativo por pantalla y terminará.</li>
+<li>A continuación comprobará que el fichero <em>records.txt</em> está en el directorio actual y que es regular. En caso contrario mostrará un mensaje de error y terminará.</li>
+<li>El script leerá ese fichero de texto, y almacenará todos los registros separados por espacios en una sola cadena (variable <code>records</code> de tipo string). Para ello se utilizará el comando <code>cat</code> en combinación con una expansión de órdenes de BASH, que ya sustituye los saltos de línea del fichero por espacios.</li>
+<li>Acto seguido, el script recorrerá con un bucle <code>for</code> todos los registros en formato ASCII almacenados en la variable <code>records</code>. En la primera iteración del bucle se creará un nuevo fichero binario de registros de estudiantes llamado <code>database</code>, invocando al programa <code>student-records</code> con el primer registro del fichero y la opción <code>-c</code>. En las iteraciones restantes se añadirán los demás registros uno a uno al fichero <code>database</code> utilizando la opción <code>-a</code>.</li>
+<li>El script mostrará el contenido del fichero <code>databases</code> de dos formas: usando la opción <code>-l</code> de <code>student-records</code> y empleando el programa <code>xxd</code>, que simplemente realizará un volcado binario del fichero.</li>
+<li>Finalmente, se utilizará otro bucle para recorrer de nuevo todos los registros en formato ASCII almacenados en la variable <code>records</code>. En este caso para cada registro se comprobará que el NIF del estudiante se encuentra en el fichero <code>database</code>, invocando el programa <code>student-records</code> con las opciones <code>-q -n</code>. Para extraer el NIF de cada estudiante del registro en formato ASCII correspondiente se usará el comando <code>cut</code> y un pipe (consultar página de manual de <code>cut</code> ).</li>
 </ol>
+<p>En los distintos puntos del script se ha de comprobar que cada invocación del programa <code>student-records</code> devuelve 0. En caso de que se produzca un error, la ejecución del script debe abortarse en ese momento y devolver 1.</p>
         </div>
       </div>
     </div>
