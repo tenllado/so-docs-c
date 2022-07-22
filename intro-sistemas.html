@@ -832,26 +832,27 @@ font-size: 12px
     <style type="text/css">code{white-space: pre;}</style>
     <style type="text/css">.sidebar ul{padding-left: 10px;}</style>
     <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -860,9 +861,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -932,10 +933,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
           </ul>-->
           <ul>
-          <li><a href="#introducción-al-entorno-de-desarrollo"><span class="toc-section-number">1</span> Introducción al entorno de desarrollo</a><ul>
+          <li><a href="#introducción-al-entorno-de-desarrollo"><span class="toc-section-number">1</span> Introducción al entorno de desarrollo</a>
+          <ul>
           <li><a href="#objetivos"><span class="toc-section-number">1.1</span> Objetivos</a></li>
           <li><a href="#requisitos"><span class="toc-section-number">1.2</span> Requisitos</a></li>
-          <li><a href="#ejercicios"><span class="toc-section-number">1.3</span> Ejercicios</a><ul>
+          <li><a href="#ejercicios"><span class="toc-section-number">1.3</span> Ejercicios</a>
+          <ul>
           <li><a href="#ejercicio-1">Ejercicio 1</a></li>
           <li><a href="#ejercicio-2">Ejercicio 2</a></li>
           </ul></li>
@@ -946,13 +949,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         
-<h1 id="introducción-al-entorno-de-desarrollo"><span class="header-section-number">1</span> Introducción al entorno de desarrollo</h1>
-<h2 id="objetivos"><span class="header-section-number">1.1</span> Objetivos</h2>
+<h1 data-number="1" id="introducción-al-entorno-de-desarrollo"><span class="header-section-number">1</span> Introducción al entorno de desarrollo</h1>
+<h2 data-number="1.1" id="objetivos"><span class="header-section-number">1.1</span> Objetivos</h2>
 <ul>
 <li><p>Familiarizarse con el entorno de desarrollo de aplicaciones C en LINUX, y comprender los conceptos de proyecto, ejecutable y biblioteca en este contexto.</p></li>
 <li><p>Familiarizarse con el manejo básico del shell y aprender a desarrollar <em>shell scripts</em> sencillos</p></li>
 </ul>
-<h2 id="requisitos"><span class="header-section-number">1.2</span> Requisitos</h2>
+<h2 data-number="1.2" id="requisitos"><span class="header-section-number">1.2</span> Requisitos</h2>
 <p>Para poder realizar con exito la práctica el alumno debe haber leído y comprendido los siguientes documentos facilitados por el profesor:</p>
 <ul>
 <li><p>Presentación “Introducción al entorno de desarrollo”, que nos introduce al entorno GNU/Linux que utilizaremos en el laboratorio, y describe cómo configurar Eclipse IDE para trabajar con proyectos C con Makefile.</p></li>
@@ -960,8 +963,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Manual “Entorno de desarrollo C para GNU/Linux”, que describe las herramientas que componen el entorno de desarrollo que vamos a utilizar, así como las funciones básicas de la biblioteca estándar de C que los alumnos deben conocer.</p></li>
 <li><p>Presentación “Introducción a Bash”, que presenta una breve introducción al interprete de órdenes (shell) Bash.</p></li>
 </ul>
-<h2 id="ejercicios"><span class="header-section-number">1.3</span> Ejercicios</h2>
-<h3 id="ejercicio-1" class="unnumbered">Ejercicio 1</h3>
+<h2 data-number="1.3" id="ejercicios"><span class="header-section-number">1.3</span> Ejercicios</h2>
+<h3 class="unnumbered" data-number id="ejercicio-1">Ejercicio 1</h3>
 <p>Analizar el código del programa <code>show_file.c</code>, que lee byte a byte el contenido de un fichero, cuyo nombre se pasa como parámetro, y lo muestra por pantalla usando funciones de la biblioteca estandar de “C”. Responda a las siguientes preguntas:</p>
 <ul>
 <li><p>Qué comando se debe emplear para generar el ejecutable del programa (<code>show_file</code>) invocando directamente al compilador <code>gcc</code> (sin usar <code>make</code>)?</p></li>
@@ -972,92 +975,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Realizar la lectura byte a byte del fichero de entrada empleando la función <code>fread()</code> en lugar de <code>getc()</code>. Modificar también la invocación a la función <code>putc()</code> por una llamada a <code>fwrite()</code></p></li>
 <li><p>Añadir un parámetro al programa modificado para permitir al usuario especificar el tamaño de bloque en bytes a usar en cada lectura realizada por <code>fread()</code>.</p></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" title="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></a>
-<a class="sourceLine" id="cb1-3" title="3"></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span>* argv[]) {</a>
-<a class="sourceLine" id="cb1-5" title="5">    <span class="dt">FILE</span>* file=NULL;</a>
-<a class="sourceLine" id="cb1-6" title="6">    <span class="dt">int</span> c,ret;</a>
-<a class="sourceLine" id="cb1-7" title="7"></a>
-<a class="sourceLine" id="cb1-8" title="8">    <span class="cf">if</span> (argc!=<span class="dv">2</span>) {</a>
-<a class="sourceLine" id="cb1-9" title="9">        fprintf(stderr,<span class="st">&quot;Usage: %s &lt;file_name&gt;</span><span class="sc">\n</span><span class="st">&quot;</span>,argv[<span class="dv">0</span>]);</a>
-<a class="sourceLine" id="cb1-10" title="10">        exit(<span class="dv">1</span>);</a>
-<a class="sourceLine" id="cb1-11" title="11">    }</a>
-<a class="sourceLine" id="cb1-12" title="12"></a>
-<a class="sourceLine" id="cb1-13" title="13">    <span class="co">/* Open file */</span></a>
-<a class="sourceLine" id="cb1-14" title="14">    <span class="cf">if</span> ((file = fopen(argv[<span class="dv">1</span>], <span class="st">&quot;r&quot;</span>)) == NULL)</a>
-<a class="sourceLine" id="cb1-15" title="15">        err(<span class="dv">2</span>,<span class="st">&quot;The input file %s could not be opened&quot;</span>,argv[<span class="dv">1</span>]);</a>
-<a class="sourceLine" id="cb1-16" title="16"></a>
-<a class="sourceLine" id="cb1-17" title="17">    <span class="co">/* Read file byte by byte */</span></a>
-<a class="sourceLine" id="cb1-18" title="18">    <span class="cf">while</span> ((c = getc(file)) != EOF) {</a>
-<a class="sourceLine" id="cb1-19" title="19">        <span class="co">/* Print byte to stdout */</span></a>
-<a class="sourceLine" id="cb1-20" title="20">        ret=putc((<span class="dt">unsigned</span> <span class="dt">char</span>) c, stdout);</a>
-<a class="sourceLine" id="cb1-21" title="21"></a>
-<a class="sourceLine" id="cb1-22" title="22">        <span class="cf">if</span> (ret==EOF){</a>
-<a class="sourceLine" id="cb1-23" title="23">            fclose(file);</a>
-<a class="sourceLine" id="cb1-24" title="24">            err(<span class="dv">3</span>,<span class="st">&quot;putc() failed!!&quot;</span>);</a>
-<a class="sourceLine" id="cb1-25" title="25">        }</a>
-<a class="sourceLine" id="cb1-26" title="26">    }</a>
-<a class="sourceLine" id="cb1-27" title="27"></a>
-<a class="sourceLine" id="cb1-28" title="28">    fclose(file);</a>
-<a class="sourceLine" id="cb1-29" title="29">    <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb1-30" title="30">}</a></code></pre></div>
-<h3 id="ejercicio-2" class="unnumbered">Ejercicio 2</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span>* argv[]) {</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    <span class="dt">FILE</span>* file=NULL;</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>    <span class="dt">int</span> c,ret;</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>    <span class="cf">if</span> (argc!=<span class="dv">2</span>) {</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>        fprintf(stderr,<span class="st">&quot;Usage: %s &lt;file_name&gt;</span><span class="sc">\n</span><span class="st">&quot;</span>,argv[<span class="dv">0</span>]);</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>        exit(<span class="dv">1</span>);</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>    }</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a>    <span class="co">/* Open file */</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a>    <span class="cf">if</span> ((file = fopen(argv[<span class="dv">1</span>], <span class="st">&quot;r&quot;</span>)) == NULL)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a>        err(<span class="dv">2</span>,<span class="st">&quot;The input file %s could not be opened&quot;</span>,argv[<span class="dv">1</span>]);</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a>    <span class="co">/* Read file byte by byte */</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a>    <span class="cf">while</span> ((c = getc(file)) != EOF) {</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a>        <span class="co">/* Print byte to stdout */</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a>        ret=putc((<span class="dt">unsigned</span> <span class="dt">char</span>) c, stdout);</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true"></a>        <span class="cf">if</span> (ret==EOF){</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true"></a>            fclose(file);</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true"></a>            err(<span class="dv">3</span>,<span class="st">&quot;putc() failed!!&quot;</span>);</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true"></a>        }</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true"></a>    }</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a>    fclose(file);</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a>}</span></code></pre></div>
+<h3 class="unnumbered" data-number id="ejercicio-2">Ejercicio 2</h3>
 <p>El programa <em>badsort-ptr.c</em>, cuyo código fuente se muestra a continuación, ha sido desarrollado para realizar una ordenación por el método de la burbuja aplicada a un <em>array</em> de pares (cadena de caracteres, entero) inicializado dentro del programa. El programa emplea aritmética de punteros para acceder a los distintos elementos del array durante el recorrido. Lamentablemente, el programador ha cometido algun/os error/es. Utilizando un depurador de C (p.ej.,<code>gdb</code> o <code>ddd</code>) el alumno debe encontrar y corregir el/los error/es.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb2-1" title="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
-<a class="sourceLine" id="cb2-2" title="2"></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">typedef</span> <span class="kw">struct</span> {</a>
-<a class="sourceLine" id="cb2-4" title="4">    <span class="dt">char</span> data[<span class="dv">4096</span>];</a>
-<a class="sourceLine" id="cb2-5" title="5">    <span class="dt">int</span> key;</a>
-<a class="sourceLine" id="cb2-6" title="6">} item;</a>
-<a class="sourceLine" id="cb2-7" title="7"></a>
-<a class="sourceLine" id="cb2-8" title="8">item array[] = {</a>
-<a class="sourceLine" id="cb2-9" title="9">    {<span class="st">&quot;bill&quot;</span>, <span class="dv">3</span>},</a>
-<a class="sourceLine" id="cb2-10" title="10">    {<span class="st">&quot;neil&quot;</span>, <span class="dv">4</span>},</a>
-<a class="sourceLine" id="cb2-11" title="11">    {<span class="st">&quot;john&quot;</span>, <span class="dv">2</span>},</a>
-<a class="sourceLine" id="cb2-12" title="12">    {<span class="st">&quot;rick&quot;</span>, <span class="dv">5</span>},</a>
-<a class="sourceLine" id="cb2-13" title="13">    {<span class="st">&quot;alex&quot;</span>, <span class="dv">1</span>},</a>
-<a class="sourceLine" id="cb2-14" title="14">};</a>
-<a class="sourceLine" id="cb2-15" title="15"></a>
-<a class="sourceLine" id="cb2-16" title="16"><span class="dt">void</span> sort(item *a, <span class="dt">int</span> n) {</a>
-<a class="sourceLine" id="cb2-17" title="17">    <span class="dt">int</span> i = <span class="dv">0</span>, j = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb2-18" title="18">    <span class="dt">int</span> s = <span class="dv">1</span>;</a>
-<a class="sourceLine" id="cb2-19" title="19">    item* p;</a>
-<a class="sourceLine" id="cb2-20" title="20"></a>
-<a class="sourceLine" id="cb2-21" title="21">    <span class="cf">for</span>(; i &lt; n &amp; s != <span class="dv">0</span>; i++) {</a>
-<a class="sourceLine" id="cb2-22" title="22">        s = <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb2-23" title="23">        p = a;</a>
-<a class="sourceLine" id="cb2-24" title="24">        j = n<span class="dv">-1</span>;</a>
-<a class="sourceLine" id="cb2-25" title="25">        <span class="cf">do</span> {</a>
-<a class="sourceLine" id="cb2-26" title="26">            <span class="cf">if</span>( p-&gt;key &gt; (p+<span class="dv">1</span>)-&gt;key) {</a>
-<a class="sourceLine" id="cb2-27" title="27">                item t = *p;</a>
-<a class="sourceLine" id="cb2-28" title="28">                *p  = *(p+<span class="dv">1</span>);</a>
-<a class="sourceLine" id="cb2-29" title="29">                *(p+<span class="dv">1</span>) = t;</a>
-<a class="sourceLine" id="cb2-30" title="30">                s++;</a>
-<a class="sourceLine" id="cb2-31" title="31">            }</a>
-<a class="sourceLine" id="cb2-32" title="32">        } <span class="cf">while</span> ( --j &gt;= <span class="dv">0</span> );</a>
-<a class="sourceLine" id="cb2-33" title="33">    }</a>
-<a class="sourceLine" id="cb2-34" title="34">}</a>
-<a class="sourceLine" id="cb2-35" title="35"></a>
-<a class="sourceLine" id="cb2-36" title="36"><span class="dt">int</span> main() {</a>
-<a class="sourceLine" id="cb2-37" title="37">    <span class="dt">int</span> i;</a>
-<a class="sourceLine" id="cb2-38" title="38">    sort(array,<span class="dv">5</span>);</a>
-<a class="sourceLine" id="cb2-39" title="39">    <span class="cf">for</span>(i = <span class="dv">0</span>; i &lt; <span class="dv">5</span>; i++)</a>
-<a class="sourceLine" id="cb2-40" title="40">        printf(<span class="st">&quot;array[%d] = {%s, %d}</span><span class="sc">\n</span><span class="st">&quot;</span>,</a>
-<a class="sourceLine" id="cb2-41" title="41">                i, array[i].data, array[i].key);</a>
-<a class="sourceLine" id="cb2-42" title="42">    <span class="cf">return</span> <span class="dv">0</span>;</a>
-<a class="sourceLine" id="cb2-43" title="43">}</a></code></pre></div>
-<h2 id="desarrollo-de-la-práctica"><span class="header-section-number">1.4</span> Desarrollo de la práctica</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="kw">typedef</span> <span class="kw">struct</span> {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    <span class="dt">char</span> data[<span class="dv">4096</span>];</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>    <span class="dt">int</span> key;</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>} item;</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>item array[] = {</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>    {<span class="st">&quot;bill&quot;</span>, <span class="dv">3</span>},</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>    {<span class="st">&quot;neil&quot;</span>, <span class="dv">4</span>},</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a>    {<span class="st">&quot;john&quot;</span>, <span class="dv">2</span>},</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a>    {<span class="st">&quot;rick&quot;</span>, <span class="dv">5</span>},</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a>    {<span class="st">&quot;alex&quot;</span>, <span class="dv">1</span>},</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a>};</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true"></a><span class="dt">void</span> sort(item *a, <span class="dt">int</span> n) {</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true"></a>    <span class="dt">int</span> i = <span class="dv">0</span>, j = <span class="dv">0</span>;</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true"></a>    <span class="dt">int</span> s = <span class="dv">1</span>;</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true"></a>    item* p;</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true"></a>    <span class="cf">for</span>(; i &lt; n &amp; s != <span class="dv">0</span>; i++) {</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true"></a>        s = <span class="dv">0</span>;</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true"></a>        p = a;</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true"></a>        j = n-<span class="dv">1</span>;</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true"></a>        <span class="cf">do</span> {</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true"></a>            <span class="cf">if</span>( p-&gt;key &gt; (p+<span class="dv">1</span>)-&gt;key) {</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true"></a>                item t = *p;</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true"></a>                *p  = *(p+<span class="dv">1</span>);</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true"></a>                *(p+<span class="dv">1</span>) = t;</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true"></a>                s++;</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true"></a>            }</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true"></a>        } <span class="cf">while</span> ( --j &gt;= <span class="dv">0</span> );</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true"></a>    }</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true"></a>}</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true"></a><span class="dt">int</span> main() {</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true"></a>    <span class="dt">int</span> i;</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true"></a>    sort(array,<span class="dv">5</span>);</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true"></a>    <span class="cf">for</span>(i = <span class="dv">0</span>; i &lt; <span class="dv">5</span>; i++)</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true"></a>        printf(<span class="st">&quot;array[%d] = {%s, %d}</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true"></a>                i, array[i].data, array[i].key);</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true"></a>}</span></code></pre></div>
+<h2 data-number="1.4" id="desarrollo-de-la-práctica"><span class="header-section-number">1.4</span> Desarrollo de la práctica</h2>
 <p>En esta práctica el alumno debe crear una herramienta de linea de órdenes llamada <em>mytar</em>, capaz de crear un archivo <em>tarball</em> que contenga varios ficheros, o de extraer los ficheros de un <em>tarball</em> previamente creado. Por ejemplo, la orden:</p>
 <pre><code>  ./mytar -cf project1.mtar mytar.c mytar.h mytar_routines.c</code></pre>
 <p>deberá crear un archivo <code>project1.mtar</code> que recopile el contenido de los ficheros <code>mytar.c</code>, <code>mytar.h</code> y <code>mytar_routines.c</code>. Así mismo, la orden:</p>
 <pre><code>  ./mytar -xf project1.mtar </code></pre>
 <p>extraerá el contenido del <em>tarball</em> <code>project1.mtar</code>, es decir, los ficheros <code>mytar.c</code>, <code>mytar.h</code> y <code>mytar_routines.c</code>.</p>
 <p>Nuestra versión del <em>tarball</em> consistirá en una cabecera que describirá el contenido del archivo, seguida del contenido binario de cada uno de los ficheros incluidos en él. La cabecera estará formada por un entero de 4 bytes que indicará el número de ficheros almacenados (N), seguido de N descriptores de fichero. Cada uno de estos descriptores se compondrá de una cadena de caracteres (terminada en un byte 0) con el nombre del fichero (su ruta), y un un entero sin signo de cuatro bytes con el tamaño en bytes del fichero. Es decir, la estructura descriptor en memoria sería:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">typedef</span> <span class="kw">struct</span> {</a>
-<a class="sourceLine" id="cb5-2" title="2">  <span class="dt">char</span>* name;</a>
-<a class="sourceLine" id="cb5-3" title="3">  <span class="dt">unsigned</span> <span class="dt">int</span> size;</a>
-<a class="sourceLine" id="cb5-4" title="4">} stHeaderEntry;</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">typedef</span> <span class="kw">struct</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>  <span class="dt">char</span>* name;</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>  <span class="dt">unsigned</span> <span class="dt">int</span> size;</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>} stHeaderEntry;</span></code></pre></div>
 <p>Para almacenar el nombre del fichero habrá que reservar memoria del heap almacenando en el campo name la dirección de comienzo devuelta por <em>malloc</em>.</p>
 <p>Volviendo sobre nuestro ejemplo, el fichero <code>project1.mtar</code> comenzará con cuatro bytes que representan un entero con valor 3 (el número de ficheros almacenados), seguido de 3 descriptores de fichero, cada uno con el nombre de uno de los ficheros y su tamaño en bytes.</p>
 <p>El proyecto <em>mytar</em> estará constituido por los siguientes ficheros que proporcionará el profesor:</p>
@@ -1067,7 +1070,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><em>mytar.c</em>: es el fichero principal, que contiene la función <strong>main</strong>.</p></li>
 <li><p><em>mytar_routines.c</em>: fichero en el que se implementan las funciones de tratamiento del <em>tarball</em>. Este fichero se da incompleto, y los alumnos deben completarlo siguiendo las indicaciones de los comentarios.</p></li>
 </ul>
-<h2 id="sec:script"><span class="header-section-number">1.5</span> Script de comprobación</h2>
+<h2 data-number="1.5" id="sec:script"><span class="header-section-number">1.5</span> Script de comprobación</h2>
 <p>Con el fin de practicar el uso del shell, se pide al alumno que desarrolle su propio script bash para la comprobación de la práctica. El script creará un tarball con el contenido de unos ficheros utilizando nuestro programa mytar, y luego extraerá el contenido y comprobará que los ficheros extraídos son idénticos a los originales. Si todo es correcto terminará devolviendo 0. Si hay errores terminará devolviendo 1. El script deberá seguir el siguiente esquema:</p>
 <ol type="1">
 <li><p>Comprobará que el programa <code>mytar</code> está en el directorio actual y que es ejecutable. En caso contrario mostrará un mensaje informativo por pantalla y terminará.</p></li>
