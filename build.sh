@@ -1,8 +1,15 @@
 #!/bin/bash
-documents=('../intro-c.md entorno' \
-	'../intro-sistemas.md intro-sistemas' )
+documents=('../entorno.md entorno' \
+	'../intro-c.md intro-sistemas' )
 
 ndocs=${#documents[@]}
+
+## Clone image directory
+if [ -d img ]; then
+	rm -rf img
+fi
+
+cp -rf ../img .
 
 for (( i=0 ; $i<$ndocs ; i++ ))
 do
@@ -16,3 +23,5 @@ do
 	pandoc ${source_file} -N --toc  -o ${target_file2}
 done
 
+
+rm -rf img
