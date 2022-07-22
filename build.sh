@@ -1,6 +1,7 @@
 #!/bin/bash
 documents=('../entorno.md entorno' \
-	'../intro-c.md intro-sistemas' )
+	'../intro-c.md intro-sistemas' \
+    '../api_ficheros_directorios.md api-ficheros-directorios')
 
 ndocs=${#documents[@]}
 
