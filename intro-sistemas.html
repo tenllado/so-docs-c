@@ -860,40 +860,40 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  { background-color: #f8f8f8; }
 @media screen {
 a.sourceLine::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
 code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
     </style>
+  
   
   
   
@@ -967,14 +967,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 id="ejercicio-1" class="unnumbered">Ejercicio 1</h2>
 <p>Analizar el código del programa <code>show_file.c</code>, que lee byte a byte el contenido de un fichero, cuyo nombre se pasa como parámetro, y lo muestra por pantalla usando funciones de la biblioteca estandar de “C”. Responda a las siguientes preguntas:</p>
 <ul>
-<li><p>¿Qué comando se debe emplear para generar el ejecutable del programa (<code>show_file</code>) invocando directamente al compilador <code>gcc</code> (sin usar <code>make</code>)?</p></li>
-<li><p>Indique dos comandos para llevar a cabo respectivamente la compilación del programa (generación de fichero objeto) y el enlazado del mismo de forma independiente.</p></li>
+<li>¿Qué comando se debe emplear para generar el ejecutable del programa (<code>show_file</code>) invocando directamente al compilador <code>gcc</code> (sin usar <code>make</code>)?</li>
+<li>Indique dos comandos para llevar a cabo respectivamente la compilación del programa (generación de fichero objeto) y el enlazado del mismo de forma independiente.</li>
 </ul>
 <p>Realice las siguientes modificaciones en el programa <code>show_file.c</code>:</p>
-<ul>
-<li><p>Realizar la lectura byte a byte del fichero de entrada empleando la función <code>fread()</code> en lugar de <code>getc()</code>. Modificar también la invocación a la función <code>putc()</code> por una llamada a <code>fwrite()</code></p></li>
-<li><p>Añadir un parámetro al programa modificado para permitir al usuario especificar el tamaño de bloque en bytes a usar en cada lectura realizada por <code>fread()</code>.</p></li>
-</ul>
+<ol type="1">
+<li>Realizar la lectura byte a byte del fichero de entrada empleando la función <code>fread()</code> en lugar de <code>getc()</code>. Modificar también la invocación a la función <code>putc()</code> por una llamada a <code>fwrite()</code></li>
+<li>Añadir un parámetro al programa modificado para permitir al usuario especificar el tamaño de bloque en bytes a usar en cada lectura realizada por <code>fread()</code>.</li>
+</ol>
 <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb1-1" title="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></a>
 <a class="sourceLine" id="cb1-3" title="3"></a>
@@ -1076,10 +1076,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol></li>
 </ul>
 <p>Responda a las siguientes preguntas:</p>
-<ul>
-<li>Para representar cada una de las entradas del fichero <code>/etc/passwd</code> se emplea el tipo de datos <code>passwd_entry_t</code> (estructura definida en <code>defs.h</code>). Nótese que muchos de los campos almacenan cadenas de caracteres definidas como arrays de caracteres de longitud máxima prefijada, o mediante el tipo de datos <code>char*</code>. La función <code>parse_passwd()</code>, definida en <code>show-passwd.c</code> es la encargada de inicializar los distintos campos de la estructura. ¿Cuál es el propósito de la función <code>clone_string()</code> que se usa para inicializar algunos de los citados campos tipo cadena? ¿Por qué no es posible en algunos casos simplemente copiar la cadena vía <code>strcpy()</code> o realizando una asignación <code>campo=cadena_existente;</code>? Justifica la respuesta.</li>
+<ol type="1">
+<li>Para representar cada una de las entradas del fichero <code>/etc/passwd</code> se emplea el tipo de datos <code>passwd_entry_t</code> (estructura definida en <code>defs.h</code>). Nótese que muchos de los campos almacenan cadenas de caracteres definidas como arrays de caracteres de longitud máxima prefijada, o mediante el tipo de datos <code>char*</code>. La función <code>parse_passwd()</code>, definida en <code>show-passwd.c</code> es la encargada de inicializar los distintos campos de la estructura. ¿Cuál es el propósito de la función <code>clone_string()</code> que se usa para inicializar algunos de los citados campos tipo cadena? ¿Por qué no es posible en algunos casos simplemente copiar la cadena vía <code>strcpy()</code> o realizando una asignación <code>campo=cadena_existente;</code>? Justifique la respuesta.</li>
 <li>La función <code>strsep()</code>, utilizada en <code>parse_passwd()</code>, modifica la cadena que se desea dividir en tokens. ¿Qué tipo de modificaciones sufre la cadena (variable <code>line</code>) tras invocaciones sucesivas de <code>strsep()</code>? <strong>Pista</strong>: Consúltese el valor y las direcciones de las variables del programa usando un depurador de C como <code>gdb</code>.</li>
-</ul>
+</ol>
 <p>Realice las siguientes modificaciones en el programa <code>show-passwd.c</code>:</p>
 <ul>
 <li><p>Añada la opción <code>-i &lt;inputfile&gt;</code> para especificar una ruta alternativa para el fichero <code>passwd</code>. Hacer una copia de <code>/etc/passwd</code> en otra ubicación para verificar el correcto funcionamiento de esta nueva opción.</p></li>
@@ -1101,9 +1101,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1">$ <span class="ex">./student-records</span> -h</a>
 <a class="sourceLine" id="cb8-2" title="2"><span class="ex">Usage</span>: ./student-records -f file [ -h <span class="kw">|</span> <span class="ex">-l</span> <span class="kw">|</span> <span class="ex">-c</span> <span class="kw">|</span> <span class="ex">-a</span> <span class="kw">|</span> <span class="ex">-q</span> [ -i<span class="kw">|</span><span class="ex">-n</span> ID] ] ] [ list of records ]</a></code></pre></div>
 <p>Además de <code>-h</code>, el programa implementará opciones para crear (<code>-c</code>) y listar (<code>-l</code>) ficheros de registros de estudiantes, así como para poder añadir nuevos registros al final de un fichero existente <code>-a</code>, o realizar búsquedas (<em>queries</em>) de registros específicos (<code>-q</code>) por identificador de estudiante (<code>-i</code>) o NIF <code>-n</code>. En el caso de las opciones <code>-c</code> y <code>-a</code>, será preciso indicar en la línea de comando una lista de registros de estudiantes a almacenar en el fichero. Cada registro de la lista especificará los campos de cada estudiante mediante una cadena de caracteres con elementos separados por <code>&quot;:&quot;</code>. Por ejemplo, considérese el siguiente comando para crear un nuevo fichero de estudiantes llamado <code>database</code> que almacenará 2 registros:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1">$ <span class="ex">./student-records</span> -f database -c 27:67659034X:Chris:Rock \</a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="op">&gt;</span> 34:78675903J:Antonio:Banderas</a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="ex">2</span> records written succesfully</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1">$ <span class="ex">./student-records</span> -f database -c 27:67659034X:Chris:Rock 34:78675903J:Antonio:Banderas</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="ex">2</span> records written succesfully</a></code></pre></div>
 <p>El programa deberá constuirse de cero, pero se recomienda reutilizar código y algunas ideas de diseño del proyecto del ejercicio anterior. Se aconseja también implementar las siguientes funciones auxiliares para simplificar el desarrollo del programa:</p>
 <ul>
 <li><pre data-basicstyle="\ttfamily\small"><code>student_t* parse_records(char* records[], int nr_records);</code></pre>

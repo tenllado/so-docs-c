@@ -832,27 +832,26 @@ font-size: 12px
     <style type="text/css">code{white-space: pre;}</style>
     <style type="text/css">.sidebar ul{padding-left: 10px;}</style>
     <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -861,39 +860,38 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  { background-color: #f8f8f8; }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
 code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
     </style>
   
   
@@ -944,36 +942,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         
 <p>En esta práctica vamos a hacer varios ejercicos orientados a afianzar nuestro conocimiento del manejo del API POSIX de ficheros y directorios. Concretamente trabajaremos las llamadas al sistema: open, read, write, close, lstat, readlink, symlink, lseek, opendir y readdir, además de algunas funciones de la librería estándar de C que serán necesarias, como strlen, snprintf, malloc y printf.</p>
 <p>Se aconseja al alumno que cree un directorio por ejercico. En las instrucciones se asume que el ejercicio N se hace en un subdirectorio llamado ejercicio<em>N</em> dentro de un directorio común para esta práctica.</p>
-<h1 data-number="1" id="copia-de-ficheros-regulares"><span class="header-section-number">1</span> Copia de ficheros regulares</h1>
+<h1 id="copia-de-ficheros-regulares"><span class="header-section-number">1</span> Copia de ficheros regulares</h1>
 <p>Diseña un programa copy.c que permita hacer la copia de un fichero regular. El programa recibira dos parámetros por la línea de llamadas. El primero será el nombre del fichero a copiar (fichero origen) y el segundo será el nombre que queremos darle a la copia (fichero destino). El programa debe realizar la copia en bloques de 512B. Para ello se reservará un buffer de 512 bytes como almacenamiento intermedio. El programa debe ir leyendo bloques de 512 bytes del fichero origen y escribiendo los bytes leídos en el fichero destino. Debéis tener en cuenta que si el tamaño del fichero no es múltiplo de 512 bytes la última vez no se leerán 512 bytes, sino lo que quede hasta el final del fichero (es decir, read devolverá menos de 512). Por ello siempre se debe escribir en el fichero destino tantos bytes como se hayan leído del fichero origen (read devolverá el número de bytes leídos).</p>
 <p>El alumno debe consultar las páginas de manual de las siguientes llamadas al sistema: open, read, write y close. En la página de manual de open prestad especial atención a los flags de apertura, teniendo que usar en este caso O_RDONLY, O_WRONLY, O_CREAT, O_TRUNC.</p>
 <p>Para comprobar el efecto de O_TRUNC, se sugiere al alumno que antes de ejecutar su programa de copia, cree un fichero con cualquier contenido que se llame como el fichero destino. Después puede copiar otro fichero usando el nombre elegido para el fichero destino y comprobar que el contenido anterior desaparece al usarse el flag O_TRUNC.</p>
 <p>Para comprobar el funcionamiento correcto de nuestro programa podemos usar los comandos de shell diff y hexdump (este último para ficheros binarios).</p>
-<h1 data-number="2" id="enlaces-simbólicos."><span class="header-section-number">2</span> Enlaces simbólicos.</h1>
+<h1 id="enlaces-simbólicos."><span class="header-section-number">2</span> Enlaces simbólicos.</h1>
 <p>Lo primero que vamos a hacer en este ejercicio es crear un enlace simbólico a un fichero cualquiera usando el comando ln. Por ejemplo, si queremos crear un enlace que se llame mylink y que apunte al fichero ../ejercicio1/Makefile usaremos el siguiente comando del shell:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="fu">ln</span> -s ../ejercicio1/Makefile mylink</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="fu">ln</span> -s ../ejercicio1/Makefile mylink</a></code></pre></div>
 <p>Invocando <em>ls -l</em> podremos comprobar que el fichero creado es realmente un enlace simbólico y veremos el fichero apuntado:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>$ <span class="fu">ls</span> -l</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">...</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="ex">lrwxrwxrwx</span> 1 christian christian   22 Jul 14 13:23 mylink -<span class="op">&gt;</span> ../ejercicio1/Makefile</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="ex">...</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1">$ <span class="fu">ls</span> -l</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="ex">...</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="ex">lrwxrwxrwx</span> 1 christian christian   22 Jul 14 13:23 mylink -<span class="op">&gt;</span> ../ejercicio1/Makefile</a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="ex">...</span></a></code></pre></div>
 <p>Ahora usaremos nuestro programa de copia para copiar el enlace simbólico. Asumiendo que dicho programa es <em>../ejercicio1/copy</em>, ejecutamos:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="ex">../ejercicio1/copy</span> mylink mylinkcopy</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="ex">../ejercicio1/copy</span> mylink mylinkcopy</a></code></pre></div>
 <p>¿Qué tipo de fichero es mylinkcopy? ¿Cuál es el contenido del fichero mylinkcopy? Se pueden usar los comandos ls, stat, cat y diff para obtener las respuestas a estas preguntas.</p>
 <p>Es posible que este sea el comportamiento que deseemos, pero también es posible que no. ¿Y si queremos que la copia de un enlace simbólico sea otro enlace simbólico que apunte al mismo fichero que apuntaba el enlace simbólico original?</p>
 <p>Vamos a hacer una modificación de nuestro programa de copia del ejercicio anterior, que llamaremos copy2.c. Podemos empezar copiando el programa anterior para luego modificarlo. Haremos entonces una copia usando el comando cp:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="fu">cp</span> ../ejercicio1/copy.c copy2.c</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="fu">cp</span> ../ejercicio1/copy.c copy2.c</a></code></pre></div>
 <p>Después editaremos el fichero copy2.c de modo que: 1. Antes de hacer la copia identifique si el fichero origen es un fichero regular, un enlace simbólico u otro tipo de fichero, haciendo uso de la llamada al sistema lstat (consultar su página de manual).</p>
 <ol start="2" type="1">
 <li><p>Si el fichero origen es un fichero regular, haremos la copia como en el ejercicio anterior.</p></li>
 <li><p>En camnio, si el fichero origen es un enlace simbólico no tenemos que hacer la copia del fichero apuntado sino crear un enlace simbólico que apunte al mismo fichero al que apunta el fichero origen. Para ello tenemos que seguir los siguientes pasos:</p>
-<p>a Reservar memoria para hacer una copia de la ruta apuntada. Una llamada a lstat sobre el fichero origen nos permitirá conocer el número de bytes que ocupa el enlace simbólico, que se corresponde con el tamaño de esta ruta sin el carácter null (‘\0’) de final de cadena (consultar la página de manual de lstat). Por tanto sumaremos uno al tamaño obtenido de lstat.</p>
+<p>a Reservar memoria para hacer una copia de la ruta apuntada. Una llamada a lstat sobre el fichero origen nos permitirá conocer el número de bytes que ocupa el enlace simbólico, que se corresponde con el tamaño de esta ruta sin el carácter null (’\0’) de final de cadena (consultar la página de manual de lstat). Por tanto sumaremos uno al tamaño obtenido de lstat.</p>
 <p>b Copiar en este buffer la ruta del fichero apuntado haciendo uso de la llamada al sistema readlink. Deberemos añadir manualmente el caracter null de final de cadena.</p>
 <p>c Usar la llamada al sistema symlink para crear un nuevo enlace simbólico que apunte a esta ruta.</p>
 <p>Debéis consultar las páginas de manual de lstat, readlink y symlink.</p></li>
 <li><p>Si el fichero origen es de cualquier otro tipo (por ejemplo un directorio) mostrarán un mensaje de error y el programa terminará.</p></li>
 </ol>
-<h1 data-number="3" id="desplazamiento-del-marcador-de-posición-en-ficheros."><span class="header-section-number">3</span> Desplazamiento del marcador de posición en ficheros.</h1>
+<h1 id="desplazamiento-del-marcador-de-posición-en-ficheros."><span class="header-section-number">3</span> Desplazamiento del marcador de posición en ficheros.</h1>
 <p>En este ejercicio vamos a crear un programa mostrar.c similar al comando cat, que reciba como parámetro el nombre de un fichero y lo muestre por la salida estándar. En este caso asumiremos que es un fichero estándar. Además, nuestro programa recibirá dos argumentos que parsearemos con getopt (consultar su página de manual):</p>
 <ul>
 <li>-n N: indica que queremos saltarnos N bytes desde el comienzo del fichero o mostrar únicamente los N últimos bytes del fichero. Que se haga una cosa o la otra depende de la presencia o no de un segundo flag -e. Si el flag -n no aparece N tomará el valor 0.</li>
@@ -981,75 +979,75 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>El programa debe abrir el fichero indicado en la línea de comandos (consultar optind en la página de manual de getopt) y después situar el marcador de posición en la posición correcta antes de leer. Para ello haremos uso de la llamada al sistema lseek (consultar la página de manual). Si el usuario ha usado el flag -e debemos situar el marcador N bytes antes del final del fichero. Si el usuario ha usado el flag -e debemos avanzar el marcador N bytes desde el comienzo del fichero.</p>
 <p>Una vez situado el marcador de posición, debemos leer leer byte a byte hasta el final de fichero, escribiendo cada byte leído por la salida estándar (descriptor 1).</p>
-<h1 data-number="4" id="apertura-para-añadir."><span class="header-section-number">4</span> Apertura para añadir.</h1>
+<h1 id="apertura-para-añadir."><span class="header-section-number">4</span> Apertura para añadir.</h1>
 <p>En este ejercicio vamos a experimentar el efecto del flag O_APPEND en la apertura de un fichero. Lo primero que vamos a hacer es crear un fichero de texto con un contenido aleatorio llamado <em>fichero.txt</em>. Lo crearemos exáctamente con 134144 bytes usando el siguiente filtro de la shell:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>$ <span class="ex">base64</span> /dev/urandom <span class="kw">|</span> <span class="fu">head</span> -c 134144 <span class="op">&gt;</span> fichero.txt</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="ex">base64</span> /dev/urandom <span class="kw">|</span> <span class="fu">head</span> -c 134144 <span class="op">&gt;</span> fichero.txt</a></code></pre></div>
 <p>A continuación crearemos un programa progA.c en el mismo directorio, lo compilaremos y lo ejecutaremos:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="co">//progA.c</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;sys/types.h&gt;</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;sys/stat.h&gt;</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;fcntl.h&gt;</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a><span class="dt">int</span> main(<span class="dt">void</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true"></a>{</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true"></a>    <span class="dt">int</span> i;</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true"></a>    <span class="dt">int</span> fd = open(<span class="st">&quot;fichero.txt&quot;</span>, O_RDONLY);</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true"></a>    <span class="cf">if</span> (fd == -<span class="dv">1</span>) {</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true"></a>        <span class="cf">return</span> -<span class="dv">1</span>;</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true"></a>    }</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true"></a>    i = lseek( fd, <span class="dv">0</span>, SEEK_END );</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true"></a>    printf(<span class="st">&quot;%d</span><span class="sc">\n</span><span class="st">&quot;</span>, i);</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true"></a></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb6-1" title="1"><span class="co">//progA.c</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="pp">#include </span><span class="im">&lt;sys/types.h&gt;</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="pp">#include </span><span class="im">&lt;sys/stat.h&gt;</span></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="pp">#include </span><span class="im">&lt;fcntl.h&gt;</span></a>
+<a class="sourceLine" id="cb6-7" title="7"></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="dt">int</span> main(<span class="dt">void</span>)</a>
+<a class="sourceLine" id="cb6-9" title="9">{</a>
+<a class="sourceLine" id="cb6-10" title="10">    <span class="dt">int</span> i;</a>
+<a class="sourceLine" id="cb6-11" title="11">    <span class="dt">int</span> fd = open(<span class="st">&quot;fichero.txt&quot;</span>, O_RDONLY);</a>
+<a class="sourceLine" id="cb6-12" title="12"></a>
+<a class="sourceLine" id="cb6-13" title="13">    <span class="cf">if</span> (fd == <span class="dv">-1</span>) {</a>
+<a class="sourceLine" id="cb6-14" title="14">        <span class="cf">return</span> <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb6-15" title="15">    }</a>
+<a class="sourceLine" id="cb6-16" title="16"></a>
+<a class="sourceLine" id="cb6-17" title="17">    i = lseek( fd, <span class="dv">0</span>, SEEK_END );</a>
+<a class="sourceLine" id="cb6-18" title="18">    printf(<span class="st">&quot;%d</span><span class="sc">\n</span><span class="st">&quot;</span>, i);</a>
+<a class="sourceLine" id="cb6-19" title="19"></a>
+<a class="sourceLine" id="cb6-20" title="20">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb6-21" title="21">}</a></code></pre></div>
 <p>¿Qué muestra este programa por la salida estándar? Consulta la página de manual de lseek para comprobar el valor que devuelve.</p>
 <p>A continuación crearemos otro programa progB.c en el mismo directorio, lo compilaremos y lo ejecutaremos:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="co">//progB.c</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;sys/types.h&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;sys/stat.h&gt;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;fcntl.h&gt;</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="dt">int</span> main(<span class="dt">void</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a>{</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a>    <span class="dt">char</span> c = <span class="ch">&#39;a&#39;</span>;</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a>    <span class="dt">int</span> fd = open(<span class="st">&quot;fichero.txt&quot;</span>, O_WRONLY | O_CREAT | O_APPEND);</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a>    <span class="cf">if</span> (fd == -<span class="dv">1</span>) {</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a>        <span class="cf">return</span> -<span class="dv">1</span>;</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a>    }</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true"></a>    lseek(fd, <span class="dv">1024</span>, SEEK_CUR);</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true"></a>    write(fd, &amp;c, <span class="dv">1</span>);</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb7-1" title="1"><span class="co">//progB.c</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="pp">#include </span><span class="im">&lt;sys/types.h&gt;</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="pp">#include </span><span class="im">&lt;sys/stat.h&gt;</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="pp">#include </span><span class="im">&lt;fcntl.h&gt;</span></a>
+<a class="sourceLine" id="cb7-6" title="6"></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="dt">int</span> main(<span class="dt">void</span>)</a>
+<a class="sourceLine" id="cb7-8" title="8">{</a>
+<a class="sourceLine" id="cb7-9" title="9">    <span class="dt">char</span> c = <span class="ch">&#39;a&#39;</span>;</a>
+<a class="sourceLine" id="cb7-10" title="10">    <span class="dt">int</span> fd = open(<span class="st">&quot;fichero.txt&quot;</span>, O_WRONLY | O_CREAT | O_APPEND);</a>
+<a class="sourceLine" id="cb7-11" title="11">    <span class="cf">if</span> (fd == <span class="dv">-1</span>) {</a>
+<a class="sourceLine" id="cb7-12" title="12">        <span class="cf">return</span> <span class="dv">-1</span>;</a>
+<a class="sourceLine" id="cb7-13" title="13">    }</a>
+<a class="sourceLine" id="cb7-14" title="14"></a>
+<a class="sourceLine" id="cb7-15" title="15">    lseek(fd, <span class="dv">1024</span>, SEEK_CUR);</a>
+<a class="sourceLine" id="cb7-16" title="16">    write(fd, &amp;c, <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb7-17" title="17"></a>
+<a class="sourceLine" id="cb7-18" title="18">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb7-19" title="19">}</a></code></pre></div>
 <p>¿Qué hace este programa? Puedes usar ls y diff para comprobar los cambios sobre <em>fichero.txt</em>. ¿Tiene algún efecto la llamada a lseek del programa progB.c?</p>
 <p>Modifica ahora el programa progB.c eliminando el flag de apertura O_APPEND. ¿Cuál es la diferencia? ¿Tiene ahora algún efecto el flag O_APPEND?</p>
 <p>El flag O_APPEND garantiza que la operación de escritura y el desplazamiento del marcador al final del fichero son atómicas de forma global en el sistema, es decir, que si dos procesos están escribiendo al mismo tiempo en un fichero que han abierto con O_APPEND siempre añadirán información al final del fichero, independientemente del orden en el que se hagan las escrituras.</p>
-<h1 data-number="5" id="recorrido-de-directorios."><span class="header-section-number">5</span> Recorrido de directorios.</h1>
+<h1 id="recorrido-de-directorios."><span class="header-section-number">5</span> Recorrido de directorios.</h1>
 <p>En este ejercicio vamos a crear un programa que reciba una lista de nombres de fichero como parámtros de la llamada, y calculará para cada uno el número total de kilobytes reservados por el sistema para almacenar dicho fichero. En caso de que alguno de los ficheros procesados sean de tipo directorio, se sumarán también los kilobytes ocupados por los ficheros contenidos el directorio (notar que esto es recursivo, porque un directorio puede contener otros directorios).</p>
 <p>Para conocer el número de kilobytes reservados por el sistema para almacenar un fichero podemos hacer uso de la llamada a lstat, que nos permite saber el número de bloques de 512 bytes reservados por el sistema.</p>
 <p>Para identificar si un fichero es un directorio deberemos hacer una llamada a lstat y consultar el campo st_mode (consultar la página de manual de lstat).</p>
 <p>Para recorrer un directorio, primero deberemos abrirlo usando la función de biblioteca <em>opendir</em> y luego leer sus entradas usando la función de biblioteca <em>readdir</em>. Consultar las páginas de manual de estas dos funciones. Notar que las entradas de un directorio no tienen un orden establecido y que todo directorio tiene dos entradas “.” y “..”, que deberemos ignorar si no queremos tener una recursión infinita.</p>
 <p>El programa debe mostrar por la salida estándar una línea por fichero de la línea de comandos, con el tamaño total en kilobytes del fichero y el nombre de dicho fichero. Para comprobar si nuestro programa funciona correctamente podemos comparar su salida con la del comando <em>du -ks</em>, pasando a este comando la misma lista de ficheros que al nuestro. Notar que se pueden usar los comodines del shell.</p>
 <p>Ejemplo de uso:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>$ <span class="fu">ls</span> -l .</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="ex">total</span> 40</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="ex">-rwxr-xr-x</span> 1 christian christian 20416 Jul 15 12:41 espacio</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a><span class="ex">-rw-r--r--</span> 1 christian christian  1639 Jul 15 12:41 espacio.c</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="ex">-rw-r--r--</span> 1 christian christian  9056 Jul 15 12:41 espacio.o</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a><span class="ex">-rw-r--r--</span> 1 christian christian   273 Jul 15 09:54 Makefile</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>$ <span class="ex">./espacio</span> .</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a><span class="ex">44K</span> .</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a>$ <span class="ex">./espacio</span> *</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a><span class="ex">20K</span> espacio</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true"></a><span class="ex">4K</span>  espacio.c</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true"></a><span class="ex">12K</span> espacio.o</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true"></a><span class="ex">4K</span>  Makefile</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1">$ <span class="fu">ls</span> -l .</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="ex">total</span> 40</a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="ex">-rwxr-xr-x</span> 1 christian christian 20416 Jul 15 12:41 espacio</a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="ex">-rw-r--r--</span> 1 christian christian  1639 Jul 15 12:41 espacio.c</a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="ex">-rw-r--r--</span> 1 christian christian  9056 Jul 15 12:41 espacio.o</a>
+<a class="sourceLine" id="cb8-6" title="6"><span class="ex">-rw-r--r--</span> 1 christian christian   273 Jul 15 09:54 Makefile</a>
+<a class="sourceLine" id="cb8-7" title="7">$ <span class="ex">./espacio</span> .</a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="ex">44K</span> .</a>
+<a class="sourceLine" id="cb8-9" title="9">$ <span class="ex">./espacio</span> *</a>
+<a class="sourceLine" id="cb8-10" title="10"><span class="ex">20K</span> espacio</a>
+<a class="sourceLine" id="cb8-11" title="11"><span class="ex">4K</span>  espacio.c</a>
+<a class="sourceLine" id="cb8-12" title="12"><span class="ex">12K</span> espacio.o</a>
+<a class="sourceLine" id="cb8-13" title="13"><span class="ex">4K</span>  Makefile</a></code></pre></div>
         </div>
       </div>
     </div>
