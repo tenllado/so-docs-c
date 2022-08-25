@@ -1,5 +1,6 @@
 #!/bin/bash
-documents=('../entorno.md entorno' \
+documents=('../index.md index' \
+	'../entorno.md entorno' \
 	'../intro-c.md intro-sistemas' \
     '../api_ficheros_directorios.md api-ficheros-directorios' \
     '../api_procesos_hilos.md api-procesos-hilos')
@@ -34,8 +35,10 @@ do
 
 	echo "${source_file} --> ${target_file1}"
 	pandoc ${source_file} -N --self-contained  --template pandoc-templates/toc-sidebarL-title.html-template.html --toc --highlight-style tango  -o ${target_file1}
-	echo "${source_file} --> ${target_file2}"
-	pandoc ${source_file} -N --toc --highlight-style tango -o ${target_file2}
+	if [ ${source_file} != '../index.md' ]; then
+		echo "${source_file} --> ${target_file2}"
+		pandoc ${source_file} -N --toc --highlight-style tango -o ${target_file2}
+	fi
 done
 
 
