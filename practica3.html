@@ -932,14 +932,22 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
           </ul>-->
           <ul>
-          <li><a href="#sincronización-de-hilos-de-un-proceso"><span class="toc-section-number">1</span> Sincronización de hilos de un proceso</a></li>
-          <li><a href="#sincronización-de-hilos-de-distintos-procesos"><span class="toc-section-number">2</span> Sincronización de hilos de distintos procesos</a></li>
+          <li><a href="#introducción-y-objetivos"><span class="toc-section-number">1</span> Introducción y Objetivos</a></li>
+          <li><a href="#sincronización-de-hilos-de-un-proceso"><span class="toc-section-number">2</span> Sincronización de hilos de un proceso</a></li>
+          <li><a href="#sincronización-y-comunicación-de-hilos-de-distintos-procesos"><span class="toc-section-number">3</span> Sincronización y comunicación de hilos de distintos procesos</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         
-<p>En esta práctica vamos a hacer dos ejercicios, uno para la sincronización de hilos de un mismo proceso y otro para la sincronización hilos que pertenezcan a distintos procesos (sincronización de procesos).</p>
-<h1 data-number="1" id="sincronización-de-hilos-de-un-proceso"><span class="header-section-number">1</span> Sincronización de hilos de un proceso</h1>
+<h1 data-number="1" id="introducción-y-objetivos"><span class="header-section-number">1</span> Introducción y Objetivos</h1>
+<p>El objetivo de esta práctica es afianzar nuestro conocimiento de los mecanismos de sincronización de hilos y procesos que ofrece un sistema POSIX y sus esquemas de uso. En la práctica haremos uso de: mutex, variables de condición, semáforos y objetos de memoria compartida POSIX.</p>
+<p>La práctica está organizada en dos partes:</p>
+<ul>
+<li>Sincronización de hilos de un proceso</li>
+<li>Sincronización y comunicación de hilos de distintos procesos</li>
+</ul>
+<p>En cada una de estas partes el alumno deberá desarrollar uno o más programas que modelen un problema de comunicación y sincronización de la vida real. Los entes a comunicar serán modelados en cada caso como hilos o procesos y se deberán utilizar los mecanismos adecuados para que estos entes puedan compartir datos (comunicación) y coordinar su ejecución y acceso a los datos (sincronización). Se aconseja al alumno que desarrolle cada apartado en un directorio diferente.</p>
+<h1 data-number="2" id="sincronización-de-hilos-de-un-proceso"><span class="header-section-number">2</span> Sincronización de hilos de un proceso</h1>
 <p>Se desea diseñar el sistema de control del aforo de una discoteca en la que el número máximo de clientes que pueden estar dentro en un momento dado (aforo) es N. Además, hay dos tipos de clientes: los vip y los normales. Las reglas que debe cumplir el sistema son las siguientes:</p>
 <ul>
 <li><p>Si el aforo está completo los nuevos clientes deberán eseperar a que salga algún cliente de la discoteca para poder entrar.</p></li>
@@ -980,7 +988,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 0
 1</code></pre>
 <p>El fichero puede parsearse fácilmente utilizando la función de la biblioteca estándar de C <em>fscanf</em>, consultar su página de manual.</p>
-<h1 data-number="2" id="sincronización-de-hilos-de-distintos-procesos"><span class="header-section-number">2</span> Sincronización de hilos de distintos procesos</h1>
+<h1 data-number="3" id="sincronización-y-comunicación-de-hilos-de-distintos-procesos"><span class="header-section-number">3</span> Sincronización y comunicación de hilos de distintos procesos</h1>
 <p>Este ejercico consiste en resolver el problema de la tribu de salvajes de la hoja de problemas de la asignatura, usando distintos procesos en lugar de hilos de un mismo proceso para simular cada uno de los salvajes y el cocinero. El enunciado del problema clásico es como sigue:</p>
 <p>Una tribu de salvajes se sirven comida de un caldero con <em>M</em> raciones de estofado de misionero. Cuando un salvaje desea comer, se sirve una ración del caldero a menos que esté vacío. Si está vacío deberá avisar al cocinero para que reponga otras <em>M</em> raciones de estofado, y entonces se podrá servir su ración. Un cocinero y número arbitrario de salvajes se comportan del siguiente modo:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="co">//Cocinero:</span></span>
