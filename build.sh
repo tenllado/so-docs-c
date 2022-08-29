@@ -3,7 +3,8 @@ documents=('../index.md index' \
 	'../entorno.md entorno' \
 	'../intro-c.md intro-sistemas' \
     '../api_ficheros_directorios.md api-ficheros-directorios' \
-    '../api_procesos_hilos.md api-procesos-hilos')
+    '../api_procesos_hilos.md api-procesos-hilos' \
+    '../sincronizacion.md sincronizacion')
 
 ndocs=${#documents[@]}
 
