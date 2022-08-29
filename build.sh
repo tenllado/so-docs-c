@@ -1,10 +1,9 @@
 #!/bin/bash
 documents=('../index.md index' \
 	'../entorno.md entorno' \
-	'../intro-c.md intro-sistemas' \
-    '../api_ficheros_directorios.md api-ficheros-directorios' \
-    '../api_procesos_hilos.md api-procesos-hilos' \
-    '../sincronizacion.md sincronizacion')
+	'../practica1.md practica1' \
+    '../practica2.md practica2' \
+    '../practica3.md practica3')
 
 ndocs=${#documents[@]}
 
