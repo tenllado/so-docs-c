@@ -957,7 +957,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="1.1" id="objetivos"><span class="header-section-number">1.1</span> Objetivos</h2>
 <ul>
 <li><p>Familiarizarse con el entorno de desarrollo de aplicaciones C en GNU/Linux, y comprender los conceptos de proyecto y ejecutable en este contexto.</p></li>
-<li><p>Familiarizarse con el manejo básico del shell y aprender a desarrollar <em>shell scripts</em> sencillos</p></li>
+<li><p>Familiarizarse con el manejo básico del shell y aprender a desarrollar <em>shell scripts</em> sencillos.</p></li>
 </ul>
 <h2 data-number="1.2" id="requisitos"><span class="header-section-number">1.2</span> Requisitos</h2>
 <p>Para poder realizar con éxito la práctica el alumno debe haber leído y comprendido los siguientes documentos facilitados por el profesor:</p>
@@ -969,7 +969,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <h1 data-number="2" id="ejercicios"><span class="header-section-number">2</span> Ejercicios</h1>
 <h2 class="unnumbered" data-number id="ejercicio-1">Ejercicio 1</h2>
-<p>Analizar el código del programa <code>show_file.c</code>, que lee byte a byte el contenido de un fichero, cuyo nombre se pasa como parámetro, y lo muestra por pantalla usando funciones de la biblioteca estandar de “C”. Responda a las siguientes preguntas:</p>
+<p>Analizar el código del programa <code>show_file.c</code>, que lee byte a byte el contenido de un fichero, cuyo nombre se pasa como parámetro, y lo muestra por pantalla usando funciones de la biblioteca estándar de “C”. Responda a las siguientes preguntas:</p>
 <ul>
 <li>¿Qué comando se debe emplear para generar el ejecutable del programa (<code>show_file</code>) invocando directamente al compilador <code>gcc</code> (sin usar <code>make</code>)?</li>
 <li>Indique dos comandos para llevar a cabo respectivamente la compilación del programa (generación de fichero objeto) y el enlazado del mismo de forma independiente.</li>
@@ -1074,7 +1074,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li>La función <code>getopt()</code> se usa en combinación con un bucle, que invoca tantas veces la función como opciones ha pasado el usuario en la línea de comandos. Cada vez que la función se invoca y encuentra una opción, <code>getopt()</code> retorna el caracter correspondiente a dicha opción. Por lo tanto, dentro del bucle suele emplearse la construcción <em>switch-case</em> de C para llevar a cabo el procesamiento de las distintas opciones.</li>
 <li>Un aspecto particular de la función <code>getopt()</code> es que establece el valor de distintas variables globales tras invocarse, siendo las más relevantes las siguientes:
 <ul>
-<li><code>char* optarg</code>: almacena el argumento pasado a la opción actual reconocida, si está acepta argumentos. Si la opción no incluye un argumento, entonces <code>optarg</code> se establece a <code>NULL</code></li>
+<li><code>char* optarg</code>: almacena el argumento pasado a la opción actual reconocida, si ésta acepta argumentos. Si la opción no incluye un argumento, entonces <code>optarg</code> se establece a <code>NULL</code></li>
 <li><code>int optind</code>: representa el índice del siguiente elemento en el <code>argv</code> (elementos que quedan sin procesar). Se usa frecuentemente para procesar argumentos adicionales del programa que no están asociados a ninguna opción. Un ejemplo de ello es la lista de registros de estudiantes que ha de procesarse en el programa a desarrollar en el siguiente ejercicio.</li>
 </ul></li>
 </ol></li>
