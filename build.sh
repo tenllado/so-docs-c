@@ -1,6 +1,7 @@
 #!/bin/bash
 documents=('../index.md index' \
 	'../entorno.md entorno' \
+	'../make.md make' \
 	'../practica1.md practica1' \
     '../practica2.md practica2' \
     '../practica3.md practica3')
