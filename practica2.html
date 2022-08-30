@@ -938,8 +938,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <li><a href="#ejercicio-1-copia-de-ficheros-regulares">Ejercicio 1: Copia de ficheros regulares</a></li>
           <li><a href="#ejercicio-2-enlaces-simbólicos.">Ejercicio 2: Enlaces simbólicos.</a></li>
           <li><a href="#ejercicio-3-desplazamiento-del-marcador-de-posición-en-ficheros.">Ejercicio 3: Desplazamiento del marcador de posición en ficheros.</a></li>
-          <li><a href="#ejercicio-4-apertura-para-añadir.">Ejercicio 4: Apertura para añadir.</a></li>
-          <li><a href="#ejercicio-5-recorrido-de-directorios.">Ejercicio 5: Recorrido de directorios.</a></li>
+          <li><a href="#ejercicio-4-recorrido-de-directorios.">Ejercicio 4: Recorrido de directorios.</a></li>
           </ul></li>
           <li><a href="#api-de-procesos-e-hilos"><span class="toc-section-number">3</span> API de procesos e hilos</a>
           <ul>
@@ -1001,75 +1000,26 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>El programa debe abrir el fichero indicado en la línea de comandos (consultar optind en la página de manual de getopt) y después situar el marcador de posición en la posición correcta antes de leer. Para ello haremos uso de la llamada al sistema lseek (consultar la página de manual). Si el usuario ha usado el flag -e debemos situar el marcador N bytes antes del final del fichero. Si el usuario ha usado el flag -e debemos avanzar el marcador N bytes desde el comienzo del fichero.</p>
 <p>Una vez situado el marcador de posición, debemos leer leer byte a byte hasta el final de fichero, escribiendo cada byte leído por la salida estándar (descriptor 1).</p>
-<h2 class="unnumbered" data-number id="ejercicio-4-apertura-para-añadir.">Ejercicio 4: Apertura para añadir.</h2>
-<p>En este ejercicio vamos a experimentar el efecto del flag O_APPEND en la apertura de un fichero. Lo primero que vamos a hacer es crear un fichero de texto con un contenido aleatorio llamado <em>fichero.txt</em>. Lo crearemos exáctamente con 134144 bytes usando el siguiente filtro de la shell:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>$ <span class="ex">base64</span> /dev/urandom <span class="kw">|</span> <span class="fu">head</span> -c 134144 <span class="op">&gt;</span> fichero.txt</span></code></pre></div>
-<p>A continuación crearemos un programa progA.c en el mismo directorio, lo compilaremos y lo ejecutaremos:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="co">//progA.c</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;sys/types.h&gt;</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;sys/stat.h&gt;</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;fcntl.h&gt;</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a><span class="dt">int</span> main(<span class="dt">void</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true"></a>{</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true"></a>    <span class="dt">int</span> i;</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true"></a>    <span class="dt">int</span> fd = open(<span class="st">&quot;fichero.txt&quot;</span>, O_RDONLY);</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true"></a>    <span class="cf">if</span> (fd == -<span class="dv">1</span>) {</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true"></a>        <span class="cf">return</span> -<span class="dv">1</span>;</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true"></a>    }</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true"></a>    i = lseek( fd, <span class="dv">0</span>, SEEK_END );</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true"></a>    printf(<span class="st">&quot;%d</span><span class="sc">\n</span><span class="st">&quot;</span>, i);</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true"></a></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true"></a>}</span></code></pre></div>
-<p>¿Qué muestra este programa por la salida estándar? Consulta la página de manual de lseek para comprobar el valor que devuelve.</p>
-<p>A continuación crearemos otro programa progB.c en el mismo directorio, lo compilaremos y lo ejecutaremos:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="co">//progB.c</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;unistd.h&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;sys/types.h&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;sys/stat.h&gt;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;fcntl.h&gt;</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a><span class="dt">int</span> main(<span class="dt">void</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a>{</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a>    <span class="dt">char</span> c = <span class="ch">&#39;a&#39;</span>;</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a>    <span class="dt">int</span> fd = open(<span class="st">&quot;fichero.txt&quot;</span>, O_WRONLY | O_CREAT | O_APPEND);</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a>    <span class="cf">if</span> (fd == -<span class="dv">1</span>) {</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a>        <span class="cf">return</span> -<span class="dv">1</span>;</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a>    }</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true"></a>    lseek(fd, <span class="dv">1024</span>, SEEK_CUR);</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true"></a>    write(fd, &amp;c, <span class="dv">1</span>);</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true"></a>}</span></code></pre></div>
-<p>¿Qué hace este programa? Puedes usar ls y diff para comprobar los cambios sobre <em>fichero.txt</em>. ¿Tiene algún efecto la llamada a lseek del programa progB.c?</p>
-<p>Modifica ahora el programa progB.c eliminando el flag de apertura O_APPEND. ¿Cuál es la diferencia? ¿Tiene ahora algún efecto el flag O_APPEND?</p>
-<p>El flag O_APPEND garantiza que la operación de escritura y el desplazamiento del marcador al final del fichero son atómicas de forma global en el sistema, es decir, que si dos procesos están escribiendo al mismo tiempo en un fichero que han abierto con O_APPEND siempre añadirán información al final del fichero, independientemente del orden en el que se hagan las escrituras.</p>
-<h2 class="unnumbered" data-number id="ejercicio-5-recorrido-de-directorios.">Ejercicio 5: Recorrido de directorios.</h2>
+<h2 class="unnumbered" data-number id="ejercicio-4-recorrido-de-directorios.">Ejercicio 4: Recorrido de directorios.</h2>
 <p>En este ejercicio vamos a crear un programa que reciba una lista de nombres de fichero como parámtros de la llamada, y calculará para cada uno el número total de kilobytes reservados por el sistema para almacenar dicho fichero. En caso de que alguno de los ficheros procesados sean de tipo directorio, se sumarán también los kilobytes ocupados por los ficheros contenidos el directorio (notar que esto es recursivo, porque un directorio puede contener otros directorios).</p>
 <p>Para conocer el número de kilobytes reservados por el sistema para almacenar un fichero podemos hacer uso de la llamada a lstat, que nos permite saber el número de bloques de 512 bytes reservados por el sistema.</p>
 <p>Para identificar si un fichero es un directorio deberemos hacer una llamada a lstat y consultar el campo st_mode (consultar la página de manual de lstat).</p>
 <p>Para recorrer un directorio, primero deberemos abrirlo usando la función de biblioteca <em>opendir</em> y luego leer sus entradas usando la función de biblioteca <em>readdir</em>. Consultar las páginas de manual de estas dos funciones. Notar que las entradas de un directorio no tienen un orden establecido y que todo directorio tiene dos entradas “.” y “..”, que deberemos ignorar si no queremos tener una recursión infinita.</p>
 <p>El programa debe mostrar por la salida estándar una línea por fichero de la línea de comandos, con el tamaño total en kilobytes del fichero y el nombre de dicho fichero. Para comprobar si nuestro programa funciona correctamente podemos comparar su salida con la del comando <em>du -ks</em>, pasando a este comando la misma lista de ficheros que al nuestro. Notar que se pueden usar los comodines del shell.</p>
 <p>Ejemplo de uso:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>$ <span class="fu">ls</span> -l .</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="ex">total</span> 40</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="ex">-rwxr-xr-x</span> 1 christian christian 20416 Jul 15 12:41 espacio</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a><span class="ex">-rw-r--r--</span> 1 christian christian  1639 Jul 15 12:41 espacio.c</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="ex">-rw-r--r--</span> 1 christian christian  9056 Jul 15 12:41 espacio.o</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a><span class="ex">-rw-r--r--</span> 1 christian christian   273 Jul 15 09:54 Makefile</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>$ <span class="ex">./espacio</span> .</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a><span class="ex">44K</span> .</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a>$ <span class="ex">./espacio</span> *</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a><span class="ex">20K</span> espacio</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true"></a><span class="ex">4K</span>  espacio.c</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true"></a><span class="ex">12K</span> espacio.o</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true"></a><span class="ex">4K</span>  Makefile</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>$ <span class="fu">ls</span> -l .</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="ex">total</span> 40</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a><span class="ex">-rwxr-xr-x</span> 1 christian christian 20416 Jul 15 12:41 espacio</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="ex">-rw-r--r--</span> 1 christian christian  1639 Jul 15 12:41 espacio.c</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="ex">-rw-r--r--</span> 1 christian christian  9056 Jul 15 12:41 espacio.o</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a><span class="ex">-rw-r--r--</span> 1 christian christian   273 Jul 15 09:54 Makefile</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a>$ <span class="ex">./espacio</span> .</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true"></a><span class="ex">44K</span> .</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true"></a>$ <span class="ex">./espacio</span> *</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true"></a><span class="ex">20K</span> espacio</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true"></a><span class="ex">4K</span>  espacio.c</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true"></a><span class="ex">12K</span> espacio.o</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true"></a><span class="ex">4K</span>  Makefile</span></code></pre></div>
 <h1 data-number="3" id="api-de-procesos-e-hilos"><span class="header-section-number">3</span> API de procesos e hilos</h1>
 <p>En esta parte de la práctica trabajaremos las llamadas al sistema: fork, exec, wait, waitpid, getpid, getppid, sigaction, alarm, kill. Además, usaremos las funciones de la biblioteca de pthreads: pthread_create, pthread_join, pthread_self.</p>
 <h2 class="unnumbered" data-number id="ejercicio-1-creación-de-procesos">Ejercicio 1: Creación de procesos</h2>
