@@ -997,7 +997,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Este ejercico consiste en resolver el problema de la tribu de salvajes de la hoja de problemas de la asignatura, usando distintos procesos en lugar de hilos de un mismo proceso para simular cada uno de los salvajes y el cocinero. El enunciado del problema clásico es como sigue:</p>
 <p>Una tribu de salvajes se sirven comida de un caldero con <em>M</em> raciones de estofado de misionero. Cuando un salvaje desea comer, se sirve una ración del caldero a menos que esté vacío. Si está vacío deberá avisar al cocinero para que reponga otras <em>M</em> raciones de estofado, y entonces se podrá servir su ración. Un cocinero y número arbitrario de salvajes se comportan del siguiente modo:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="co">//Cocinero:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="cf">while</span> (not finished){</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="cf">while</span> (!finish) {</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>  putServingsInPot()</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>}</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a></span>
