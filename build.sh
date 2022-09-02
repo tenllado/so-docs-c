@@ -4,7 +4,8 @@ documents=('../index.md index' \
 	'../make.md make' \
 	'../practica1.md practica1' \
     '../practica2.md practica2' \
-    '../practica3.md practica3')
+    '../practica3.md practica3' \
+    '../practica4.md practica4')	
 
 ndocs=${#documents[@]}
 
@@ -35,7 +36,7 @@ do
 	fi
 
 	echo "${source_file} --> ${target_file1}"
-	pandoc ${source_file} -N --self-contained  --template pandoc-templates/toc-sidebarL-title.html-template.html --toc --highlight-style tango  -o ${target_file1}
+	pandoc ${source_file} -N --self-contained  --template pandoc-templates/idocs3.html-template.html --toc --highlight-style tango  -o ${target_file1}
 	if [ ${source_file} != '../index.md' ]; then
 		echo "${source_file} --> ${target_file2}"
 		pandoc ${source_file} -N --toc --highlight-style tango -o ${target_file2}
