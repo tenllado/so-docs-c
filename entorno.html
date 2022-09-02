@@ -832,27 +832,26 @@ font-size: 12px
     <style type="text/css">code{white-space: pre;}</style>
     <style type="text/css">.sidebar ul{padding-left: 10px;}</style>
     <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -861,9 +860,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  background-color: #f8f8f8; }
+  { background-color: #f8f8f8; }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -935,13 +934,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <ul>
           <li><a href="#introducción"><span class="toc-section-number">1</span> Introducción</a></li>
           <li><a href="#primeros-pasos"><span class="toc-section-number">2</span> Primeros pasos</a></li>
-          <li><a href="#compilación-de-proyectos-en-linux"><span class="toc-section-number">3</span> Compilación de proyectos en Linux</a>
-          <ul>
+          <li><a href="#compilación-de-proyectos-en-linux"><span class="toc-section-number">3</span> Compilación de proyectos en Linux</a><ul>
           <li><a href="#compilador-gcc"><span class="toc-section-number">3.1</span> Compilador GCC</a></li>
           <li><a href="#gnu-make"><span class="toc-section-number">3.2</span> GNU Make</a></li>
           </ul></li>
-          <li><a href="#sec:depuracion"><span class="toc-section-number">4</span> Depuración</a>
-          <ul>
+          <li><a href="#sec:depuracion"><span class="toc-section-number">4</span> Depuración</a><ul>
           <li><a href="#primeros-pasos-con-gdb"><span class="toc-section-number">4.1</span> Primeros pasos con <code>gdb</code></a></li>
           <li><a href="#depuración-de-un-programa-de-ejemplo"><span class="toc-section-number">4.2</span> Depuración de un programa de ejemplo</a></li>
           <li><a href="#depuración-de-un-proceso-existente"><span class="toc-section-number">4.3</span> Depuración de un proceso existente</a></li>
@@ -949,8 +946,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           <li><a href="#otras-ordenes-útiles-de-gdb"><span class="toc-section-number">4.5</span> Otras ordenes útiles de gdb</a></li>
           </ul></li>
           <li><a href="#sec:man"><span class="toc-section-number">5</span> Páginas de manual</a></li>
-          <li><a href="#biblioteca-estándar-de-c"><span class="toc-section-number">6</span> Biblioteca estándar de C</a>
-          <ul>
+          <li><a href="#biblioteca-estándar-de-c"><span class="toc-section-number">6</span> Biblioteca estándar de C</a><ul>
           <li><a href="#subsec:libc-heap"><span class="toc-section-number">6.1</span> Gestión del Heap</a></li>
           <li><a href="#subsec:libc-printf"><span class="toc-section-number">6.2</span> Funciones de E/S estándar</a></li>
           <li><a href="#subsec:libc-ficheros"><span class="toc-section-number">6.3</span> Funciones de E/S sobre ficheros</a></li>
@@ -960,38 +956,39 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         
-<h1 data-number="1" id="introducción"><span class="header-section-number">1</span> Introducción</h1>
+<h1 id="introducción"><span class="header-section-number">1</span> Introducción</h1>
 <p>Uno de los objetivos de la asignatura <em>Sistemas Operativos</em> es profundizar en el conocimiento del comportamiento básico del sistema operativo LINUX ejercitando para ello los servicios que el <em>kernel</em> ofrece a través de la interfaz de las llamadas al sistema relacionadas con sus principales áreas de gestión: ficheros y directorios, procesos, memoria, señales y tiempo, y mecanismos de sincronización y comunicación.</p>
 <p>Instrumentalmente necesitaremos emplear el lenguaje C desde el cual invocar las llamadas, y también necesitaremos disponer de un entorno de desarrollo que nos permita codificar programas de prueba de tamaño pequeño o mediano, así como asistir en la creación de proyectos formados por uno o varios ficheros fuente, con su correspondiente compilación y enlace hasta obtener un fichero ejecutable. Emplearemos además utilidades para ayudar a depurar los programas en ejecución, analizar el comportamiento de la ejecución y extraer información de los ficheros generados.</p>
 <p>Existen disponibles entornos de desarrollo gráficos llamados genéricamente IDEs. En el laboratorio y en la máquina virtual de la asignatura está instalado VSCode pero en este manual hemos optado por explicar individualmente las herramientas de desarrollo desde terminales de texto por un doble motivo. Primero, hacer consciente al alumno de los distintos pasos que se requieren en la preparación, construcción y ejecución de un proyecto de programación. En segundo lugar, deseamos prescindir de las necesidades administrativas de configuración que el IDE demanda.</p>
 <p>Esencialmente las herramientas de desarrollo necesarias para generar y probar proyectos escritos en lenguaje C en el contexto de esta asignatura son un editor de texto –como <code>gedit</code> o el proporcionado por Visual Studio Code–, un compilador de C –como <code>gcc</code>–, la herramienta GNU <code>make</code>, y un depurador con soporte de C –como <code>gdb</code>–.</p>
-<h1 data-number="2" id="primeros-pasos"><span class="header-section-number">2</span> Primeros pasos</h1>
-<p>Lo mínimo que necesitaremos para empezar a trabajar es arrancar el puesto de ordenador con el sistema operativo GNU/Linux<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> y abrir una ventana de terminal. De esta manera entramos a relacionarnos con GNU/Linux mediante el intérprete de órdenes (<em>shell</em>) asociado al terminal; se trata de un programa (generalmente corresponde a <code>/bin/bash</code>), que se encarga de solicitar líneas de órdenes al usuario y las manda ejecutar de modo interactivo tras un procesamiento previo que distingue entre órdenes locales, órdenes externas, variables, estructuras de programación y otras directivas.</p>
-<p>Vamos a preparar un sencillo programa en C, a compilarlo, enlazarlo y ejecutarlo. No explicaremos las características del lenguaje C; en la carpeta “Material Adicional” del Campus Virtual el alumno dispone de breves introducciones, enlaces a tutoriales y referencias bibliográficas sobre el lenguaje C, que se deberán consultar y estudiar para obtener un nivel medio de conocimiento que permita elaborar los programas propuestos para ejercitar el uso de la API del sistema objetivo de la asignatura.</p>
-<p>El alumno debe elegir un editor de los propuestos clase o algún otro de su preferencia; supondremos que el elegido es <code>gedit</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Desde el terminal tecleamos:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="ex">gedit</span> greetings.c <span class="kw">&amp;</span></span></code></pre></div>
+<p>Nótese que todos los códigos de ejemplo a los que hará referencia en este documento se encuentran dentro de un fichero comprimido que puede descargarse usando <a href="https://github.com/dacya/so-docs/blob/master/ficheros_p1.tar.gz">este enlace</a>.</p>
+<h1 id="primeros-pasos"><span class="header-section-number">2</span> Primeros pasos</h1>
+<p>Lo mínimo que necesitaremos para empezar a trabajar es arrancar el puesto de ordenador con el sistema operativo GNU/Linux<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> y abrir una ventana de terminal. De esta manera entramos a relacionarnos con GNU/Linux mediante el intérprete de órdenes (<em>shell</em>) asociado al terminal; se trata de un programa (generalmente corresponde a <code>/bin/bash</code>), que se encarga de solicitar líneas de órdenes al usuario y las manda ejecutar de modo interactivo tras un procesamiento previo que distingue entre órdenes locales, órdenes externas, variables, estructuras de programación y otras directivas.</p>
+<p>Vamos a preparar un sencillo programa en C, a compilarlo, enlazarlo y ejecutarlo. No explicaremos las características del lenguaje C; en la carpeta “Material Adicional” disponible <a href="https://drive.google.com/drive/folders/1LTB483ldOjkR7PwjZDjWCbbef0emhBf-?usp=sharing">en este enlace</a> el alumno dispone de breves introducciones, enlaces a tutoriales y referencias bibliográficas sobre el lenguaje C, que se deberán consultar y estudiar para obtener un nivel medio de conocimiento que permita elaborar los programas propuestos para ejercitar el uso de la API del sistema objetivo de la asignatura.</p>
+<p>El alumno debe elegir un editor de los propuestos clase o algún otro de su preferencia; supondremos que el elegido es <code>gedit</code><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. Desde el terminal tecleamos:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1">$ <span class="ex">gedit</span> greetings.c <span class="kw">&amp;</span></a></code></pre></div>
 <p>e introducimos en el área de texto del editor el siguiente programa (también podemos acceder a los editores a través del entorno de escritorio instalado en la máquina virtual):</p>
-<div class="sourceCode" id="cb2" data-fontsize="\small"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="dt">int</span> main(<span class="dt">void</span>) {</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>        <span class="dt">char</span> name[<span class="dv">100</span>];</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>        printf(<span class="st">&quot;Enter your name: &quot;</span>);</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>        <span class="cf">if</span> (scanf(<span class="st">&quot;%s&quot;</span>, name) != <span class="dv">1</span>) {</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>                printf(<span class="st">&quot;Error/EOF</span><span class="sc">\n</span><span class="st">&quot;</span>);</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>                <span class="cf">return</span> <span class="dv">1</span>;</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>        } <span class="cf">else</span> {</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a>                printf(<span class="st">&quot;Hi %s!!</span><span class="sc">\n</span><span class="st">&quot;</span>, name);</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a>                <span class="cf">return</span> <span class="dv">0</span>;</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a>        }</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb2" data-fontsize="\small"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb2-1" title="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb2-2" title="2"></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="dt">int</span> main(<span class="dt">void</span>) {</a>
+<a class="sourceLine" id="cb2-4" title="4">        <span class="dt">char</span> name[<span class="dv">100</span>];</a>
+<a class="sourceLine" id="cb2-5" title="5"></a>
+<a class="sourceLine" id="cb2-6" title="6">        printf(<span class="st">&quot;Enter your name: &quot;</span>);</a>
+<a class="sourceLine" id="cb2-7" title="7">        <span class="cf">if</span> (scanf(<span class="st">&quot;%s&quot;</span>, name) != <span class="dv">1</span>) {</a>
+<a class="sourceLine" id="cb2-8" title="8">                printf(<span class="st">&quot;Error/EOF</span><span class="sc">\n</span><span class="st">&quot;</span>);</a>
+<a class="sourceLine" id="cb2-9" title="9">                <span class="cf">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb2-10" title="10">        } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb2-11" title="11">                printf(<span class="st">&quot;Hi %s!!</span><span class="sc">\n</span><span class="st">&quot;</span>, name);</a>
+<a class="sourceLine" id="cb2-12" title="12">                <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb2-13" title="13">        }</a>
+<a class="sourceLine" id="cb2-14" title="14">}</a></code></pre></div>
 <p>A continuación lo mandamos compilar con la siguiente orden</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="fu">gcc</span> -c greetings.c </span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1">$ <span class="fu">gcc</span> -c greetings.c </a></code></pre></div>
 <p>que genera el fichero objeto de nombre <code>greetings.o</code>. Este fichero tiene formato ELF pero no está completo. Lo podemos comprobar con la siguiente orden:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>$ <span class="fu">file</span> greetings.o</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">greetings.o</span>: ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV),</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a> <span class="ex">not</span> stripped</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="ex">not</span> stripped</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1">$ <span class="fu">file</span> greetings.o</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="ex">greetings.o</span>: ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV),</a>
+<a class="sourceLine" id="cb4-3" title="3"> <span class="ex">not</span> stripped</a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="ex">not</span> stripped</a></code></pre></div>
 <p>que nos dice que greetings.o contiene código ELF reubicable, pero no especifica que sea un fichero ejecutable. Faltan por resolver las referencias a funciones de biblioteca y la incorporación de código preparatorio al principio y al final, que lo conviertan en un fichero ejecutable definitivo. De ello se encarga la siguiente orden:</p>
 <pre><code>$ gcc -o greetings greetings.o</code></pre>
 <p>De nuevo lo comprobamos:</p>
@@ -1004,7 +1001,7 @@ BuildID[sha1]=0xeb23a88b880589e556896f4d9412d5a67a3a83fa, not stripped</code></p
 <pre><code>$ ./greetings 
 Enter your name: Mike
 Hi Mike!!</code></pre>
-<h1 data-number="3" id="compilación-de-proyectos-en-linux"><span class="header-section-number">3</span> Compilación de proyectos en Linux</h1>
+<h1 id="compilación-de-proyectos-en-linux"><span class="header-section-number">3</span> Compilación de proyectos en Linux</h1>
 <p>En programación consideramos un proyecto el conjunto de ficheros necesarios para producir una aplicación. Para cada aplicación emplearemos un directorio donde se alojarán todos los ficheros relacionados con ella, que básicamente son de 6 tipos:</p>
 <ol type="1">
 <li><p>Uno o más ficheros fuente escritos en lenguaje C (con extensión .c).</p></li>
@@ -1014,7 +1011,7 @@ Hi Mike!!</code></pre>
 <li><p>Opcionalmente, uno o más ficheros de biblioteca que contendrán código objeto.</p></li>
 <li><p>Un fichero ejecutable.</p></li>
 </ol>
-<h2 data-number="3.1" id="compilador-gcc"><span class="header-section-number">3.1</span> Compilador GCC</h2>
+<h2 id="compilador-gcc"><span class="header-section-number">3.1</span> Compilador GCC</h2>
 <p>Para compilar los ficheros fuente utilizaremos el compilador de C de GNU, gcc. En realidad gcc es una herramienta que sirve de interfaz común para el uso de distintas herramientas del proceso de compilación, como son el preprocesador, el compilador propiamente dicho (cc), el ensamblador (as) y el enlazador (ld). El proceso que normalmente llamamos compilación es una secuencia de los siguientes pasos:</p>
 <ol type="1">
 <li><p>Un preprocesador (<code>cpp</code>), que toma como entrada un fichero fuente <code>archi.c</code> y lo transforma en un fichero intermedio archi.i mediante la realización de las operaciones de pre-proceso textual demandadas por las instrucciones <code>#xxx</code> que aparecen en el código fuente, denominadas macros del preprocesador. Las principales macros son <code>#include</code>, <code>#ifdef</code>, <code>#ifndef</code>, <code>#else</code>, <code>#endif</code>, <code>#define</code>,... (Consultar un tutorial de Lenguaje C para conocer el significado de tales instrucciones).</p></li>
@@ -1082,54 +1079,54 @@ Hi Mike!!</code></pre>
 </tbody>
 </table>
 <p>Vamos a ver el uso de algunas opciones de <code>gcc</code> y su resultado en la compilación, y examinaremos con algún detalle qué ocurre durante el proceso de compilación. Comenzaremos con un ejemplo muy simple, una aplicación formada por dos ficheros: <code>archi.c</code> (fuente) y <code>archi.h</code> (cabecera):</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>$ cat archi.c</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&quot;archi.h&quot;</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a><span class="dt">int</span> main(<span class="dt">void</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>{</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>       printf(<span class="st">&quot;Hello ...%d</span><span class="sc">\n</span><span class="st">&quot;</span>, VAR);</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>}</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a>$ cat archi.h</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a><span class="pp">#define VAR 100</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb8-1" title="1">$ cat archi.c</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="pp">#include </span><span class="im">&quot;archi.h&quot;</span></a>
+<a class="sourceLine" id="cb8-3" title="3"></a>
+<a class="sourceLine" id="cb8-4" title="4"><span class="dt">int</span> main(<span class="dt">void</span>)</a>
+<a class="sourceLine" id="cb8-5" title="5">{</a>
+<a class="sourceLine" id="cb8-6" title="6">       printf(<span class="st">&quot;Hello ...%d</span><span class="sc">\n</span><span class="st">&quot;</span>, VAR);</a>
+<a class="sourceLine" id="cb8-7" title="7">}</a>
+<a class="sourceLine" id="cb8-8" title="8"></a>
+<a class="sourceLine" id="cb8-9" title="9">$ cat archi.h</a>
+<a class="sourceLine" id="cb8-10" title="10"><span class="pp">#define VAR 100</span></a></code></pre></div>
 <p>Como ya dijimos, la primera etapa de compilación es el preprocesado. El preprocesador examina los ficheros .c en busca de declaraciones que comiencen por #; cuando son del tipo #include localiza el fichero designado y lo añade al programa. A continuación el preprocesador busca y sustituye todas las macros (#define) y realiza las sustituciones de texto indicadas; el compilador propiamente dicho (etapa segunda), no compila el fichero .c original sino la suma del .c y .h con las macros sustituidas. Esto puede producir algunos problemas serios si el fichero de cabecera contiene errores. Cuando se emplean macros que se comportan como funciones, y existe algún error en la macro, puede resultar difícil detectar la causa del error; el compilador no sabe de cabeceras, y cuando ve un error, informa acerca del número de línea que él ve. Al buscar tal línea en el fichero .c original puede que nos encontremos una sentencia aparentemente inocente.</p>
 <p>Vamos a pedir a gcc que genere un fichero intermedio como salida de cada una de sus 4 etapas:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>$ <span class="fu">gcc</span> --save-temps archi.c</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a><span class="ex">archi.c</span>: In function ‘main’:</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="ex">archi.c</span>:5:2: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>  <span class="bu">printf</span>(<span class="st">&quot;Hello ...%d\n&quot;</span>, VAR);</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>  ^<span class="ex">~~~~~</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a><span class="ex">archi.c</span>:5:2: warning: incompatible implicit declaration of built-in function ‘printf’</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a><span class="ex">archi.c</span>:5:2: note: include ‘<span class="op">&lt;</span>stdio.h<span class="op">&gt;</span>’ or provide a declaration of ‘printf’</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a><span class="ex">archi.c</span>:2:1:</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true"></a><span class="ex">+</span>#include <span class="op">&lt;</span>stdio.h<span class="op">&gt;</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true"></a> </span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true"></a><span class="ex">archi.c</span>:5:2:</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true"></a>  <span class="bu">printf</span>(<span class="st">&quot;Hello ...%d\n&quot;</span>, VAR);</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true"></a>  ^<span class="ex">~~~~~</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true"></a>$ <span class="fu">ls</span> -l a.out archi.*</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true"></a><span class="ex">-rwxr-xr-x</span> 1 501 dialout 16608 jul 22 19:40 a.out</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true"></a><span class="ex">-rw-r--r--</span> 1 501 dialout    71 jul 22 16:38 archi.c</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true"></a><span class="ex">-rw-r--r--</span> 1 501 dialout    17 jul 22 16:38 archi.h</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true"></a><span class="ex">-rw-r--r--</span> 1 501 dialout   234 jul 22 19:40 archi.i</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true"></a><span class="ex">-rw-r--r--</span> 1 501 dialout  1544 jul 22 19:40 archi.o</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true"></a><span class="ex">-rw-r--r--</span> 1 501 dialout   483 jul 22 19:40 archi.s</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1">$ <span class="fu">gcc</span> --save-temps archi.c</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="ex">archi.c</span>: In function ‘main’:</a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="ex">archi.c</span>:5:2: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</a>
+<a class="sourceLine" id="cb9-4" title="4">  <span class="bu">printf</span>(<span class="st">&quot;Hello ...%d\n&quot;</span>, VAR);</a>
+<a class="sourceLine" id="cb9-5" title="5">  ^<span class="ex">~~~~~</span></a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="ex">archi.c</span>:5:2: warning: incompatible implicit declaration of built-in function ‘printf’</a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="ex">archi.c</span>:5:2: note: include ‘<span class="op">&lt;</span>stdio.h<span class="op">&gt;</span>’ or provide a declaration of ‘printf’</a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="ex">archi.c</span>:2:1:</a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="ex">+</span>#include <span class="op">&lt;</span>stdio.h<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-10" title="10"> </a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="ex">archi.c</span>:5:2:</a>
+<a class="sourceLine" id="cb9-12" title="12">  <span class="bu">printf</span>(<span class="st">&quot;Hello ...%d\n&quot;</span>, VAR);</a>
+<a class="sourceLine" id="cb9-13" title="13">  ^<span class="ex">~~~~~</span></a>
+<a class="sourceLine" id="cb9-14" title="14">$ <span class="fu">ls</span> -l a.out archi.*</a>
+<a class="sourceLine" id="cb9-15" title="15"><span class="ex">-rwxr-xr-x</span> 1 501 dialout 16608 jul 22 19:40 a.out</a>
+<a class="sourceLine" id="cb9-16" title="16"><span class="ex">-rw-r--r--</span> 1 501 dialout    71 jul 22 16:38 archi.c</a>
+<a class="sourceLine" id="cb9-17" title="17"><span class="ex">-rw-r--r--</span> 1 501 dialout    17 jul 22 16:38 archi.h</a>
+<a class="sourceLine" id="cb9-18" title="18"><span class="ex">-rw-r--r--</span> 1 501 dialout   234 jul 22 19:40 archi.i</a>
+<a class="sourceLine" id="cb9-19" title="19"><span class="ex">-rw-r--r--</span> 1 501 dialout  1544 jul 22 19:40 archi.o</a>
+<a class="sourceLine" id="cb9-20" title="20"><span class="ex">-rw-r--r--</span> 1 501 dialout   483 jul 22 19:40 archi.s</a></code></pre></div>
 <p>(Olvidemos, de momento, el aviso producido referente a la línea 5). El fichero generado por el preprocesador es archi.i:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>$ cat archi.i</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="pp"># 1 &quot;archi.c&quot;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="pp"># 1 &quot;&lt;built-in&gt;&quot;</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a><span class="pp"># 1 &quot;&lt;command-line&gt;&quot;</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="pp"># 31 &quot;&lt;command-line&gt;&quot;</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a><span class="pp"># 1 &quot;/usr/include/stdc-predef.h&quot; 1 3 4</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a><span class="pp"># 32 &quot;&lt;command-line&gt;&quot; 2</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a><span class="pp"># 1 &quot;archi.c&quot;</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a><span class="pp"># 1 &quot;archi.h&quot; 1</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true"></a><span class="pp"># 2 &quot;archi.c&quot; 2</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true"></a><span class="dt">int</span> main(<span class="dt">void</span>)</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true"></a>{</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true"></a> printf(<span class="st">&quot;Hello ...%d</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="dv">100</span>);</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb10-1" title="1">$ cat archi.i</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="pp"># 1 &quot;archi.c&quot;</span></a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="pp"># 1 &quot;&lt;built-in&gt;&quot;</span></a>
+<a class="sourceLine" id="cb10-4" title="4"><span class="pp"># 1 &quot;&lt;command-line&gt;&quot;</span></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="pp"># 31 &quot;&lt;command-line&gt;&quot;</span></a>
+<a class="sourceLine" id="cb10-6" title="6"><span class="pp"># 1 &quot;/usr/include/stdc-predef.h&quot; 1 3 4</span></a>
+<a class="sourceLine" id="cb10-7" title="7"><span class="pp"># 32 &quot;&lt;command-line&gt;&quot; 2</span></a>
+<a class="sourceLine" id="cb10-8" title="8"><span class="pp"># 1 &quot;archi.c&quot;</span></a>
+<a class="sourceLine" id="cb10-9" title="9"><span class="pp"># 1 &quot;archi.h&quot; 1</span></a>
+<a class="sourceLine" id="cb10-10" title="10"><span class="pp"># 2 &quot;archi.c&quot; 2</span></a>
+<a class="sourceLine" id="cb10-11" title="11"></a>
+<a class="sourceLine" id="cb10-12" title="12"><span class="dt">int</span> main(<span class="dt">void</span>)</a>
+<a class="sourceLine" id="cb10-13" title="13">{</a>
+<a class="sourceLine" id="cb10-14" title="14"> printf(<span class="st">&quot;Hello ...%d</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="dv">100</span>);</a>
+<a class="sourceLine" id="cb10-15" title="15">}</a></code></pre></div>
 <p>Se ha producido la sustitución de la macro VAR. También podemos ver el resultado de la segunda etapa, la compilación de C, que genera un fichero fuente en código ensamblador:</p>
 <pre class="assembly"><code>$ cat archi.s
         .file   &quot;archi.c&quot;
@@ -1162,34 +1159,34 @@ main:
         .ident  &quot;GCC: (Debian 8.3.0-6) 8.3.0&quot;
         .section        .note.GNU-stack,&quot;&quot;,@progbits</code></pre>
 <p>El siguiente paso, el ensamblado, genera un fichero objeto con formato de código binario reubicable accesible como archi.o; podemos comprobar su formato con la orden</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>$ <span class="fu">file</span> archi.o</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="ex">archi.o</span>: ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV),</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a><span class="ex">not</span> stripped</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1">$ <span class="fu">file</span> archi.o</a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="ex">archi.o</span>: ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV),</a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="ex">not</span> stripped</a></code></pre></div>
 <p>El último paso, el enlazado, agrega fundamentalmente código de biblioteca para generar un fichero ejecutable final listo para servir como origen de ejecución de procesos; por defecto, gcc le da el nombre a.out. También está en formato ELF:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>$ <span class="fu">file</span> a.out</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a><span class="ex">a.out</span>: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), <span class="ex">dynamically</span> linked, </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="ex">interpreter</span> /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0,</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="va">BuildID[sha1]=</span>71b3e2d6ee99b470f5254e40ff5360ec0dd0b8d7, <span class="ex">not</span> stripped</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1">$ <span class="fu">file</span> a.out</a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="ex">a.out</span>: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), <span class="ex">dynamically</span> linked, </a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="ex">interpreter</span> /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0,</a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="va">BuildID[sha1]=</span>71b3e2d6ee99b470f5254e40ff5360ec0dd0b8d7, <span class="ex">not</span> stripped</a></code></pre></div>
 <p>Si nos interesa podemos aplicar una o varias de las etapas de compilación separadamente. Por ejemplo, podemos generar ficheros objeto (tres primeras etapas) y luego enlazar separadamente.</p>
 <p>A modo de ejemplo, procederemos a generar el fichero objeto a partir del programa <code>archi.c</code>.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>$ <span class="fu">gcc</span> -c archi.c -o archi.o</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="ex">archi.c</span>: In function ‘main’:</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a><span class="ex">archi.c</span>:5:2: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>  <span class="bu">printf</span>(<span class="st">&quot;Hello ...%d\n&quot;</span>, VAR);</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a>  ^<span class="ex">~~~~~</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a><span class="ex">archi.c</span>:5:2: warning: incompatible implicit declaration of built-in function ‘printf’</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a><span class="ex">archi.c</span>:5:2: note: include ‘<span class="op">&lt;</span>stdio.h<span class="op">&gt;</span>’ or provide a declaration of ‘printf’</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a><span class="ex">archi.c</span>:2:1:</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true"></a><span class="ex">+</span>#include <span class="op">&lt;</span>stdio.h<span class="op">&gt;</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true"></a> </span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true"></a><span class="ex">archi.c</span>:5:2:</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true"></a>  <span class="bu">printf</span>(<span class="st">&quot;Hello ...%d\n&quot;</span>, VAR);</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true"></a>  ^<span class="ex">~~~~~</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1">$ <span class="fu">gcc</span> -c archi.c -o archi.o</a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="ex">archi.c</span>: In function ‘main’:</a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="ex">archi.c</span>:5:2: warning: implicit declaration of function ‘printf’ [-Wimplicit-function-declaration]</a>
+<a class="sourceLine" id="cb14-4" title="4">  <span class="bu">printf</span>(<span class="st">&quot;Hello ...%d\n&quot;</span>, VAR);</a>
+<a class="sourceLine" id="cb14-5" title="5">  ^<span class="ex">~~~~~</span></a>
+<a class="sourceLine" id="cb14-6" title="6"><span class="ex">archi.c</span>:5:2: warning: incompatible implicit declaration of built-in function ‘printf’</a>
+<a class="sourceLine" id="cb14-7" title="7"><span class="ex">archi.c</span>:5:2: note: include ‘<span class="op">&lt;</span>stdio.h<span class="op">&gt;</span>’ or provide a declaration of ‘printf’</a>
+<a class="sourceLine" id="cb14-8" title="8"><span class="ex">archi.c</span>:2:1:</a>
+<a class="sourceLine" id="cb14-9" title="9"><span class="ex">+</span>#include <span class="op">&lt;</span>stdio.h<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb14-10" title="10"> </a>
+<a class="sourceLine" id="cb14-11" title="11"><span class="ex">archi.c</span>:5:2:</a>
+<a class="sourceLine" id="cb14-12" title="12">  <span class="bu">printf</span>(<span class="st">&quot;Hello ...%d\n&quot;</span>, VAR);</a>
+<a class="sourceLine" id="cb14-13" title="13">  ^<span class="ex">~~~~~</span></a></code></pre></div>
 <p>Con la opción <code>-c</code> indicamos a <code>gcc</code> que construya únicamente el fichero objeto, cuyo nombre se especifica con la opción <code>-o</code>; es decir, en este caso prescinde de la operación de enlazado. A pesar de que el fichero objeto se ha generado correctamente, el compilador genera una advertencia sobre el desconocimiento de la función <code>printf()</code>. Se deja como ejercicio realizar las modificaciones pertinentes en el programa para eliminar esta advertencia. <strong>Nota</strong>: Para averiguar qué fichero(s) de cabecera se ha(n) de incluir en nuestro programa al usar una función estándar no definida en el mismo se ha de consultar página de manual de la función en cuestión.</p>
 <p>Para llevar a cabo la etapa final de enlace podría invocarse manualmente al enlazador (comando <code>ld</code>). Sin embargo, esto nos obligaría a proporcionar al enlazador información adicional acerca del tipo de enlace del programa (estático o dinámico), así como sobre la ubicación de las bibliotecas y ficheros auxiliares donde se encuentran definidos los simbolos (funciones y variables) que el programa utiliza pero no define. El comando <code>gcc</code>, que puede emplearse también como <em>frontend</em> del enlazador, simplifica enormemente esta labor. En particular, con <code>gcc</code> podemos proceder al enlace empleando simplemente el siguiente comando:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>$ <span class="fu">gcc</span> archi.o -o archi</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1">$ <span class="fu">gcc</span> archi.o -o archi</a></code></pre></div>
 <p>En el ejemplo anterior, el programa solo utiliza símbolos de la biblioteca estándar de C, por lo que no se precisan opciones adicionales a <code>gcc</code> para llevar a cabo el enlace satisfactoriamente. Sin embargo, cuando se emplean símbolos de otras bibliotecas, es necesario especificar explíctamente el nombre de cada biblioteca dependiente empleando la opción <code>-l&lt;nombre_biblioteca&gt;</code> de <code>gcc</code>. No hacerlo provoca errores de enlazado. Por ejemplo, a la hora de crear programas multihilo en Linux, utilizaremos la biblioteca POSIX Threads. Para el correcto enlazado de estos programas es necesario indicar la opción <code>-lpthread</code> .</p>
-<h2 data-number="3.2" id="gnu-make"><span class="header-section-number">3.2</span> GNU Make</h2>
+<h2 id="gnu-make"><span class="header-section-number">3.2</span> GNU Make</h2>
 <p>Es frecuente durante el desarrollo del proyecto que haya que compilar dicho proyecto multitud de veces. Además, el proyecto va cambiando, añadiéndose ficheros, bibliotecas con las que se debe enlazar, ejecutables y bibliotecas que se deben generar, etc. Repetir en cada ocasión las llamadas a <code>gcc</code> para compilar cada objetivo del proyecto es ineficiente y propenso a errores. La popular herramienta Make, diseñada para entornos UNIX, tiene como objetivo facilitar y, en cierta medida, automatizar este proceso de compilación del proyecto.</p>
 <p>Hay distintas versiones de la herramienta Make, sin embargo todas ellas funcionan de un modo muy parecido. Cuando se invoca, Make interpreta un fichero de texto con una sintaxis especial y nombre preestablecido (p.ej. <em>makefile</em>), que le indica los pasos que debe seguir para compilar el proyecto. Una vez confeccionado el <em>makefile</em> repetir la compilación es tan sencillo como ejecutar <code>make</code> desde el terminal.</p>
 <p>En esta asignatura emplearemos la implementación de Make de GNU, que se encuentra instalada en el laboratorio. Cuando el usuario invoca el comando <code>make</code> desde el <em>shell</em>, la herramienta busca en primer lugar un fichero que se llama <code>GNUmakefile</code>. Si no se encuentra se busca un fichero llamado <code>makefile</code>, y si por último no se encontrase, se buscaría el fichero <code>Makefile</code>. Si no se encuentra en el directorio actual ninguno de esos tres ficheros, se producirá un error y make no continuará:</p>
@@ -1198,44 +1195,44 @@ make: *** No targets specified and no makefile found.  Stop.</code></pre>
 <p>En caso contrario, <code>make</code> procesará el archivo de texto e invocará el conjunto mínimo de reglas requeridas para construir nuestro proyecto. Para ilustrar el flujo de trabajo de make, consideremos el siguiente ejemplo. Supongamos que tenemos un proyecto C que consta de un <em>Makefile</em> correctamente construido y dos archivos .c, que deben compilarse y enlazarse para construir el ejecutable de un programa. Normalmente, las reglas del fichero <em>Makefile</em> garantizan que si solo se ha modificado un archivo C desde que se invocó <code>make</code> por última vez, una nueva invocación de <code>make</code> realizará la compilación solo para el archivo C modificado y la etapa final de enlazado. Por tanto, el fichero objeto intermedio asociado al archivo C sin modificar no se volverá a generar.</p>
 <p>En este curso, la mayor parte de los proyectos C de ejemplo proporcionados con las distinas prácticas se acompañan de un fichero <em>Makefile</em> específico para el proyecto. Por lo general, para compilar el proyecto asociado bastará teclear <code>make</code> en la terminal. Además, la mayoría de los <em>Makefiles</em> contarán también con una regla de limpieza para eliminar todos los archivos intermedios generados durante el proceso de compilación. En particular, al ejecutar el comando <code>make clean</code> desde el directorio principal del proyecto, los archivos de objeto y ejecutables correspondientes se eliminarán automáticamente.</p>
 <p>Cabe destacar que durante el desarrollo de la asignatura los estudiantes no tendrán que elaborar ficheros <em>Makefile</em> de cero, sino adaptar mínimamente ejemplos ya proporcionados. Por lo tanto en este documento no procederemos a introducir la sintaxis de GNU make. No obstante, esta sintaxis está descrita en el tutorial disponible en <a href="https://dacya.github.io/so-docs/make.html">este enlace</a>.</p>
-<h1 data-number="4" label="sec:depuracion" id="sec:depuracion"><span class="header-section-number">4</span> Depuración</h1>
+<h1 id="sec:depuracion" label="sec:depuracion"><span class="header-section-number">4</span> Depuración</h1>
 <p>La utilidad de depuración en ejecución de programas C en GNU/Linux es, por antonomasia, el depurador <code>gdb</code> de GNU. Existen interfaces gráficas que facilitan su utilización bien de forma autónoma (p.ej., la aplicación <code>ddd</code> — <em>Data Display Debugger</em>), bien incluido dentro de un IDE (p.ej. Visual Studio Code).</p>
-<h2 data-number="4.1" id="primeros-pasos-con-gdb"><span class="header-section-number">4.1</span> Primeros pasos con <code>gdb</code></h2>
+<h2 id="primeros-pasos-con-gdb"><span class="header-section-number">4.1</span> Primeros pasos con <code>gdb</code></h2>
 <p>Para ilustrar como lanzar un programa con el depurador usaremos el programa <code>example.c</code>:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[]) {</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true"></a>  <span class="cf">if</span> (argc&lt;<span class="dv">3</span>){</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true"></a>        fprintf(stderr,<span class="st">&quot;Usage: %s &lt;first-name&gt; &lt;last-name&gt;</span><span class="sc">\n</span><span class="st">&quot;</span>,argv[<span class="dv">0</span>]); </span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true"></a>        <span class="cf">return</span> <span class="dv">1</span>;</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true"></a>  }</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true"></a></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true"></a>  printf(<span class="st">&quot;Hi %s %s!</span><span class="sc">\n</span><span class="st">&quot;</span>,argv[<span class="dv">1</span>],argv[<span class="dv">2</span>]);</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true"></a>  <span class="cf">return</span> <span class="dv">0</span>;</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb17-1" title="1"><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></a>
+<a class="sourceLine" id="cb17-3" title="3"></a>
+<a class="sourceLine" id="cb17-4" title="4"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[]) {</a>
+<a class="sourceLine" id="cb17-5" title="5"></a>
+<a class="sourceLine" id="cb17-6" title="6">  <span class="cf">if</span> (argc&lt;<span class="dv">3</span>){</a>
+<a class="sourceLine" id="cb17-7" title="7">        fprintf(stderr,<span class="st">&quot;Usage: %s &lt;first-name&gt; &lt;last-name&gt;</span><span class="sc">\n</span><span class="st">&quot;</span>,argv[<span class="dv">0</span>]); </a>
+<a class="sourceLine" id="cb17-8" title="8">        <span class="cf">return</span> <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb17-9" title="9">  }</a>
+<a class="sourceLine" id="cb17-10" title="10"></a>
+<a class="sourceLine" id="cb17-11" title="11">  printf(<span class="st">&quot;Hi %s %s!</span><span class="sc">\n</span><span class="st">&quot;</span>,argv[<span class="dv">1</span>],argv[<span class="dv">2</span>]);</a>
+<a class="sourceLine" id="cb17-12" title="12">  <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb17-13" title="13">}</a></code></pre></div>
 <p>Este programa acepta dos parámetros (un nombre y apellido), e imprime un mensaje de saludo construido en base a esos parámetros. Compilaremos el programa en modo depuración, usando la opción <code>-g</code> de <code>gcc</code>, junto con <code>-Wall</code> para mostrar todas las advertencias (<em>warnings</em>):</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a>$ <span class="fu">gcc</span> -g -Wall example.c -o example</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1">$ <span class="fu">gcc</span> -g -Wall example.c -o example</a></code></pre></div>
 <p>Procederemos entonces a lanzar el depurador, pasando el nombre del ejecutable como argumento del comando <code>gdb</code>. Esto nos dará acceso al <em>prompt</em> de GDB:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>$ <span class="fu">gdb</span> example</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="ex">GNU</span> gdb (Debian 8.2.1-2+b3) <span class="ex">8.2.1</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a><span class="ex">Copyright</span> (C) <span class="ex">2018</span> Free Software Foundation, Inc.</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a><span class="ex">License</span> GPLv3+: GNU GPL version 3 or later <span class="op">&lt;</span>http://gnu.org/licenses/gpl.html<span class="op">&gt;</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a><span class="ex">This</span> is free software: you are free to change and redistribute it.</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true"></a><span class="ex">There</span> is NO WARRANTY, to the extent permitted by law.</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true"></a><span class="ex">Type</span> <span class="st">&quot;show copying&quot;</span> and <span class="st">&quot;show warranty&quot;</span> for details.</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true"></a><span class="ex">This</span> GDB was configured as <span class="st">&quot;x86_64-linux-gnu&quot;</span>.</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true"></a><span class="ex">Type</span> <span class="st">&quot;show configuration&quot;</span> for configuration details.</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true"></a><span class="ex">For</span> bug reporting instructions, please see:</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true"></a><span class="op">&lt;</span><span class="ex">http</span>://www.gnu.org/software/gdb/bugs/<span class="op">&gt;</span>.</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true"></a><span class="ex">Find</span> the GDB manual and other documentation resources online at:</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true"></a>    <span class="op">&lt;</span><span class="ex">http</span>://www.gnu.org/software/gdb/documentation/<span class="op">&gt;</span>.</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true"></a></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true"></a><span class="ex">For</span> help, type <span class="st">&quot;help&quot;</span>.</span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true"></a><span class="ex">Type</span> <span class="st">&quot;apropos word&quot;</span> to search for commands related to <span class="st">&quot;word&quot;</span>...</span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true"></a><span class="ex">Reading</span> symbols from example...done.</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true"></a><span class="kw">(</span><span class="fu">gdb</span><span class="kw">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1">$ <span class="fu">gdb</span> example</a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="ex">GNU</span> gdb (Debian 8.2.1-2+b3) <span class="ex">8.2.1</span></a>
+<a class="sourceLine" id="cb19-3" title="3"><span class="ex">Copyright</span> (C) <span class="ex">2018</span> Free Software Foundation, Inc.</a>
+<a class="sourceLine" id="cb19-4" title="4"><span class="ex">License</span> GPLv3+: GNU GPL version 3 or later <span class="op">&lt;</span>http://gnu.org/licenses/gpl.html<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb19-5" title="5"><span class="ex">This</span> is free software: you are free to change and redistribute it.</a>
+<a class="sourceLine" id="cb19-6" title="6"><span class="ex">There</span> is NO WARRANTY, to the extent permitted by law.</a>
+<a class="sourceLine" id="cb19-7" title="7"><span class="ex">Type</span> <span class="st">&quot;show copying&quot;</span> and <span class="st">&quot;show warranty&quot;</span> for details.</a>
+<a class="sourceLine" id="cb19-8" title="8"><span class="ex">This</span> GDB was configured as <span class="st">&quot;x86_64-linux-gnu&quot;</span>.</a>
+<a class="sourceLine" id="cb19-9" title="9"><span class="ex">Type</span> <span class="st">&quot;show configuration&quot;</span> for configuration details.</a>
+<a class="sourceLine" id="cb19-10" title="10"><span class="ex">For</span> bug reporting instructions, please see:</a>
+<a class="sourceLine" id="cb19-11" title="11"><span class="op">&lt;</span><span class="ex">http</span>://www.gnu.org/software/gdb/bugs/<span class="op">&gt;</span>.</a>
+<a class="sourceLine" id="cb19-12" title="12"><span class="ex">Find</span> the GDB manual and other documentation resources online at:</a>
+<a class="sourceLine" id="cb19-13" title="13">    <span class="op">&lt;</span><span class="ex">http</span>://www.gnu.org/software/gdb/documentation/<span class="op">&gt;</span>.</a>
+<a class="sourceLine" id="cb19-14" title="14"></a>
+<a class="sourceLine" id="cb19-15" title="15"><span class="ex">For</span> help, type <span class="st">&quot;help&quot;</span>.</a>
+<a class="sourceLine" id="cb19-16" title="16"><span class="ex">Type</span> <span class="st">&quot;apropos word&quot;</span> to search for commands related to <span class="st">&quot;word&quot;</span>...</a>
+<a class="sourceLine" id="cb19-17" title="17"><span class="ex">Reading</span> symbols from example...done.</a>
+<a class="sourceLine" id="cb19-18" title="18"><span class="kw">(</span><span class="fu">gdb</span><span class="kw">)</span></a></code></pre></div>
 <p>Para lanzar el programa con el depurador usaremos el comando <code>run</code> de GDB, que acepta como parámetros los argumentos de línea de comandos que acepte el programa (dos en este caso). Como no hemos establecido <em>breakpoints</em> en la sesión de depuración, el comando <code>run</code> ejecutará el programa de principio a fin, y mostrará la salida junto con los mensajes del depurador:</p>
 <pre class="gdb"><code>(gdb) run John Doe
 Starting program: /home/usuarioso/example/example John Doe
@@ -1250,14 +1247,14 @@ Hi John Doe!
 <li>Utilizar el comando de GDB <code>tui enable</code>.</li>
 </ol>
 <p>Análogamente el modo TUI puede desactivarse en cualquier momento con el comando <code>tui disable</code>. Para más información sobre GDB TUI puede consultarse la <a href="https://sourceware.org/gdb/onlinedocs/gdb/TUI-Commands.html#TUI-Commands">documentación oficial</a>. Asimismo resulta de gran interés la visualización del <a href="https://www.youtube.com/watch?v=mm0b_H0KIRw">vídeo de Jacob Sorber</a> sobre la potencia de los distintos layouts de GDB TUI.</p>
-<h2 data-number="4.2" id="depuración-de-un-programa-de-ejemplo"><span class="header-section-number">4.2</span> Depuración de un programa de ejemplo</h2>
+<h2 id="depuración-de-un-programa-de-ejemplo"><span class="header-section-number">4.2</span> Depuración de un programa de ejemplo</h2>
 <p>Procedamos ahora a utilizar <code>gdb</code> para depurar un programa que se ejecuta incorrectamente, y así poner de manifiesto las principales facilidades de que dispone.</p>
-<p>El programa se llama <code>badsort.c</code> y realiza una ordenación por el método de la burbuja aplicada a un <em>array</em> de datos inicializado dentro del programa. El código se suministra como material suplementario.</p>
+<p>El programa se llama <code>badsort.c</code> y realiza una ordenación por el método de la burbuja aplicada a un <em>array</em> de datos inicializado dentro del programa. El código se suministra como parte de los <a href="https://github.com/dacya/so-docs/blob/master/ficheros_p1.tar.gz">ficheros de la primera práctica</a>.</p>
 <p>Un aviso (<em>warning</em>) del compilador nos ayudará a detectar el primer error. Le pedimos a <code>gcc</code> que nos informe de cualquier circunstancia sospechosa del código aún cuando no sea necesariamente un error fatal. Para ello utilizaremos la opción <code>-Wall</code>. También emplearemos la opción <code>-g</code> para permitir la depuración simbólica del programa en ejecución. Escribimos pues:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="ex">jcsaez@debian</span>:~/Tests$ gcc -Wall -g -o badsort badsort.c </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a><span class="ex">badsort.c</span>: In function <span class="st">&#39;sort&#39;</span>:</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a><span class="ex">badsort.c</span>:20:17: warning: suggest parentheses around comparison </span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true"></a><span class="kw">in</span> <span class="ex">operand</span> of <span class="st">&#39;&amp;&#39;</span> [-Wparentheses]</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" title="1"><span class="ex">jcsaez@debian</span>:~/Tests$ gcc -Wall -g -o badsort badsort.c </a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="ex">badsort.c</span>: In function <span class="st">&#39;sort&#39;</span>:</a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="ex">badsort.c</span>:20:17: warning: suggest parentheses around comparison </a>
+<a class="sourceLine" id="cb21-4" title="4"><span class="kw">in</span> <span class="ex">operand</span> of <span class="st">&#39;&amp;&#39;</span> [-Wparentheses]</a></code></pre></div>
 <p>En el mensaje de compilación nos llaman la atención sobre la línea 20 que contiene<br />
 <code>/* 20 */ for(; i &lt; n &amp; s != 0; i++) {</code></p>
 <p>El aviso nos sugiere colocar paréntesis para dejar claro qué comparaciones se pretenden realizar. Una forma podría ser <code>(i &lt; n) &amp; (s != 0)</code>. Con un poco de atención podríamos darnos cuenta de que <code>&amp;</code> es la operación AND bit-a-bit en C y no la operación lógica Y, que se escribe <code>&amp;&amp;</code>. Por lo que la sentencia está mal escrita y debería ser:<br />
@@ -1275,17 +1272,17 @@ Hi John Doe!
 ![Ejecución de badsort bajo el control de ddd[\[fig:ddd\]]{#fig:ddd label="fig:ddd"}](img/ddd.png){width="12cm"}
 
 -->
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a><span class="ex">jcsaez@debian</span>:~/Tests<span class="dt">\$</span> gdb ./badsort</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a><span class="ex">GNU</span> gdb (GDB) <span class="ex">7.4.1-debian</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true"></a><span class="ex">Copyright</span> (C) <span class="ex">2012</span> Free Software Foundation, Inc.</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true"></a><span class="ex">License</span> GPLv3+: GNU GPL version 3 or later <span class="op">&lt;</span>http://gnu.org/licenses/gpl.html<span class="op">&gt;</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true"></a><span class="ex">This</span> is free software: you are free to change and redistribute it.</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true"></a><span class="ex">There</span> is NO WARRANTY, to the extent permitted by law.  Type <span class="st">&quot;show copying&quot;</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true"></a><span class="ex">and</span> <span class="st">&quot;show warranty&quot;</span> for details.</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true"></a><span class="ex">This</span> GDB was configured as <span class="st">&quot;x86_64-linux-gnu&quot;</span>.</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true"></a><span class="ex">For</span> bug reporting instructions, please see:</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true"></a><span class="op">&lt;</span><span class="ex">http</span>://www.gnu.org/software/gdb/bugs/<span class="op">&gt;</span>...</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true"></a><span class="ex">Reading</span> symbols from /home/jcsaez/Tests/badsort...done.</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb22-1" title="1"><span class="ex">jcsaez@debian</span>:~/Tests<span class="dt">\$</span> gdb ./badsort</a>
+<a class="sourceLine" id="cb22-2" title="2"><span class="ex">GNU</span> gdb (GDB) <span class="ex">7.4.1-debian</span></a>
+<a class="sourceLine" id="cb22-3" title="3"><span class="ex">Copyright</span> (C) <span class="ex">2012</span> Free Software Foundation, Inc.</a>
+<a class="sourceLine" id="cb22-4" title="4"><span class="ex">License</span> GPLv3+: GNU GPL version 3 or later <span class="op">&lt;</span>http://gnu.org/licenses/gpl.html<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb22-5" title="5"><span class="ex">This</span> is free software: you are free to change and redistribute it.</a>
+<a class="sourceLine" id="cb22-6" title="6"><span class="ex">There</span> is NO WARRANTY, to the extent permitted by law.  Type <span class="st">&quot;show copying&quot;</span></a>
+<a class="sourceLine" id="cb22-7" title="7"><span class="ex">and</span> <span class="st">&quot;show warranty&quot;</span> for details.</a>
+<a class="sourceLine" id="cb22-8" title="8"><span class="ex">This</span> GDB was configured as <span class="st">&quot;x86_64-linux-gnu&quot;</span>.</a>
+<a class="sourceLine" id="cb22-9" title="9"><span class="ex">For</span> bug reporting instructions, please see:</a>
+<a class="sourceLine" id="cb22-10" title="10"><span class="op">&lt;</span><span class="ex">http</span>://www.gnu.org/software/gdb/bugs/<span class="op">&gt;</span>...</a>
+<a class="sourceLine" id="cb22-11" title="11"><span class="ex">Reading</span> symbols from /home/jcsaez/Tests/badsort...done.</a></code></pre></div>
 <p><br />
 Ordenamos a <code>gdb</code> que ejecute el programa con <code>run</code> (en este caso el programa no acepta argumentos):<br />
 </p>
@@ -1451,19 +1448,19 @@ array[4] = {rick, 5}
 
 Program exited normally.   </code></pre>
 <p>Ahora sí funciona bien el programa y proporciona el resultado correcto. Podemos incorporar el cambio al fichero fuente (eliminar la línea 30) y quizás probar más exhaustivamente con un mayor número de datos para convencernos de la corrección del programa.</p>
-<h2 data-number="4.3" id="depuración-de-un-proceso-existente"><span class="header-section-number">4.3</span> Depuración de un proceso existente</h2>
+<h2 id="depuración-de-un-proceso-existente"><span class="header-section-number">4.3</span> Depuración de un proceso existente</h2>
 <p>Es posible entrar a depurar una aplicación que ya está ejecutándose mediante el recurso de asociar (<em>attach</em>) <code>gdb</code> al proceso. Todo lo que se necesita es conocer el PID (identificador numérico único) del proceso que depurar y emplearlo en la invocación del depurador:</p>
 <pre><code>jcsaez@debian:~/Tests$ gdb programa PID
 o con la orden attach de gdb
 (gdb) attach PID</code></pre>
 <p>En cualquier caso el programa pasa a situación de “detenido” y el depurador se hace cargo de él, pudiéndose listar la posición actual de ejecución, examinar variables, colocar puntos de ruptura, ejecutar paso a paso, etc.. Cuando se ha finalizado la sesión de depuración se puede devolver la autonomía al proceso con la orden <code>detach</code>.</p>
-<h2 data-number="4.4" id="depuración-post-mortem-de-un-proceso"><span class="header-section-number">4.4</span> Depuración post-mortem de un proceso</h2>
+<h2 id="depuración-post-mortem-de-un-proceso"><span class="header-section-number">4.4</span> Depuración post-mortem de un proceso</h2>
 <p>Cuando una aplicación aborta y genera un volcado en un fichero de memoria (<em>core</em>), <code>gdb</code> puede servir para identificar qué ha ocurrido. Primero hay que preparar el sistema para que se pueda generar el fichero <em>core</em>, con la orden de <em>shell</em>:<br />
 <code>jcsaez@debian:~/Tests$ ulimit -c unlimited</code></p>
 <p>Al abortar el programa, ahora genera un fichero imagen de memoria que suele denominarse <code>core</code> o <code>core.pid</code>. Le aplicamos el depurador con la orden:<br />
 <code>jcsaez@debian:~/Tests$ gdb programa core</code><br />
 lo que nos permitirá examinar la situación en que el programa finalizó abruptamente. No es posible ejecutar partes del programa o fijar puntos de ruptura, pero sí imprimir variables, conocer el estado de la pila, etc.</p>
-<h2 data-number="4.5" id="otras-ordenes-útiles-de-gdb"><span class="header-section-number">4.5</span> Otras ordenes útiles de gdb</h2>
+<h2 id="otras-ordenes-útiles-de-gdb"><span class="header-section-number">4.5</span> Otras ordenes útiles de gdb</h2>
 <table>
 <colgroup>
 <col style="width: 40%"></col>
@@ -1498,7 +1495,7 @@ lo que nos permitirá examinar la situación en que el programa finalizó abrupt
 </tr>
 </tbody>
 </table>
-<h1 data-number="5" label="sec:man" id="sec:man"><span class="header-section-number">5</span> Páginas de manual</h1>
+<h1 id="sec:man" label="sec:man"><span class="header-section-number">5</span> Páginas de manual</h1>
 <p>La mayoría de los sistemas LINUX suministran páginas de manual junto con sus aplicaciones, accesibles en línea. La orden <code>man</code> es el recurso más habitual para consultar información respecto al uso y finalidad de las órdenes, funciones y ficheros disponibles en el sistema. El software GNU ofrece un sistema de documentación en línea alternativo llamado <code>info</code>. La ventaja de <code>info</code> es que se puede navegar por la documentación utilizando enlaces y referencias cruzadas para saltar directamente a las secciones relevantes.</p>
 <p>Si quisiéramos conocer las opciones que el compilador <code>gcc</code> admite podríamos hacerlo con:</p>
 <pre><code>jcsaez@debian:~/Tests$ man gcc</code></pre>
@@ -1631,47 +1628,37 @@ DESCRIPTION
 </dd>
 </dl>
 <p>Otra forma de acceder a la información de manual es recurriendo a Google en un navegador Web, pidiendo que busque “<code>man orden</code>”</p>
-<h1 data-number="6" id="biblioteca-estándar-de-c"><span class="header-section-number">6</span> Biblioteca estándar de C</h1>
+<h1 id="biblioteca-estándar-de-c"><span class="header-section-number">6</span> Biblioteca estándar de C</h1>
 <p>El lenguaje C no tiene soporte directo para Entada/Salida (escritura y lectura de ficheros, o dispositivos como la consola), gestión del Heap, etc. Este soporte se proporciona a través de una biblioteca de funciones denominada biblioteca (o librería) estándar de C. La implementación de esta biblioteca es dependiente del sistema, sin embargo su API es un estándar ANSI/ISO, lo que facilita la portabilidad de los programas escritos en C entre sistemas. Una descripción completa de la biblioteca queda fuera del alcance de este documento. En esta sección veremos sólo con cierto detalle las funciones básicas de gestión del Heap, el soporte para E/S y algunas funciones de gestión de errores. Para ampliar esta documentación se recomienda consultar un manual de C.</p>
-<h2 data-number="6.1" id="subsec:libc-heap"><span class="header-section-number">6.1</span> Gestión del Heap</h2>
+<h2 id="subsec:libc-heap"><span class="header-section-number">6.1</span> Gestión del Heap</h2>
 <p>En el mapa de memoria de un proceso, suele reservarse una zona de memoria conocida como Heap. Esta zona de memoria se utiliza para que el programador pueda ir solicitando trozos de distinto tamaño dinámicamente, que suele utilizar para alojar variables creadas en tiempo de ejecución. Es decir, en lugar de reservar espacio para una variable global en tiempo de compilación, o reservarla en la pila como variable local de alguna función, el programador solicita al sistema la memoria que necesita para alojar la variable, y el sistema le reserva un trozo del heap.</p>
 <p>En C la gestión del Heap se realiza principalmente a través de dos funciones: <strong>malloc</strong>, para solicitar memoria, y <strong>free</strong>, para liberarla. Las cabeceras de estas funciones se declaran en el fichero <em>stdlib.h</em>, y son:</p>
 <ul>
-<li><p><code>C     void* malloc( size_t size );</code></p>
+<li><div class="sourceCode" id="cb35"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb35-1" title="1"><span class="dt">void</span>* malloc( <span class="dt">size_t</span> size );</a></code></pre></div>
 <p>La función <strong>malloc</strong> toma como parámetro el número de bytes que se desea reservar, y devuelve un puntero con la dirección de memoria del bloque reservado, o <strong>NULL</strong> en caso de que no pudiese reservar esta memoria (por ejemplo, que no quede espacio en el heap).</p></li>
-<li><p><code>C     void free( void* ptr );</code></p>
+<li><div class="sourceCode" id="cb36"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb36-1" title="1"><span class="dt">void</span> free( <span class="dt">void</span>* ptr );</a></code></pre></div>
 <p>La función <strong>free</strong> toma una dirección previamente devuelta por <strong>malloc</strong> y la vuelve a añadir como memoria libre/disponible al heap. Es importante que no se intente liberar con free memoria a partir de una dirección no devuelta por malloc, esto provocaría excepción, haciendo que el programa finalice abruptamente con error.</p></li>
 </ul>
 <p>Existen otras funciones para la gestión del Heap, como <strong>calloc</strong>, <strong>realloc</strong>, <strong>valloc</strong> y <strong>reallocf</strong>. Se recomienda al alumno consultar sus páginas de manual.</p>
-<h2 data-number="6.2" id="subsec:libc-printf"><span class="header-section-number">6.2</span> Funciones de E/S estándar</h2>
+<h2 id="subsec:libc-printf"><span class="header-section-number">6.2</span> Funciones de E/S estándar</h2>
 <p>Las principales funciones para escribir sobre el terminal o leer lo que introduce el usuario desde el teclado son: <strong>printf</strong> y <strong>scanf</strong>. Las cabeceras de estas funciones se declaran en el fichero <strong>stdio.h</strong>, y son:</p>
 <ul>
-<li><div class="sourceCode" id="cb35"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true"></a>    <span class="dt">int</span> printf(<span class="dt">const</span> <span class="dt">char</span> * <span class="dt">restrict</span> format, ...);</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true"></a>    ```</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true"></a>La función **printf** permite mostrar por la salida estándar el valor de cualquier variable de tipo nativo (**<span class="dt">int</span>**, **<span class="dt">char</span>**, etc), con un formato especificado por una cadena de caracteres. La cadena de caracteres de formato puede incluir cero o más directivas, caracteres normales distintos de % que son escritos tal cual en el terminal, y especificadores de conversión. Cada especificación de conversión comienza con el carácter %, seguido de uno o más caracteres que describen la conversión. Su función es obtener un texto que describa el contenido de una variable nativa, que será insertado en esa misma posición en el flujo de salida (terminal).</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true"></a></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true"></a>Por ejemplo, supongamos que tenemos una variable entera *n*, y queremos mostrar por terminal la cadena de texto: <span class="st">&quot;n = *valor\_de\_n*&quot;</span>. Usaríamos la función **printf** de la siguiente manera:</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true"></a></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true"></a>``` C</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true"></a>printf(<span class="st">&quot;n = %d&quot;</span>, n );</span></code></pre></div>
+<li><div class="sourceCode" id="cb37"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb37-1" title="1"><span class="dt">int</span> printf(<span class="dt">const</span> <span class="dt">char</span> * <span class="dt">restrict</span> format, ...);</a></code></pre></div>
+<p>La función <strong>printf</strong> permite mostrar por la salida estándar el valor de cualquier variable de tipo nativo (<strong>int</strong>, <strong>char</strong>, etc), con un formato especificado por una cadena de caracteres. La cadena de caracteres de formato puede incluir cero o más directivas, caracteres normales distintos de % que son escritos tal cual en el terminal, y especificadores de conversión. Cada especificación de conversión comienza con el carácter %, seguido de uno o más caracteres que describen la conversión. Su función es obtener un texto que describa el contenido de una variable nativa, que será insertado en esa misma posición en el flujo de salida (terminal).</p>
+<p>Por ejemplo, supongamos que tenemos una variable entera <em>n</em>, y queremos mostrar por terminal la cadena de texto: “n = <em>valor_de_n</em>”. Usaríamos la función <strong>printf</strong> de la siguiente manera:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb38-1" title="1">printf(<span class="st">&quot;n = %d&quot;</span>, n );</a></code></pre></div>
 <p>También podemos añadir a la cadena de formato secuencias de escape, que comienzan por el carácter <code>’\’</code>, seguido de otro carácter. Estas secuencias sirven para incluir, por ejemplo, saltos de línea (<code>\n</code>).</p>
 <p>El formato concreto de todos los especificadores de conversión y las secuencias de escape puede encontrarse consultando la página de manual de <strong>printf</strong> o consultando cualquier manual de C.</p></li>
-<li><div class="sourceCode" id="cb36"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true"></a>    <span class="dt">int</span> scanf(<span class="dt">const</span> <span class="dt">char</span> *<span class="dt">restrict</span> format, ...);</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true"></a>    ```</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true"></a></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true"></a>La función **scanf** sirve para leer de la entrada estándar. Al igual que **printf** toma una cadena de caracteres para especificar el formato de lo que se espera leer de la entrada estándar, que incluye especificadores de conversión. Cada especificador de conversión se corresponde con una variable que debe ser pasada a **scanf** por referencia (pasamos la dirección de la variable), de forma que al hacer la conversión de su valor en texto a su valor numérico el resultado se almacenará en dicha variable.</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true"></a></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true"></a>Siguiendo con el ejemplo, si esperamos leer una cadena como la del caso anterior, y asignar el valor a la variable n, escribiríamos:</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true"></a></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true"></a>``` C</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true"></a>scanf(<span class="st">&quot;n = %d&quot;</span>, &amp;n );</span></code></pre></div>
+<li><div class="sourceCode" id="cb39"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb39-1" title="1"><span class="dt">int</span> scanf(<span class="dt">const</span> <span class="dt">char</span> *<span class="dt">restrict</span> format, ...);</a></code></pre></div>
+<p>La función <strong>scanf</strong> sirve para leer de la entrada estándar. Al igual que <strong>printf</strong> toma una cadena de caracteres para especificar el formato de lo que se espera leer de la entrada estándar, que incluye especificadores de conversión. Cada especificador de conversión se corresponde con una variable que debe ser pasada a <strong>scanf</strong> por referencia (pasamos la dirección de la variable), de forma que al hacer la conversión de su valor en texto a su valor numérico el resultado se almacenará en dicha variable.</p>
+<p>Siguiendo con el ejemplo, si esperamos leer una cadena como la del caso anterior, y asignar el valor a la variable n, escribiríamos:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb40-1" title="1">scanf(<span class="st">&quot;n = %d&quot;</span>, &amp;n );</a></code></pre></div>
 <p>La función devuelve el número de asignaciones realizadas (conversiones). Se recomienda al alumno consultar su página de manual para completar esta descripción.</p></li>
 </ul>
-<h2 data-number="6.3" id="subsec:libc-ficheros"><span class="header-section-number">6.3</span> Funciones de E/S sobre ficheros</h2>
+<h2 id="subsec:libc-ficheros"><span class="header-section-number">6.3</span> Funciones de E/S sobre ficheros</h2>
 <p>La biblioteca estándar de C ofrece una serie de funciones que permiten el acceso a ficheros. Las cabeceras de estas funciones se declaran en el fichero <strong>stdio.h</strong>. En esta sección vamos a describir sólo algunas de las funciones más importantes, que son:</p>
 <ul>
-<li><p><code>C     FILE * fopen(const char *restrict filename, const char *restrict mode);</code></p>
+<li><div class="sourceCode" id="cb41"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb41-1" title="1"><span class="dt">FILE</span> * fopen(<span class="dt">const</span> <span class="dt">char</span> *<span class="dt">restrict</span> filename, <span class="dt">const</span> <span class="dt">char</span> *<span class="dt">restrict</span> mode);</a></code></pre></div>
 <p>La función <strong>fopen</strong> abre el fichero de nombre indicado por la cadena de caracteres que se pasa como primer argumento. El nombre puede ser una ruta absoluta o relativa. El segundo argumento de la función es una cadena de caracteres que indicará el modo en que debe abrirse el fichero:</p>
 <dl>
 <dt>“r”</dt>
@@ -1694,16 +1681,18 @@ DESCRIPTION
 </dd>
 </dl>
 <p>Si tiene éxito, la función devuelve la dirección de una estructura <code>FILE</code> que se usa como descriptor del fichero, y deberá pasarse al resto de funciones para trabajar con dicho fichero. Si se produce algún error, <strong>fopen</strong> devolverá <code>NULL</code>.</p></li>
-<li><p><code>C     int fclose(FILE *stream);</code></p>
+<li><div class="sourceCode" id="cb42"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb42-1" title="1"><span class="dt">int</span> fclose(<span class="dt">FILE</span> *stream);</a></code></pre></div>
 <p>La función <strong>fclose</strong> cierra un fichero abierto. Toma como argumento la dirección del descriptor (estructura <code>FILE</code>).</p>
 <p>Si tiene éxito, la función devuelve 0. En caso de error, devolverá <code>EOF</code> y asignará a la variable global errno un valor que describa el motivo del error.</p></li>
-<li><p><code>C     size_t fread(void *restrict ptr, size_t size, size_t nitems,              FILE *restrict stream);</code></p>
+<li><div class="sourceCode" id="cb43"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb43-1" title="1"><span class="dt">size_t</span> fread(<span class="dt">void</span> *<span class="dt">restrict</span> ptr, <span class="dt">size_t</span> size, <span class="dt">size_t</span> nitems,</a>
+<a class="sourceLine" id="cb43-2" title="2">         <span class="dt">FILE</span> *<span class="dt">restrict</span> stream);</a></code></pre></div>
 <p>La función <strong>fread</strong> permite leer <code>nitems</code> elementos de <code>size</code> bytes del fichero asociado al descriptor cuya dirección se pasa como último argumento. Los bytes leídos se escribirán en memoria a partir de la dirección que se pasa como primer argumento. Es responsabilidad del programador asegurarse de que hay espacio suficiente en dicho buffer.</p>
 <p>Si tiene éxito, <strong>fread</strong> devuelve el número de elementos (<em>items</em>) leídos correctamente. En caso de error, o si se alcanza el final de fichero, el valor devuelto será menor que el número de elementos que se intentó leer (tercer parámetro en la llamada). La función avanzará el indicador de posición tantos bytes como los bytes leídos.</p></li>
-<li><p><code>C     size_t fwrite(const void *restrict ptr, size_t size, size_t nitems,              FILE *restrict stream);</code></p>
+<li><div class="sourceCode" id="cb44"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb44-1" title="1"><span class="dt">size_t</span> fwrite(<span class="dt">const</span> <span class="dt">void</span> *<span class="dt">restrict</span> ptr, <span class="dt">size_t</span> size, <span class="dt">size_t</span> nitems,</a>
+<a class="sourceLine" id="cb44-2" title="2">         <span class="dt">FILE</span> *<span class="dt">restrict</span> stream);</a></code></pre></div>
 <p>La función <strong>fwrite</strong> permite escribir <code>nitems</code> elementos de <code>size</code> bytes en el fichero asociado al descriptor cuya dirección se pasa como último argumento, leyendo los valores a escribir a partir de la dirección que se pasa como primer argumento.</p>
 <p>Si tiene éxito, <strong>fwrite</strong> devuelve el número de elementos (<em>items</em>) escritos. En caso de error, o si se alcanza el final de fichero, el valor devuelto será menor que el número de elementos que se intentó escribir (tercer parámetro en la llamada). La función avanzará el indicador de posición tantos bytes como los bytes escritos.</p></li>
-<li><p><code>C     int fseek(FILE *stream, long offset, int whence);</code></p>
+<li><div class="sourceCode" id="cb45"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb45-1" title="1"><span class="dt">int</span> fseek(<span class="dt">FILE</span> *stream, <span class="dt">long</span> offset, <span class="dt">int</span> whence);</a></code></pre></div>
 <p>La función <strong>fseek</strong> permite desplazar el indicador de posición del fichero asociado al descriptor cuya dirección se pasa como primer argumento. La nueva posición, medida en bytes, se obtiene sumando <code>offset</code> bytes a la posición indicada por el tercer argumento <code>whence</code>. Éste último puede tomar tres posibles valores:</p>
 <dl>
 <dt>SEEK_SET</dt>
@@ -1717,22 +1706,22 @@ DESCRIPTION
 </dd>
 </dl>
 <p>En caso de éxito, <strong>fseek</strong> devuelve 0. En caso de error, la función devuelve -1 y asigna a la variable global <code>errno</code> un valor que describe el motivo del error.</p></li>
-<li><p><code>C     int putc(int c, FILE *stream);</code></p>
+<li><div class="sourceCode" id="cb46"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb46-1" title="1"><span class="dt">int</span> putc(<span class="dt">int</span> c, <span class="dt">FILE</span> *stream);</a></code></pre></div>
 <p>La función <strong>putc</strong> escribe el valor entero <code>c</code> convertido a <code>unsigned char</code> en el fichero asociado al descriptor cuya dirección se pasa como segundo argumento. Si tiene éxito devuelve el carácter escrito. En caso de error devuelve <code>EOF</code>.</p></li>
-<li><p><code>C     int getc(FILE *stream);</code></p>
+<li><div class="sourceCode" id="cb47"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb47-1" title="1"><span class="dt">int</span> getc(<span class="dt">FILE</span> *stream);</a></code></pre></div>
 <p>La función <strong>getc</strong> lee un carácter (1 byte) del fichero asociado al descriptor cuya dirección se pasa como argumento. Si tiene éxito devuelve el carácter leído como <code>unsigned char</code> transformado a entero. En caso de error devuelve <code>EOF</code>.</p></li>
-<li><p><code>C     int feof(FILE *stream);</code></p>
+<li><div class="sourceCode" id="cb48"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb48-1" title="1"><span class="dt">int</span> feof(<span class="dt">FILE</span> *stream);</a></code></pre></div>
 <p>La función <strong>feof</strong> comprueba si se ha activado el indicador de final de fichero en el descriptor cuya dirección se pasa como argumento, devolviendo un valor no nulo si está activo. Este indicador se puede borrar explícitamente invocando la función <code>clearerr()</code> o como efecto lateral del uso de <code>fseek()</code>.</p></li>
-<li><div class="sourceCode" id="cb37"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true"></a>  <span class="dt">char</span>* fgets(<span class="dt">char</span> *str, <span class="dt">int</span> size, <span class="dt">FILE</span> *stream);</span></code></pre></div>
+<li><div class="sourceCode" id="cb49"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb49-1" title="1"><span class="dt">char</span>* fgets(<span class="dt">char</span> *str, <span class="dt">int</span> size, <span class="dt">FILE</span> *stream);</a></code></pre></div>
 <p>La función <strong>fgets</strong> lee como mucho <em>size-1</em> caracteres del fichero cuyo descriptor se pasa como parámetro (<em>stream</em>), y los almacena en el buffer apuntado por <code>str</code>. La lectura finaliza cuando se llega a fin de fichero o se procesa un salto de línea. En caso de que se detecte un salto de línea, éste se almacena en el buffer, que en cualquier caso incluye el caracter terminador al final.</p></li>
-<li><div class="sourceCode" id="cb38"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true"></a>  <span class="dt">int</span> fprintf(<span class="dt">FILE</span>  *stream, <span class="dt">const</span> <span class="dt">char</span> *format, ...)</span></code></pre></div>
+<li><div class="sourceCode" id="cb50"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb50-1" title="1"><span class="dt">int</span> fprintf(<span class="dt">FILE</span>  *stream, <span class="dt">const</span> <span class="dt">char</span> *format, ...)</a></code></pre></div>
 <p>Se trata de una variante de la función <strong>printf</strong> donde el mensaje con formato se imprime en el fichero cuyo descriptor se pasa como primer parámetro (<em>stream</em>).</p></li>
 </ul>
-<h2 data-number="6.4" id="subsec:libc-perror"><span class="header-section-number">6.4</span> Comprobación de errores</h2>
+<h2 id="subsec:libc-perror"><span class="header-section-number">6.4</span> Comprobación de errores</h2>
 <p>Como hemos visto en las secciones anteriores, muchas funciones de la biblioteca estándar de C asignan un valor determinado a la variable global <code>errno</code> para indicar la causa por la que han finalizado con error. La biblioteca ofrece también una serie de funciones que permiten interpretar estos valores y comunicarlos al usuario de forma más amigable. Una de las funciones más utilizadas para ello es:</p>
 <ul>
-<li><p><code>C     void perror(const char *s);</code></p>
-<p>La función <strong>perror</strong> muestra por pantalla una cadena de caracteres terminada en final de línea, con un mensaje que describe el error indicado en ese momento por la variable <code>errno</code>. Además, acepta como argumento la dirección de una cadena de caracteres. Si éste argumento no es <code>NULL</code>, dicha cadena se pone delante del mensaje descriptivo, separando ambos por el carácter ‘<code>:</code>’.</p></li>
+<li><div class="sourceCode" id="cb51"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb51-1" title="1"><span class="dt">void</span> perror(<span class="dt">const</span> <span class="dt">char</span> *s);</a></code></pre></div>
+La función <strong>perror</strong> muestra por pantalla una cadena de caracteres terminada en final de línea, con un mensaje que describe el error indicado en ese momento por la variable <code>errno</code>. Además, acepta como argumento la dirección de una cadena de caracteres. Si éste argumento no es <code>NULL</code>, dicha cadena se pone delante del mensaje descriptivo, separando ambos por el carácter ‘<code>:</code>’.</li>
 </ul>
 <!--
 
@@ -1750,11 +1739,11 @@ Bibliografía {#sec:shellbiblio label="sec:shellbiblio"}
 
 
 -->
-<section class="footnotes" role="doc-endnotes">
+<section class="footnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>en las instalaciones de laboratorio de la FDI puede utilizarse la distribución Ubuntu instalada de forma nativa o la máquina virtual de Linux de la asignatura disponible tanto en Windows como Linux nativo<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>Si este editor no estuviera disponible en la máquina virtual del laboratorio, bastaría instalarlo con el comando <code>sudo apt install gedit</code>, y teclear si la solicita la contraseña del usuario.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>en las instalaciones de laboratorio de la FDI puede utilizarse la distribución Ubuntu instalada de forma nativa o la máquina virtual de Linux de la asignatura disponible tanto en Windows como Linux nativo<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>Si este editor no estuviera disponible en la máquina virtual del laboratorio, bastaría instalarlo con el comando <code>sudo apt install gedit</code>, y teclear si la solicita la contraseña del usuario.<a href="#fnref2" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
         </div>
